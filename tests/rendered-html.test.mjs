@@ -22,7 +22,7 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Adil Syafi — Product Engineer &amp; Creative Developer<\/title>/i);
+  assert.match(html, /<title>Syafi Adil — Product Engineer &amp; Creative Developer<\/title>/i);
   assert.match(html, /I BUILD/);
   assert.match(html, /DIGITAL/);
   assert.match(html, /PRODUCTS/);

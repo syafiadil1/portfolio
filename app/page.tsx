@@ -380,7 +380,7 @@ function MagneticContact() {
   const copyEmail = async () => {
     try {
       if (!navigator.clipboard) throw new Error("Clipboard unavailable");
-      await navigator.clipboard.writeText("hello@adilsyafi.dev");
+      await navigator.clipboard.writeText("hello@syafiadil.dev");
       setCopyStatus("copied");
     } catch {
       setCopyStatus("failed");
@@ -489,7 +489,7 @@ export default function Home() {
                 animate={reduceMotion ? undefined : { y: 0 }}
                 transition={{ duration: 0.64, ease }}
               >
-                ADIL SYAFI
+                SYAFI ADIL
               </motion.span>
             </div>
             <div className="intro-meter">
@@ -505,8 +505,8 @@ export default function Home() {
       </AnimatePresence>
 
       <header className="site-header">
-        <a href="#top" className="wordmark" aria-label="Adil Syafi, back to top">
-          <span>AS</span><i />
+        <a href="#top" className="wordmark" aria-label="Syafi Adil, back to top">
+          <span>SA</span><i />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#about"><small>01</small> About</a>
@@ -526,7 +526,7 @@ export default function Home() {
         <div className="hero-grid" aria-hidden="true"><i className="scanner" /></div>
         <motion.div className="hero-content" style={{ y: heroY, opacity: heroOpacity }}>
           <div className="hero-kicker">
-            <span>ADIL SYAFI</span>
+            <span>SYAFI ADIL</span>
             <span>PRODUCT ENGINEER / CREATIVE DEVELOPER</span>
             <span>KL 03°08′N 101°41′E</span>
           </div>
@@ -628,17 +628,17 @@ export default function Home() {
               <p>Good. Those are the interesting ones.</p>
             </Reveal>
             <Reveal className="contact-action" delay={0.1}>
-              <p>I’m available for select product engineering and creative development projects from Q4 2026. Write to <a className="contact-email" href="mailto:hello@adilsyafi.dev">hello@adilsyafi.dev</a>.</p>
+              <p>I’m available for select product engineering and creative development projects from Q4 2026. Write to <a className="contact-email" href="mailto:hello@syafiadil.dev">hello@syafiadil.dev</a>.</p>
               <MagneticContact />
               <small>CLICK TO COPY THE ADDRESS</small>
             </Reveal>
           </div>
           <footer>
-            <span>© 2026 ADIL SYAFI</span>
+            <span>© 2026 SYAFI ADIL</span>
             <div>
-              <a href="https://github.com/adilsyafi" target="_blank" rel="noreferrer">GITHUB ↗</a>
-              <a href="https://www.linkedin.com/in/adilsyafi" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
-              <a href="https://read.cv/adilsyafi" target="_blank" rel="noreferrer">READ.CV ↗</a>
+              <a href="https://github.com/syafiadil" target="_blank" rel="noreferrer">GITHUB ↗</a>
+              <a href="https://www.linkedin.com/in/syafiadil" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+              <a href="https://read.cv/syafiadil" target="_blank" rel="noreferrer">READ.CV ↗</a>
             </div>
             <a href="#top">BACK TO TOP ↑</a>
           </footer>

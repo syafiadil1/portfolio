@@ -1,4 +1,4 @@
-# Adil Syafi — Portfolio
+# Syafi Adil — Portfolio
 
 An editorial, motion-rich portfolio for a product engineer and creative developer. The single-page experience uses a paper/ink visual system, interactive project case studies, a capability radar, and a scroll-led experience timeline.
 

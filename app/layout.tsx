@@ -12,21 +12,21 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: "Adil Syafi — Product Engineer & Creative Developer",
+    title: "Syafi Adil — Product Engineer & Creative Developer",
     description:
       "Kuala Lumpur-based product engineer crafting fast, humane digital products through systems thinking, interface design, and production code.",
     keywords: ["Product Engineer", "Creative Developer", "React Developer", "Kuala Lumpur", "Portfolio"],
-    authors: [{ name: "Adil Syafi" }],
+    authors: [{ name: "Syafi Adil" }],
     openGraph: {
-      title: "Adil Syafi — I Build Digital Products",
+      title: "Syafi Adil — I Build Digital Products",
       description: "Product engineering, interaction, and systems thinking—made clear.",
       type: "website",
       url: baseUrl,
-      images: [{ url: `${baseUrl}/og.png`, width: 1731, height: 909, alt: "Adil Syafi — Product Engineer" }],
+      images: [{ url: `${baseUrl}/og.png`, width: 1731, height: 909, alt: "Syafi Adil — Product Engineer" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Adil Syafi — I Build Digital Products",
+      title: "Syafi Adil — I Build Digital Products",
       description: "Product engineering, interaction, and systems thinking—made clear.",
       images: [`${baseUrl}/og.png`],
     },
