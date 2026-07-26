@@ -886,17 +886,6 @@ button {
   letter-spacing: 0.12em;
 }
 
-.live-dot::before {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 0.4rem;
-  border-radius: 50%;
-  content: "";
-  background: var(--signal);
-  animation: blink 1.5s ease infinite;
-}
-
 /* Project 01 — LONJAK */
 .art-lonjak {
   color: #f4f7ed;
@@ -1078,102 +1067,7 @@ button {
   color: #c9ff3d;
 }
 
-/* Project 02 — Financial Advisory */
-.art-financial {
-  color: #efeee6;
-  background-color: #10100f;
-  background-image:
-    linear-gradient(to right, rgba(239, 238, 230, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(239, 238, 230, 0.09) 1px, transparent 1px);
-  background-size: 10% 18%;
-}
-
-.finance-metric {
-  position: absolute;
-  z-index: 3;
-  top: 23%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
-}
-
-.finance-metric span,
-.finance-metric small,
-.finance-advice span,
-.finance-advice small,
-.finance-tabs {
-  font-size: clamp(0.38rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-}
-
-.finance-metric strong {
-  margin-block: clamp(0.3rem, 0.8vw, 0.75rem);
-  color: var(--signal);
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 4.8vw, 5rem);
-  font-weight: 720;
-  letter-spacing: -0.08em;
-  line-height: 0.9;
-}
-
-.finance-chart {
-  position: absolute;
-  z-index: 2;
-  left: 5%;
-  bottom: 10%;
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(3px, 0.65vw, 9px);
-  width: 54%;
-  height: 27%;
-  padding-bottom: 0.45rem;
-  border-bottom: 1px solid rgba(239, 238, 230, 0.72);
-}
-
-.finance-chart i {
-  flex: 1;
-  min-width: 2px;
-  background: var(--signal);
-  transform-origin: bottom;
-  animation: chartPulse 2.8s ease-in-out infinite alternate;
-}
-
-.finance-chart i:nth-child(even) {
-  background: #efeee6;
-}
-
-.finance-advice {
-  position: absolute;
-  z-index: 4;
-  top: 27%;
-  right: 5%;
-  display: flex;
-  flex-direction: column;
-  width: 31%;
-  padding: clamp(0.65rem, 1.5vw, 1.35rem);
-  color: #080808;
-  background: var(--signal);
-}
-
-.finance-advice strong {
-  margin-block: clamp(0.45rem, 1vw, 1rem);
-  font-family: var(--font-display);
-  font-size: clamp(0.58rem, 1.2vw, 1.2rem);
-  letter-spacing: -0.035em;
-  line-height: 1.25;
-}
-
-.finance-tabs {
-  position: absolute;
-  z-index: 3;
-  right: 5%;
-  bottom: 9%;
-  display: flex;
-  gap: clamp(0.5rem, 1.5vw, 1.5rem);
-}
-
-/* Project 03 — Aurum Jets */
+/* Project 02 — Aurum Jets */
 .art-aurum {
   color: #f0e7d7;
   background:
@@ -1323,7 +1217,7 @@ button {
   text-align: right;
 }
 
-/* Project 04 — StudentCore */
+/* Project 03 — StudentCore */
 .art-student {
   color: #0a0a0a;
   background-color: #d8d4c8;
@@ -1445,7 +1339,7 @@ button {
   background: var(--signal);
 }
 
-/* Project 05 — Commitment */
+/* Project 04 — Commitment */
 .art-commitment {
   color: #080808;
   background-color: var(--signal);
@@ -2078,11 +1972,6 @@ footer > a:last-child { justify-self: end; }
   0% { transform: translateY(-2px); }
   50% { transform: translateY(100svh); }
   100% { transform: translateY(-2px); }
-}
-
-@keyframes chartPulse {
-  from { transform: scaleY(0.75); }
-  to { transform: scaleY(1); }
 }
 
 @keyframes aircraftFloat {

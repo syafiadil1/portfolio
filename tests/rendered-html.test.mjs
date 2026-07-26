@@ -29,15 +29,15 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /Selected work/i);
   assert.match(html, /LONJAK/);
   assert.match(html, /PRIVATE REPOSITORY/);
-  assert.match(html, /Financial Advisory/);
   assert.match(html, /Aurum Jets/);
   assert.match(html, /StudentCore/);
   assert.match(html, /Commitment/);
-  assert.match(html, /github\.com\/syafiadil1\/financialadvisory/);
   assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
   assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
   assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
+  assert.match(html, /mailto:syafiadil@gmail\.com/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/lonjak"/);
+  assert.doesNotMatch(html, /Financial Advisory|financialadvisory|linkedin\.com|read\.cv/i);
   assert.match(html, /HAVE A HARD/);
   assert.doesNotMatch(html, /Relay|Northstar|Forma|Quiet Hours/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);

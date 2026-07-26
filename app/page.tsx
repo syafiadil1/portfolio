@@ -35,20 +35,6 @@ const projects = [
   },
   {
     index: "02",
-    title: "Financial Advisory",
-    subtitle: "Company finance, from transaction to advice.",
-    description:
-      "A multi-role Java platform for department budgets, transaction control, cash-flow dashboards, risk alerts, financial statements, and AI-assisted advisory.",
-    stack: "Java 22 · JSP/Servlet · Oracle · Gemini API",
-    note: "Built with controller-based navigation, PBKDF2 password security, department budget controls, dynamic analytics, and report generation on Tomcat 11.",
-    year: "2026",
-    discipline: "FULL-STACK FINTECH",
-    visual: "financial",
-    repoUrl: "https://github.com/syafiadil1/financialadvisory",
-    isPrivate: false,
-  },
-  {
-    index: "03",
     title: "Aurum Jets",
     subtitle: "Private aviation, rendered in motion.",
     description:
@@ -62,7 +48,7 @@ const projects = [
     isPrivate: false,
   },
   {
-    index: "04",
+    index: "03",
     title: "StudentCore",
     subtitle: "One command center for university life.",
     description:
@@ -76,7 +62,7 @@ const projects = [
     isPrivate: false,
   },
   {
-    index: "05",
+    index: "04",
     title: "Commitment",
     subtitle: "Bills remembered, stress reduced.",
     description:
@@ -94,10 +80,10 @@ const projects = [
 const skills = [
   { name: "React", x: "12%", y: "18%", note: "Product interfaces" },
   { name: "TypeScript", x: "69%", y: "13%", note: "Confident contracts" },
-  { name: "Java", x: "76%", y: "42%", note: "Full-stack systems" },
+  { name: "Supabase", x: "76%", y: "42%", note: "Secure cloud data" },
   { name: "React Native", x: "64%", y: "75%", note: "Mobile products" },
   { name: "Three.js", x: "13%", y: "69%", note: "Real-time 3D" },
-  { name: "Oracle", x: "32%", y: "45%", note: "Relational data" },
+  { name: "Next.js", x: "32%", y: "45%", note: "Modern web apps" },
   { name: "Product design", x: "39%", y: "86%", note: "Useful outcomes" },
 ] as const;
 
@@ -108,13 +94,6 @@ const experience = [
     company: "LONJAK",
     detail:
       "Building an Android-first KSSM Mathematics companion with adaptive daily missions, multilingual learning, offline-first progress, and contextual AI tutoring.",
-  },
-  {
-    years: "JUL 2026",
-    role: "Full-stack Financial Systems",
-    company: "Financial Advisory",
-    detail:
-      "Designed a multi-role Java platform spanning transaction control, departmental budgets, cash-flow analytics, statement generation, secure authentication, and AI-assisted guidance.",
   },
   {
     years: "JUL 2026",
@@ -195,35 +174,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
           <div className="lonjak-tutor"><span>AI TUTOR</span><p>What should we solve first?</p></div>
         </div>
         <div className="lonjak-meta"><span>53 CHAPTERS</span><span>305 QUESTIONS</span><span>OFFLINE-FIRST</span></div>
-      </div>
-    );
-  }
-
-  if (visual === "financial") {
-    return (
-      <div className="project-art art-financial" aria-label={`${title} interface preview`} role="img">
-        <div className="visual-topline">
-          <span>FINANCIAL ADVISORY / DASHBOARD</span>
-          <span className="live-dot">LIVE MODEL</span>
-        </div>
-        <div className="finance-metric">
-          <span>NET CASH POSITION</span>
-          <strong>RM 84.2K</strong>
-          <small>+12.4% / MONTH</small>
-        </div>
-        <div className="finance-chart" aria-hidden="true">
-          {[36, 52, 44, 69, 58, 82, 74, 94].map((height, index) => (
-            <i key={`${height}-${index}`} style={{ height: `${height}%`, animationDelay: `${index * 70}ms` }} />
-          ))}
-        </div>
-        <div className="finance-advice">
-          <span>GEMINI ADVISORY / 01</span>
-          <strong>Review the Q3 budget variance.</strong>
-          <small>DEPARTMENT 03 ↗</small>
-        </div>
-        <div className="finance-tabs">
-          <span>REVENUE</span><span>EXPENSE</span><span>MARGIN</span>
-        </div>
       </div>
     );
   }
@@ -478,7 +428,7 @@ function MagneticContact() {
   const copyEmail = async () => {
     try {
       if (!navigator.clipboard) throw new Error("Clipboard unavailable");
-      await navigator.clipboard.writeText("hello@syafiadil.dev");
+      await navigator.clipboard.writeText("syafiadil@gmail.com");
       setCopyStatus("copied");
     } catch {
       setCopyStatus("failed");
@@ -657,7 +607,7 @@ export default function Home() {
         </div>
         <div className="stats-row">
           {[
-            ["05", "FEATURED PROJECTS"],
+            ["04", "FEATURED PROJECTS"],
             ["03", "WEB / MOBILE / 3D"],
             ["2026", "CURRENT BUILD LOG"],
           ].map(([value, label], index) => (
@@ -673,7 +623,7 @@ export default function Home() {
           <SectionLabel index="02">SELECTED WORK / 2026</SectionLabel>
           <div className="section-intro">
             <h2>Selected<br /><span>case studies.</span></h2>
-            <p>Five builds spanning adaptive education, enterprise finance, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
+            <p>Four builds spanning adaptive education, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
           </div>
         </Reveal>
         <div className="project-list">
@@ -699,7 +649,7 @@ export default function Home() {
         <Reveal><SectionLabel index="04">EXPERIENCE / BUILD LOG</SectionLabel></Reveal>
         <div className="experience-title">
           <Reveal><h2>What I’ve<br />been <em>building.</em></h2></Reveal>
-          <Reveal delay={0.08}><p>A development trail across adaptive learning, financial systems, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
+          <Reveal delay={0.08}><p>A development trail across adaptive learning, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
         </div>
         <div className="timeline">
           <div className="timeline-rail"><motion.i style={{ scaleY: reduceMotion ? 1 : experienceProgress }} /></div>
@@ -726,7 +676,7 @@ export default function Home() {
               <p>Good. Those are the interesting ones.</p>
             </Reveal>
             <Reveal className="contact-action" delay={0.1}>
-              <p>I’m available for select product engineering and creative development projects from Q4 2026. Write to <a className="contact-email" href="mailto:hello@syafiadil.dev">hello@syafiadil.dev</a>.</p>
+              <p>I’m available for select product engineering and creative development projects from Q4 2026. Write to <a className="contact-email" href="mailto:syafiadil@gmail.com">syafiadil@gmail.com</a>.</p>
               <MagneticContact />
               <small>CLICK TO COPY THE ADDRESS</small>
             </Reveal>
@@ -735,8 +685,6 @@ export default function Home() {
             <span>© 2026 SYAFI ADIL</span>
             <div>
               <a href="https://github.com/syafiadil1" target="_blank" rel="noreferrer">GITHUB ↗</a>
-              <a href="https://www.linkedin.com/in/syafiadil" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
-              <a href="https://read.cv/syafiadil" target="_blank" rel="noreferrer">READ.CV ↗</a>
             </div>
             <a href="#top">BACK TO TOP ↑</a>
           </footer>
