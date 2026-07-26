@@ -21,85 +21,89 @@ import {
 const projects = [
   {
     index: "01",
-    title: "Relay",
-    subtitle: "Operations, without the noise.",
+    title: "Financial Advisory",
+    subtitle: "Company finance, from transaction to advice.",
     description:
-      "A real-time logistics command center that turns fragmented fleet signals into a calm, shared picture—cutting incident response time by 38%.",
-    stack: "React · TypeScript · WebSockets · Node.js",
-    note: "The decisive move was reducing twelve alert states to three human decisions. A shared event model kept dispatch, support, and field teams in the same operational picture.",
+      "A multi-role Java platform for department budgets, transaction control, cash-flow dashboards, risk alerts, financial statements, and AI-assisted advisory.",
+    stack: "Java 22 · JSP/Servlet · Oracle · Gemini API",
+    note: "Built with controller-based navigation, PBKDF2 password security, department budget controls, dynamic analytics, and report generation on Tomcat 11.",
     year: "2026",
-    discipline: "PRODUCT ENGINEERING",
-    visual: "relay",
+    discipline: "FULL-STACK FINTECH",
+    visual: "financial",
+    repoUrl: "https://github.com/syafiadil1/financialadvisory",
   },
   {
     index: "02",
-    title: "Northstar",
-    subtitle: "Climate data, made actionable.",
+    title: "Aurum Jets",
+    subtitle: "Private aviation, rendered in motion.",
     description:
-      "A scenario-planning platform translating regional climate models into investment decisions for infrastructure teams across six countries.",
-    stack: "Next.js · D3 · Mapbox · PostgreSQL",
-    note: "We paired progressive disclosure with spatial comparison, letting non-specialists move from a national signal to a specific asset without losing the scenario context.",
-    year: "2025",
-    discipline: "DATA EXPERIENCE",
-    visual: "northstar",
+      "A cinematic aviation experience centered on a textured Boeing 737, combining real-time 3D, scroll choreography, smooth navigation, and responsive lead capture.",
+    stack: "Three.js · GSAP · Lenis · HTML/CSS/JS",
+    note: "The experience uses a detailed GLB aircraft with a procedural fallback, keeping the motion-led story robust while remaining a zero-build static site.",
+    year: "2026",
+    discipline: "CREATIVE DEVELOPMENT",
+    visual: "aurum",
+    repoUrl: "https://github.com/syafiadil1/aurum-jets",
   },
   {
     index: "03",
-    title: "Forma",
-    subtitle: "Creative review, in one rhythm.",
+    title: "StudentCore",
+    subtitle: "One command center for university life.",
     description:
-      "A collaborative review workspace that gave distributed brand teams one fast, precise place to move work across fourteen markets.",
-    stack: "React · WebRTC · GraphQL · AWS",
-    note: "Review speed came from treating every comment as a coordinate in time and space. The interface made authorship, versions, and decisions visible at a glance.",
-    year: "2024",
-    discipline: "COLLABORATION",
-    visual: "forma",
+      "A local-first academic organizer for courses, weekly timetables, tasks, assessments, deadlines, and course files in one terminal-inspired web app.",
+    stack: "Next.js · TypeScript · Tailwind CSS · LocalStorage",
+    note: "Each browser starts with a clean workspace and stores academic data on-device, bringing time, tasks, and study files into one focused daily dashboard.",
+    year: "2026",
+    discipline: "PRODUCT ENGINEERING",
+    visual: "student",
+    repoUrl: "https://github.com/syafiadil1/studentcoresystem",
   },
   {
     index: "04",
-    title: "Quiet Hours",
-    subtitle: "Focus with fewer metrics.",
+    title: "Commitment",
+    subtitle: "Bills remembered, stress reduced.",
     description:
-      "A privacy-first desktop tool for deep work, pairing offline-first sessions with ambient soundscapes and intentionally quiet analytics.",
-    stack: "Electron · Zustand · SQLite · Web Audio",
-    note: "Instead of gamifying attention, Quiet Hours protects it. Sessions work entirely offline, analytics stay local, and the sound engine adapts without asking for input.",
-    year: "2023",
-    discipline: "INDEPENDENT PRODUCT",
-    visual: "quiet",
+      "A cross-platform bills and commitments tracker for recurring and one-off payments, with due-date cycles, payment history, local persistence, and reminder-driven momentum.",
+    stack: "Expo · React Native · TypeScript · AsyncStorage",
+    note: "The app normalizes saved bills and payments before use, calculates recurring cycles locally, and keeps dashboard, add/edit, and history flows consistent across native and web.",
+    year: "2026",
+    discipline: "MOBILE FINANCE",
+    visual: "commitment",
+    repoUrl: "https://github.com/syafiadil1/commitmentapp",
   },
 ] as const;
 
 const skills = [
-  { name: "React", x: "12%", y: "18%", note: "Systems that scale" },
+  { name: "React", x: "12%", y: "18%", note: "Product interfaces" },
   { name: "TypeScript", x: "69%", y: "13%", note: "Confident contracts" },
-  { name: "Node.js", x: "76%", y: "42%", note: "Resilient services" },
-  { name: "Motion", x: "64%", y: "75%", note: "Purposeful movement" },
-  { name: "WebGL", x: "13%", y: "69%", note: "Expressive canvases" },
-  { name: "Design systems", x: "32%", y: "45%", note: "Shared language" },
-  { name: "Product strategy", x: "39%", y: "86%", note: "Useful outcomes" },
+  { name: "Java", x: "76%", y: "42%", note: "Full-stack systems" },
+  { name: "React Native", x: "64%", y: "75%", note: "Mobile products" },
+  { name: "Three.js", x: "13%", y: "69%", note: "Real-time 3D" },
+  { name: "Oracle", x: "32%", y: "45%", note: "Relational data" },
+  { name: "Product design", x: "39%", y: "86%", note: "Useful outcomes" },
 ] as const;
 
 const experience = [
   {
-    years: "2024—NOW",
-    role: "Senior Product Engineer",
-    company: "Fieldwork",
+    years: "JUL 2026",
+    role: "Full-stack Financial Systems",
+    company: "Financial Advisory",
     detail:
-      "Leading the front-end platform and design-system migration across three product teams. Set the interaction model for the company’s most complex workflow.",
+      "Designed a multi-role Java platform spanning transaction control, departmental budgets, cash-flow analytics, statement generation, secure authentication, and AI-assisted guidance.",
   },
   {
-    years: "2021—2024",
-    role: "Software Engineer",
-    company: "Northstar Labs",
+    years: "JUL 2026",
+    role: "Creative WebGL Development",
+    company: "Aurum Jets",
     detail:
-      "Built data-heavy planning tools used by public-sector and infrastructure teams, from spatial prototypes to production systems.",
+      "Built a zero-build luxury aviation experience with a textured 3D aircraft, cinematic scroll choreography, smooth navigation, and a resilient visual fallback.",
   },
   {
-    years: "2018—2021",
-    role: "Creative Developer",
-    company: "Independent",
+    years: "FEB—MAR 2026",
+    role: "Product & Mobile Engineering",
+    company: "StudentCore + Commitment",
     detail:
-      "Delivered interactive launches and identity-rich digital products for early-stage technology and culture brands.",
+      "Shipped focused tools for academic planning and recurring bill management across Next.js, React Native, Expo, and local-first browser storage.",
   },
 ] as const;
 
@@ -139,91 +143,99 @@ function SectionLabel({ index, children }: { index: string; children: ReactNode 
 }
 
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
-  if (visual === "relay") {
+  if (visual === "financial") {
     return (
-      <div className="project-art art-relay" aria-label={`${title} interface preview`} role="img">
-        <div className="relay-topline">
-          <span>RELAY / LIVE OPS</span>
-          <span className="live-dot">LIVE</span>
+      <div className="project-art art-financial" aria-label={`${title} interface preview`} role="img">
+        <div className="visual-topline">
+          <span>FINANCIAL ADVISORY / DASHBOARD</span>
+          <span className="live-dot">LIVE MODEL</span>
         </div>
-        <div className="route route-a" />
-        <div className="route route-b" />
-        <div className="route route-c" />
-        <div className="map-point point-a">12</div>
-        <div className="map-point point-b">07</div>
-        <div className="map-point point-c">21</div>
-        <div className="incident-card">
-          <span>INCIDENT 042</span>
-          <strong>Route recovered</strong>
-          <small>08:42 / KUL-03</small>
+        <div className="finance-metric">
+          <span>NET CASH POSITION</span>
+          <strong>RM 84.2K</strong>
+          <small>+12.4% / MONTH</small>
         </div>
-        <div className="relay-kpi">
-          <small>ACTIVE FLEET</small>
-          <strong>284</strong>
-        </div>
-      </div>
-    );
-  }
-
-  if (visual === "northstar") {
-    return (
-      <div className="project-art art-northstar" aria-label={`${title} interface preview`} role="img">
-        <div className="topography topo-one" />
-        <div className="topography topo-two" />
-        <div className="topography topo-three" />
-        <div className="north-index">3.7°</div>
-        <div className="north-copy">
-          <span>SCENARIO / 2040</span>
-          <strong>Coastal resilience</strong>
-        </div>
-        <div className="north-chart">
-          {[34, 58, 46, 78, 65, 92].map((height, index) => (
-            <i key={height} style={{ height: `${height}%`, animationDelay: `${index * 90}ms` }} />
+        <div className="finance-chart" aria-hidden="true">
+          {[36, 52, 44, 69, 58, 82, 74, 94].map((height, index) => (
+            <i key={`${height}-${index}`} style={{ height: `${height}%`, animationDelay: `${index * 70}ms` }} />
           ))}
         </div>
+        <div className="finance-advice">
+          <span>GEMINI ADVISORY / 01</span>
+          <strong>Review the Q3 budget variance.</strong>
+          <small>DEPARTMENT 03 ↗</small>
+        </div>
+        <div className="finance-tabs">
+          <span>REVENUE</span><span>EXPENSE</span><span>MARGIN</span>
+        </div>
       </div>
     );
   }
 
-  if (visual === "forma") {
+  if (visual === "aurum") {
     return (
-      <div className="project-art art-forma" aria-label={`${title} interface preview`} role="img">
-        <div className="forma-header">
-          <span>FORMA / REVIEW 06</span>
-          <span>12 COMMENTS</span>
+      <div className="project-art art-aurum" aria-label={`${title} interface preview`} role="img">
+        <div className="visual-topline aurum-topline">
+          <span>AURUM JETS / BBJ 737</span>
+          <span>PRIVATE AVIATION</span>
         </div>
-        <div className="forma-canvas">
-          <div className="forma-poster">
-            <span>SHIFT</span>
-            <strong>THE<br />FRAME</strong>
+        <div className="aurum-orbit" aria-hidden="true" />
+        <div className="aurum-runway" aria-hidden="true"><i /><i /><i /></div>
+        <div className="aurum-aircraft" aria-hidden="true"><i /><span /></div>
+        <div className="aurum-copy">
+          <span>THE WORLD, ON YOUR TERMS</span>
+          <strong>AURUM<br />JETS</strong>
+        </div>
+        <div className="aurum-spec">
+          <span>01 / AIRCRAFT</span>
+          <strong>BOEING BUSINESS JET</strong>
+        </div>
+      </div>
+    );
+  }
+
+  if (visual === "student") {
+    return (
+      <div className="project-art art-student" aria-label={`${title} interface preview`} role="img">
+        <div className="visual-topline student-topline">
+          <span>STUDENTCORE / WORKSPACE</span>
+          <span>SEMESTER 02</span>
+        </div>
+        <div className="student-terminal">
+          <div className="terminal-bar"><span>CORE://DASHBOARD</span><span>● ● ●</span></div>
+          <div className="terminal-prompt"><span>$</span> focus --today</div>
+          <div className="student-grid">
+            <div className="student-date"><span>MON / 23</span><strong>09:30</strong><small>3 CLASSES TODAY</small></div>
+            <div className="student-tasks">
+              <span>UP NEXT</span>
+              <p><i /> Data Structures <small>10:00</small></p>
+              <p><i /> Calculus II <small>13:30</small></p>
+              <p><i /> Submit assessment <small>18:00</small></p>
+            </div>
           </div>
-          <div className="comment-pin pin-one">1</div>
-          <div className="comment-pin pin-two">2</div>
-          <div className="comment-bubble">Increase the tension here ↗</div>
         </div>
-        <div className="forma-users">
-          <i>A</i><i>M</i><i>S</i><span>+8</span>
+        <div className="student-command">
+          <span>COURSES 06</span><span>TASKS 12</span><span>FILES 34</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="project-art art-quiet" aria-label={`${title} interface preview`} role="img">
-      <div className="quiet-meta">
-        <span>QUIET HOURS</span>
-        <span>SESSION 014</span>
+    <div className="project-art art-commitment" aria-label={`${title} interface preview`} role="img">
+      <div className="visual-topline commitment-topline">
+        <span>COMMITMENT / DASHBOARD</span>
+        <span>JUL 2026</span>
       </div>
-      <div className="quiet-time">42:17</div>
-      <div className="waveform" aria-hidden="true">
-        {[18, 40, 72, 34, 86, 48, 27, 64, 92, 44, 69, 22, 54, 78, 31, 58, 83, 42, 66, 25].map(
-          (height, index) => (
-            <i key={`${height}-${index}`} style={{ height: `${height}%`, animationDelay: `${index * -70}ms` }} />
-          ),
-        )}
+      <div className="commitment-count"><strong>04</strong><span>DUE SOON</span></div>
+      <div className="commitment-phone">
+        <div className="phone-bar"><span>UPCOMING</span><span>RM 428</span></div>
+        <div className="bill-row"><i>01</i><span>Cloud storage<small>MONTHLY</small></span><strong>RM 42</strong></div>
+        <div className="bill-row"><i>02</i><span>Mobile plan<small>MONTHLY</small></span><strong>RM 98</strong></div>
+        <div className="bill-row"><i>03</i><span>Insurance<small>ANNUAL</small></span><strong>RM 288</strong></div>
       </div>
-      <div className="quiet-status"><i /> DEEP SESSION</div>
-      <div className="quiet-orbit"><span>PAUSE</span></div>
+      <div className="commitment-cycle" aria-hidden="true"><span>76%</span></div>
+      <div className="commitment-foot"><span>PAID 08</span><span>HISTORY ↗</span></div>
     </div>
   );
 }
@@ -236,7 +248,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   const springX = useSpring(rotateX, { stiffness: 180, damping: 22, mass: 0.55 });
   const springY = useSpring(rotateY, { stiffness: 180, damping: 22, mass: 0.55 });
 
-  const handleMove = (event: ReactPointerEvent<HTMLButtonElement>) => {
+  const handleMove = (event: ReactPointerEvent<HTMLAnchorElement>) => {
     if (reduceMotion || event.pointerType === "touch") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
@@ -268,15 +280,14 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
       </div>
 
       <div className="project-body">
-        <button
-          type="button"
+        <a
+          href={project.repoUrl}
+          target="_blank"
+          rel="noreferrer"
           className="project-stage"
           onPointerMove={handleMove}
           onPointerLeave={resetTilt}
-          onClick={() => setExpanded((current) => !current)}
-          aria-expanded={expanded}
-          aria-controls={`case-note-${project.visual}`}
-          aria-label={`${expanded ? "Close" : "Open"} ${project.title} project note`}
+          aria-label={`Open ${project.title} repository on GitHub`}
           data-cursor="view"
         >
           <motion.div
@@ -289,11 +300,11 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
           >
             <ProjectVisual visual={project.visual} title={project.title} />
             <div className="project-reveal" aria-hidden="true">
-              <span>{expanded ? "CLOSE PROJECT NOTE" : "READ PROJECT NOTE"}</span>
+              <span>OPEN GITHUB REPOSITORY</span>
               <span>↗</span>
             </div>
           </motion.div>
-        </button>
+        </a>
 
         <div className="project-notes">
           <span className="eyebrow">{project.discipline}</span>
@@ -314,15 +325,20 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
               </motion.div>
             )}
           </AnimatePresence>
-          <button
-            className="text-link"
-            type="button"
-            onClick={() => setExpanded((current) => !current)}
-            aria-expanded={expanded}
-            aria-controls={`case-note-${project.visual}`}
-          >
-            <span>{expanded ? "Close project note" : "Read project note"}</span><span aria-hidden="true">↗</span>
-          </button>
+          <div className="project-actions">
+            <a className="repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
+              <span>VIEW SOURCE ON GITHUB</span><span aria-hidden="true">↗</span>
+            </a>
+            <button
+              className="text-link"
+              type="button"
+              onClick={() => setExpanded((current) => !current)}
+              aria-expanded={expanded}
+              aria-controls={`case-note-${project.visual}`}
+            >
+              <span>{expanded ? "Close build note" : "Read build note"}</span><span aria-hidden="true">↗</span>
+            </button>
+          </div>
         </div>
       </div>
     </motion.article>
@@ -559,9 +575,9 @@ export default function Home() {
         </div>
         <div className="stats-row">
           {[
-            ["08", "YEARS BUILDING"],
-            ["24", "PRODUCT LAUNCHES"],
-            ["06", "COUNTRIES / COLLABORATED"],
+            ["04", "FEATURED REPOSITORIES"],
+            ["03", "WEB / MOBILE / 3D"],
+            ["2026", "CURRENT BUILD LOG"],
           ].map(([value, label], index) => (
             <Reveal className="stat" delay={index * 0.08} key={label}>
               <strong>{value}</strong><span>{label}</span>
@@ -572,10 +588,10 @@ export default function Home() {
 
       <section id="work" className="work-section page-gutter">
         <Reveal>
-          <SectionLabel index="02">SELECTED WORK / 2023—26</SectionLabel>
+          <SectionLabel index="02">SELECTED WORK / GITHUB 2026</SectionLabel>
           <div className="section-intro">
             <h2>Selected<br /><span>case studies.</span></h2>
-            <p>Four products, each shaped from the messy middle: systems thinking, interface craft, and production code.</p>
+            <p>Four public repositories spanning enterprise finance, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
           </div>
         </Reveal>
         <div className="project-list">
@@ -598,15 +614,15 @@ export default function Home() {
       </section>
 
       <section id="experience" className="experience-section page-gutter" ref={experienceRef}>
-        <Reveal><SectionLabel index="04">EXPERIENCE / LEDGER</SectionLabel></Reveal>
+        <Reveal><SectionLabel index="04">EXPERIENCE / BUILD LOG</SectionLabel></Reveal>
         <div className="experience-title">
-          <Reveal><h2>Where I’ve<br />made <em>impact.</em></h2></Reveal>
-          <Reveal delay={0.08}><p>A working history measured in clearer systems, stronger teams, and products people choose to return to.</p></Reveal>
+          <Reveal><h2>What I’ve<br />been <em>building.</em></h2></Reveal>
+          <Reveal delay={0.08}><p>A public development trail across financial systems, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
         </div>
         <div className="timeline">
           <div className="timeline-rail"><motion.i style={{ scaleY: reduceMotion ? 1 : experienceProgress }} /></div>
           {experience.map((item, index) => (
-            <Reveal className="timeline-row" delay={index * 0.07} key={item.years}>
+            <Reveal className="timeline-row" delay={index * 0.07} key={`${item.years}-${item.company}`}>
               <span className="timeline-years">{item.years}</span>
               <div className="timeline-role"><h3>{item.role}</h3><span>{item.company}</span></div>
               <p>{item.detail}</p>
@@ -636,7 +652,7 @@ export default function Home() {
           <footer>
             <span>© 2026 SYAFI ADIL</span>
             <div>
-              <a href="https://github.com/syafiadil" target="_blank" rel="noreferrer">GITHUB ↗</a>
+              <a href="https://github.com/syafiadil1" target="_blank" rel="noreferrer">GITHUB ↗</a>
               <a href="https://www.linkedin.com/in/syafiadil" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
               <a href="https://read.cv/syafiadil" target="_blank" rel="noreferrer">READ.CV ↗</a>
             </div>

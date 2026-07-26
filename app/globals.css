@@ -759,7 +759,7 @@ button {
   height: 58px;
   padding: 0 1.25rem;
   color: #080808;
-  background: var(--accent);
+  background: var(--signal);
   font-size: 0.65rem;
   font-weight: 850;
   letter-spacing: 0.1em;
@@ -821,29 +821,50 @@ button {
   line-height: 1.6;
 }
 
-/* Project 01 — Relay */
-.art-relay {
-  color: #efeee6;
-  background-color: #111111;
-  background-image:
-    linear-gradient(to right, rgba(239, 238, 230, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(239, 238, 230, 0.1) 1px, transparent 1px);
-  background-size: 9% 16%;
+.project-actions {
+  margin-top: 1.75rem;
 }
 
-.relay-topline,
-.quiet-meta,
-.forma-header {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  right: 0;
+.project-actions .text-link {
+  margin-top: 0.65rem;
+}
+
+.repo-link {
   display: flex;
   justify-content: space-between;
-  padding: 1.2rem 1.35rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.85rem 0.9rem;
+  color: #080808;
+  background: var(--signal);
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  transition:
+    color 260ms ease,
+    background-color 260ms ease,
+    padding 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.repo-link:hover,
+.repo-link:focus-visible {
+  padding-inline: 1.15rem;
+  color: var(--bg);
+  background: var(--fg);
+}
+
+.visual-topline {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
   border-bottom: 1px solid rgba(239, 238, 230, 0.24);
-  font-size: clamp(0.43rem, 0.72vw, 0.68rem);
+  font-size: clamp(0.4rem, 0.72vw, 0.68rem);
   font-weight: 820;
   letter-spacing: 0.12em;
 }
@@ -859,364 +880,498 @@ button {
   animation: blink 1.5s ease infinite;
 }
 
-.route {
-  position: absolute;
-  z-index: 1;
-  height: 2px;
-  background: #efeee6;
-  transform-origin: left;
-}
-
-.route::after {
-  position: absolute;
-  right: -4px;
-  top: -3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  content: "";
-  background: var(--signal);
-}
-
-.route-a { left: 10%; top: 68%; width: 39%; transform: rotate(-26deg); }
-.route-b { left: 43%; top: 49%; width: 38%; transform: rotate(17deg); }
-.route-c { left: 19%; top: 28%; width: 25%; transform: rotate(39deg); }
-
-.map-point {
-  position: absolute;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: clamp(28px, 4vw, 52px);
-  height: clamp(28px, 4vw, 52px);
-  border: 1px solid #efeee6;
-  border-radius: 50%;
+/* Project 01 — Financial Advisory */
+.art-financial {
   color: #efeee6;
-  background: #111;
-  font-size: clamp(0.45rem, 0.75vw, 0.68rem);
-  font-weight: 850;
+  background-color: #10100f;
+  background-image:
+    linear-gradient(to right, rgba(239, 238, 230, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(239, 238, 230, 0.09) 1px, transparent 1px);
+  background-size: 10% 18%;
 }
 
-.point-a { left: 16%; top: 59%; }
-.point-b { left: 41%; top: 35%; }
-.point-c { left: 77%; top: 51%; }
-
-.incident-card {
+.finance-metric {
   position: absolute;
   z-index: 3;
-  left: 9%;
-  bottom: 9%;
+  top: 23%;
+  left: 5%;
   display: flex;
   flex-direction: column;
-  width: clamp(140px, 22vw, 280px);
-  padding: clamp(0.75rem, 1.4vw, 1.35rem);
-  color: #080808;
-  background: var(--signal);
 }
 
-.incident-card span,
-.incident-card small,
-.relay-kpi small {
-  font-size: clamp(0.4rem, 0.65vw, 0.62rem);
+.finance-metric span,
+.finance-metric small,
+.finance-advice span,
+.finance-advice small,
+.finance-tabs {
+  font-size: clamp(0.38rem, 0.66vw, 0.62rem);
   font-weight: 850;
   letter-spacing: 0.1em;
 }
 
-.incident-card strong {
-  margin: 0.55rem 0 0.9rem;
+.finance-metric strong {
+  margin-block: clamp(0.3rem, 0.8vw, 0.75rem);
+  color: var(--signal);
   font-family: var(--font-display);
-  font-size: clamp(0.68rem, 1.2vw, 1.18rem);
-  line-height: 1.2;
-}
-
-.relay-kpi {
-  position: absolute;
-  z-index: 3;
-  right: 5%;
-  top: 25%;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-}
-
-.relay-kpi strong {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 5.6rem);
-  font-weight: 700;
+  font-size: clamp(1.7rem, 4.8vw, 5rem);
+  font-weight: 720;
   letter-spacing: -0.08em;
+  line-height: 0.9;
 }
 
-/* Project 02 — Northstar */
-.art-northstar {
-  color: #080808;
-  background: var(--signal);
-}
-
-.art-northstar::after {
-  position: absolute;
-  inset: 1.1rem;
-  border: 1px solid rgba(8, 8, 8, 0.7);
-  content: "";
-}
-
-.topography {
-  position: absolute;
-  border: clamp(1px, 0.12vw, 2px) solid #080808;
-  border-radius: 50%;
-  opacity: 0.82;
-}
-
-.topo-one { width: 70%; aspect-ratio: 1; left: -12%; top: -42%; }
-.topo-two { width: 54%; aspect-ratio: 1; left: -4%; top: -27%; }
-.topo-three { width: 38%; aspect-ratio: 1; left: 4%; top: -12%; }
-
-.north-index {
+.finance-chart {
   position: absolute;
   z-index: 2;
-  top: 10%;
-  right: 6%;
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 9vw, 9rem);
-  font-weight: 800;
-  letter-spacing: -0.09em;
-}
-
-.north-copy {
-  position: absolute;
-  z-index: 2;
-  left: 6%;
-  bottom: 9%;
-  display: flex;
-  flex-direction: column;
-}
-
-.north-copy span {
-  margin-bottom: 0.8rem;
-  font-size: clamp(0.43rem, 0.75vw, 0.7rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-}
-
-.north-copy strong {
-  font-family: var(--font-display);
-  font-size: clamp(0.82rem, 1.9vw, 2rem);
-  letter-spacing: -0.04em;
-}
-
-.north-chart {
-  position: absolute;
-  z-index: 2;
-  right: 6%;
-  bottom: 9%;
+  left: 5%;
+  bottom: 10%;
   display: flex;
   align-items: flex-end;
-  gap: clamp(4px, 0.7vw, 10px);
-  width: 31%;
-  height: 23%;
+  gap: clamp(3px, 0.65vw, 9px);
+  width: 54%;
+  height: 27%;
   padding-bottom: 0.45rem;
-  border-bottom: 1px solid #080808;
+  border-bottom: 1px solid rgba(239, 238, 230, 0.72);
 }
 
-.north-chart i {
+.finance-chart i {
   flex: 1;
-  background: #080808;
+  min-width: 2px;
+  background: var(--signal);
   transform-origin: bottom;
   animation: chartPulse 2.8s ease-in-out infinite alternate;
 }
 
-/* Project 03 — Forma */
-.art-forma {
-  color: #080808;
-  background: #d8d6cc;
+.finance-chart i:nth-child(even) {
+  background: #efeee6;
 }
 
-.forma-header {
-  color: #080808;
-  border-color: rgba(8, 8, 8, 0.28);
-  background: #eeece3;
-}
-
-.forma-canvas {
-  position: absolute;
-  inset: 17% 6% 9%;
-  background-color: #b9b7ae;
-  background-image:
-    linear-gradient(to right, rgba(8, 8, 8, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(8, 8, 8, 0.12) 1px, transparent 1px);
-  background-size: 9% 18%;
-}
-
-.forma-poster {
-  position: absolute;
-  left: 26%;
-  top: 7%;
-  bottom: 7%;
-  width: 48%;
-  padding: 7% 6%;
-  color: #efeee6;
-  background: #101010;
-}
-
-.forma-poster span {
-  font-size: clamp(0.4rem, 0.72vw, 0.68rem);
-  font-weight: 820;
-  letter-spacing: 0.15em;
-}
-
-.forma-poster strong {
-  position: absolute;
-  left: 6%;
-  bottom: 7%;
-  color: var(--signal);
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 4vw, 4.5rem);
-  font-weight: 760;
-  letter-spacing: -0.075em;
-  line-height: 0.83;
-}
-
-.comment-pin {
+.finance-advice {
   position: absolute;
   z-index: 4;
-  display: grid;
-  place-items: center;
-  width: clamp(21px, 2.6vw, 36px);
-  height: clamp(21px, 2.6vw, 36px);
+  top: 27%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  width: 31%;
+  padding: clamp(0.65rem, 1.5vw, 1.35rem);
   color: #080808;
-  border-radius: 50%;
   background: var(--signal);
-  font-size: clamp(0.45rem, 0.7vw, 0.67rem);
-  font-weight: 850;
 }
 
-.pin-one { left: 64%; top: 25%; }
-.pin-two { left: 32%; top: 70%; }
+.finance-advice strong {
+  margin-block: clamp(0.45rem, 1vw, 1rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.58rem, 1.2vw, 1.2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
 
-.comment-bubble {
+.finance-tabs {
   position: absolute;
   z-index: 3;
-  left: 64%;
-  top: 35%;
-  width: 27%;
-  padding: clamp(0.5rem, 1vw, 0.85rem);
-  color: #080808;
-  background: #efeee6;
-  font-size: clamp(0.42rem, 0.7vw, 0.66rem);
-  font-weight: 720;
+  right: 5%;
+  bottom: 9%;
+  display: flex;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
 }
 
-.forma-users {
+/* Project 02 — Aurum Jets */
+.art-aurum {
+  color: #f0e7d7;
+  background:
+    radial-gradient(circle at 69% 42%, rgba(202, 147, 74, 0.24), transparent 31%),
+    #15120f;
+}
+
+.aurum-topline {
+  border-color: rgba(240, 231, 215, 0.22);
+}
+
+.aurum-orbit {
+  position: absolute;
+  top: -34%;
+  left: 30%;
+  width: 61%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(240, 231, 215, 0.22);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 clamp(18px, 3vw, 46px) rgba(240, 231, 215, 0.035),
+    0 0 0 clamp(40px, 7vw, 94px) rgba(240, 231, 215, 0.025);
+}
+
+.aurum-runway {
+  position: absolute;
+  right: 3%;
+  bottom: -7%;
+  width: 55%;
+  height: 42%;
+  border-top: 1px solid rgba(240, 231, 215, 0.34);
+  transform: skewX(-24deg);
+}
+
+.aurum-runway::before,
+.aurum-runway::after,
+.aurum-runway i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  content: "";
+  background: rgba(240, 231, 215, 0.22);
+}
+
+.aurum-runway::before { left: 18%; }
+.aurum-runway::after { right: 18%; }
+.aurum-runway i:nth-child(1) { left: 38%; }
+.aurum-runway i:nth-child(2) { left: 58%; }
+.aurum-runway i:nth-child(3) { left: 78%; }
+
+.aurum-aircraft {
+  position: absolute;
+  z-index: 4;
+  top: 43%;
+  left: 33%;
+  width: 48%;
+  height: 7%;
+  border-radius: 70% 17% 24% 68%;
+  background: linear-gradient(180deg, #f7f1e6 0 47%, #ae8d62 48% 67%, #34302c 68%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+  transform: rotate(-9deg);
+  animation: aircraftFloat 3.8s ease-in-out infinite alternate;
+}
+
+.aurum-aircraft::before {
+  position: absolute;
+  top: -330%;
+  left: 43%;
+  width: 28%;
+  height: 720%;
+  border-radius: 54% 12% 12% 54%;
+  content: "";
+  background: linear-gradient(90deg, #d7cfc1, #f7f1e6 52%, #8b775f);
+  clip-path: polygon(43% 0, 63% 0, 100% 100%, 0 100%);
+  transform: rotate(72deg);
+}
+
+.aurum-aircraft::after {
+  position: absolute;
+  right: 2%;
+  top: -160%;
+  width: 13%;
+  height: 230%;
+  content: "";
+  background: #c49a61;
+  clip-path: polygon(70% 0, 100% 0, 80% 100%, 0 100%);
+}
+
+.aurum-aircraft i {
+  position: absolute;
+  z-index: 2;
+  top: 21%;
+  left: 13%;
+  width: 62%;
+  height: 17%;
+  background: repeating-linear-gradient(90deg, #15120f 0 3px, transparent 3px 10px);
+}
+
+.aurum-aircraft span {
+  position: absolute;
+  z-index: 3;
+  right: 20%;
+  bottom: -105%;
+  width: 15%;
+  height: 98%;
+  border: 2px solid #8b775f;
+  border-radius: 50%;
+  background: #25211d;
+}
+
+.aurum-copy {
   position: absolute;
   z-index: 5;
+  left: 5%;
+  bottom: 8%;
   display: flex;
-  left: 8%;
-  bottom: 11%;
-  align-items: center;
+  flex-direction: column;
 }
 
-.forma-users i,
-.forma-users span {
+.aurum-copy span,
+.aurum-spec span,
+.aurum-spec strong {
+  font-size: clamp(0.38rem, 0.68vw, 0.64rem);
+  font-weight: 820;
+  letter-spacing: 0.12em;
+}
+
+.aurum-copy strong {
+  margin-top: 0.5rem;
+  color: #c9a36b;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.8vw, 4.2rem);
+  font-weight: 650;
+  letter-spacing: -0.075em;
+  line-height: 0.82;
+}
+
+.aurum-spec {
+  position: absolute;
+  z-index: 5;
+  right: 5%;
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  text-align: right;
+}
+
+/* Project 03 — StudentCore */
+.art-student {
+  color: #0a0a0a;
+  background-color: #d8d4c8;
+  background-image:
+    linear-gradient(to right, rgba(10, 10, 10, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.08) 1px, transparent 1px);
+  background-size: 8% 16%;
+}
+
+.student-topline {
+  border-color: rgba(10, 10, 10, 0.28);
+}
+
+.student-terminal {
+  position: absolute;
+  top: 18%;
+  right: 5%;
+  bottom: 10%;
+  left: 5%;
+  overflow: hidden;
+  color: #efeee6;
+  background: #101010;
+  box-shadow: 8px 8px 0 var(--signal);
+}
+
+.terminal-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(0.5rem, 1vw, 0.9rem);
+  border-bottom: 1px solid rgba(239, 238, 230, 0.22);
+  font-size: clamp(0.36rem, 0.62vw, 0.59rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.terminal-prompt {
+  padding: clamp(0.45rem, 0.9vw, 0.8rem) clamp(0.6rem, 1.2vw, 1rem);
+  color: #aaa89f;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.38rem, 0.7vw, 0.67rem);
+}
+
+.terminal-prompt span {
+  color: var(--signal);
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.6fr;
+  height: calc(100% - clamp(48px, 7vw, 82px));
+  border-top: 1px solid rgba(239, 238, 230, 0.12);
+}
+
+.student-date,
+.student-tasks {
+  padding: clamp(0.65rem, 1.5vw, 1.35rem);
+}
+
+.student-date {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(239, 238, 230, 0.16);
+}
+
+.student-date span,
+.student-date small,
+.student-tasks > span,
+.student-command {
+  font-size: clamp(0.34rem, 0.62vw, 0.58rem);
+  font-weight: 820;
+  letter-spacing: 0.1em;
+}
+
+.student-date strong {
+  margin-block: auto;
+  color: var(--signal);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 3.9rem);
+  letter-spacing: -0.08em;
+}
+
+.student-tasks > span {
+  display: block;
+  margin-bottom: clamp(0.35rem, 0.8vw, 0.75rem);
+  color: var(--signal);
+}
+
+.student-tasks p {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(0.35rem, 0.75vw, 0.7rem);
+  align-items: center;
+  margin: 0;
+  padding: clamp(0.32rem, 0.7vw, 0.62rem) 0;
+  border-top: 1px solid rgba(239, 238, 230, 0.16);
+  font-size: clamp(0.36rem, 0.7vw, 0.66rem);
+}
+
+.student-tasks p > i {
+  width: 6px;
+  height: 6px;
+  background: var(--signal);
+}
+
+.student-tasks p small {
+  color: #aaa89f;
+  font-size: 0.88em;
+}
+
+.student-command {
+  position: absolute;
+  z-index: 5;
+  right: 6.5%;
+  bottom: 5.5%;
+  display: flex;
+  gap: clamp(0.6rem, 1.5vw, 1.5rem);
+  padding: clamp(0.45rem, 0.85vw, 0.75rem);
+  color: #080808;
+  background: var(--signal);
+}
+
+/* Project 04 — Commitment */
+.art-commitment {
+  color: #080808;
+  background-color: var(--signal);
+  background-image:
+    linear-gradient(to right, rgba(8, 8, 8, 0.13) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 8, 8, 0.13) 1px, transparent 1px);
+  background-size: 10% 20%;
+}
+
+.commitment-topline {
+  border-color: rgba(8, 8, 8, 0.36);
+}
+
+.commitment-count {
+  position: absolute;
+  top: 22%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.commitment-count strong {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 9rem);
+  font-weight: 760;
+  letter-spacing: -0.1em;
+  line-height: 0.8;
+}
+
+.commitment-count span,
+.commitment-foot,
+.phone-bar {
+  font-size: clamp(0.37rem, 0.66vw, 0.62rem);
+  font-weight: 850;
+  letter-spacing: 0.1em;
+}
+
+.commitment-phone {
+  position: absolute;
+  top: 18%;
+  right: 7%;
+  bottom: 9%;
+  width: 48%;
+  overflow: hidden;
+  color: #efeee6;
+  border: 1px solid #080808;
+  background: #0f0f0f;
+  box-shadow: 8px 8px 0 rgba(8, 8, 8, 0.95);
+}
+
+.phone-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(0.45rem, 1vw, 0.85rem);
+  color: var(--signal);
+  border-bottom: 1px solid rgba(239, 238, 230, 0.22);
+}
+
+.bill-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(0.4rem, 1vw, 0.9rem);
+  align-items: center;
+  padding: clamp(0.38rem, 0.95vw, 0.82rem);
+  border-bottom: 1px solid rgba(239, 238, 230, 0.16);
+  font-size: clamp(0.36rem, 0.72vw, 0.68rem);
+}
+
+.bill-row > i {
   display: grid;
   place-items: center;
-  width: clamp(21px, 2.5vw, 34px);
-  height: clamp(21px, 2.5vw, 34px);
-  margin-left: -5px;
-  border: 1px solid #080808;
-  border-radius: 50%;
-  background: #efeee6;
-  font-size: clamp(0.4rem, 0.62vw, 0.58rem);
+  width: clamp(18px, 2.3vw, 32px);
+  aspect-ratio: 1;
+  color: #080808;
+  background: var(--signal);
+  font-size: 0.78em;
   font-style: normal;
   font-weight: 850;
 }
 
-.forma-users i:first-child { margin-left: 0; background: var(--signal); }
-
-/* Project 04 — Quiet Hours */
-.art-quiet {
-  color: #efeee6;
-  background: #0c0c0c;
-}
-
-.quiet-meta {
-  border-color: rgba(239, 238, 230, 0.2);
-}
-
-.quiet-time {
-  position: absolute;
-  left: 5%;
-  top: 23%;
-  color: var(--signal);
-  font-family: var(--font-display);
-  font-size: clamp(2.7rem, 8vw, 8.5rem);
-  font-weight: 320;
-  letter-spacing: -0.08em;
-}
-
-.waveform {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  bottom: 14%;
+.bill-row > span {
   display: flex;
-  align-items: center;
-  gap: clamp(3px, 0.6vw, 9px);
-  height: 20%;
+  flex-direction: column;
+  font-weight: 730;
 }
 
-.waveform i {
-  flex: 1;
-  min-height: 3px;
-  background: #efeee6;
-  animation: wave 1.9s ease-in-out infinite alternate;
+.bill-row small {
+  margin-top: 0.15rem;
+  color: #9c9b94;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
 }
 
-.quiet-status {
+.bill-row > strong {
+  font-size: 0.9em;
+}
+
+.commitment-cycle {
   position: absolute;
-  right: 5%;
-  top: 26%;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: clamp(0.43rem, 0.72vw, 0.68rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-}
-
-.quiet-status i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--signal);
-  animation: blink 1.6s ease infinite;
-}
-
-.quiet-orbit {
-  position: absolute;
-  right: 7%;
-  top: 43%;
+  left: 7%;
+  bottom: 10%;
   display: grid;
   place-items: center;
-  width: clamp(58px, 9vw, 120px);
+  width: clamp(42px, 6vw, 82px);
   aspect-ratio: 1;
-  border: 1px solid rgba(239, 238, 230, 0.5);
+  border: clamp(4px, 0.5vw, 7px) solid rgba(8, 8, 8, 0.18);
+  border-top-color: #080808;
+  border-right-color: #080808;
   border-radius: 50%;
+  transform: rotate(35deg);
 }
 
-.quiet-orbit::before,
-.quiet-orbit::after {
+.commitment-cycle span {
+  font-size: clamp(0.38rem, 0.65vw, 0.62rem);
+  font-weight: 850;
+  transform: rotate(-35deg);
+}
+
+.commitment-foot {
   position: absolute;
-  content: "";
-  border: 1px solid rgba(239, 238, 230, 0.18);
-  border-radius: 50%;
-}
-
-.quiet-orbit::before { inset: -18%; }
-.quiet-orbit::after { inset: -36%; }
-
-.quiet-orbit span {
-  font-size: clamp(0.4rem, 0.65vw, 0.62rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  left: 18%;
+  bottom: 7%;
+  display: flex;
+  gap: clamp(0.7rem, 1.5vw, 1.4rem);
 }
 
 .skills-section {
@@ -1730,6 +1885,11 @@ footer > a:last-child { justify-self: end; }
 @keyframes chartPulse {
   from { transform: scaleY(0.75); }
   to { transform: scaleY(1); }
+}
+
+@keyframes aircraftFloat {
+  from { translate: 0 -3px; }
+  to { translate: 0 5px; }
 }
 
 @keyframes wave {

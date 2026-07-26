@@ -27,10 +27,16 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /DIGITAL/);
   assert.match(html, /PRODUCTS/);
   assert.match(html, /Selected work/i);
-  assert.match(html, /Relay/);
-  assert.match(html, /Northstar/);
-  assert.match(html, /Quiet Hours/);
+  assert.match(html, /Financial Advisory/);
+  assert.match(html, /Aurum Jets/);
+  assert.match(html, /StudentCore/);
+  assert.match(html, /Commitment/);
+  assert.match(html, /github\.com\/syafiadil1\/financialadvisory/);
+  assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
+  assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
+  assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
   assert.match(html, /HAVE A HARD/);
+  assert.doesNotMatch(html, /Relay|Northstar|Forma|Quiet Hours/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
 });
 
