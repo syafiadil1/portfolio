@@ -853,6 +853,23 @@ button {
   background: var(--fg);
 }
 
+.private-source {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--fg);
+  font-size: 0.6rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+}
+
+.private-source span:last-child {
+  color: var(--muted);
+  font-size: 0.54rem;
+}
+
 .visual-topline {
   position: absolute;
   z-index: 8;
@@ -880,7 +897,188 @@ button {
   animation: blink 1.5s ease infinite;
 }
 
-/* Project 01 — Financial Advisory */
+/* Project 01 — LONJAK */
+.art-lonjak {
+  color: #f4f7ed;
+  background-color: #0b1020;
+  background-image:
+    linear-gradient(to right, rgba(201, 255, 61, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 255, 61, 0.1) 1px, transparent 1px);
+  background-size: 10% 20%;
+}
+
+.lonjak-topline {
+  border-color: rgba(201, 255, 61, 0.3);
+}
+
+.lonjak-live {
+  color: #c9ff3d;
+}
+
+.lonjak-live::before {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  content: "";
+  background: #c9ff3d;
+  animation: blink 1.5s ease infinite;
+}
+
+.lonjak-mastery {
+  position: absolute;
+  z-index: 3;
+  top: 23%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lonjak-mastery span,
+.lonjak-mastery small,
+.lonjak-meta,
+.lonjak-languages,
+.lonjak-phone-bar,
+.lonjak-mission small,
+.lonjak-mission > span,
+.lonjak-tutor > span {
+  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
+  font-weight: 850;
+  letter-spacing: 0.1em;
+}
+
+.lonjak-mastery strong {
+  margin-block: clamp(0.25rem, 0.7vw, 0.65rem);
+  color: #c9ff3d;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 7.6vw, 8rem);
+  font-weight: 720;
+  letter-spacing: -0.1em;
+  line-height: 0.82;
+}
+
+.lonjak-languages {
+  position: absolute;
+  z-index: 4;
+  left: 5%;
+  bottom: 22%;
+  display: flex;
+  gap: 1px;
+}
+
+.lonjak-languages span {
+  display: grid;
+  place-items: center;
+  min-width: clamp(28px, 3.7vw, 48px);
+  min-height: clamp(24px, 3vw, 40px);
+  padding-inline: 0.35rem;
+  color: #0b1020;
+  background: #c9ff3d;
+}
+
+.lonjak-phone {
+  position: absolute;
+  z-index: 4;
+  top: 16%;
+  right: 7%;
+  bottom: 9%;
+  width: 39%;
+  overflow: hidden;
+  color: #0b1020;
+  border: 1px solid #c9ff3d;
+  border-radius: clamp(10px, 1.8vw, 24px);
+  background: #f4f7ed;
+  box-shadow: 8px 8px 0 #c9ff3d;
+}
+
+.lonjak-phone-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(0.45rem, 0.9vw, 0.8rem);
+  color: #c9ff3d;
+  background: #0b1020;
+}
+
+.lonjak-mission {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.55rem, 1.25vw, 1.05rem);
+}
+
+.lonjak-mission small {
+  color: #526024;
+}
+
+.lonjak-mission strong {
+  margin-block: clamp(0.25rem, 0.65vw, 0.6rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 2vw, 2rem);
+  letter-spacing: -0.055em;
+}
+
+.lonjak-progress {
+  height: clamp(5px, 0.7vw, 9px);
+  margin: 0 clamp(0.55rem, 1.25vw, 1.05rem);
+  overflow: hidden;
+  background: rgba(11, 16, 32, 0.14);
+}
+
+.lonjak-progress i {
+  display: block;
+  width: 70%;
+  height: 100%;
+  background: #c9ff3d;
+  animation: masteryPulse 2.6s ease-in-out infinite alternate;
+}
+
+.lonjak-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: clamp(0.5rem, 1vw, 0.9rem) clamp(0.55rem, 1.25vw, 1.05rem) 0;
+  padding: clamp(0.42rem, 0.85vw, 0.75rem);
+  border: 1px solid #0b1020;
+  font-size: clamp(0.4rem, 0.78vw, 0.72rem);
+  font-weight: 800;
+}
+
+.lonjak-answer strong {
+  color: #405300;
+  font-size: 0.78em;
+  letter-spacing: 0.08em;
+}
+
+.lonjak-tutor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: clamp(0.42rem, 0.85vw, 0.75rem) clamp(0.55rem, 1.25vw, 1.05rem);
+  color: #f4f7ed;
+  background: #0b1020;
+}
+
+.lonjak-tutor > span {
+  color: #c9ff3d;
+}
+
+.lonjak-tutor p {
+  margin: 0.25rem 0 0;
+  font-size: clamp(0.36rem, 0.72vw, 0.68rem);
+}
+
+.lonjak-meta {
+  position: absolute;
+  z-index: 3;
+  left: 5%;
+  bottom: 8%;
+  display: flex;
+  gap: clamp(0.6rem, 1.4vw, 1.35rem);
+  color: #c9ff3d;
+}
+
+/* Project 02 — Financial Advisory */
 .art-financial {
   color: #efeee6;
   background-color: #10100f;
@@ -975,7 +1173,7 @@ button {
   gap: clamp(0.5rem, 1.5vw, 1.5rem);
 }
 
-/* Project 02 — Aurum Jets */
+/* Project 03 — Aurum Jets */
 .art-aurum {
   color: #f0e7d7;
   background:
@@ -1125,7 +1323,7 @@ button {
   text-align: right;
 }
 
-/* Project 03 — StudentCore */
+/* Project 04 — StudentCore */
 .art-student {
   color: #0a0a0a;
   background-color: #d8d4c8;
@@ -1247,7 +1445,7 @@ button {
   background: var(--signal);
 }
 
-/* Project 04 — Commitment */
+/* Project 05 — Commitment */
 .art-commitment {
   color: #080808;
   background-color: var(--signal);
@@ -1890,6 +2088,11 @@ footer > a:last-child { justify-self: end; }
 @keyframes aircraftFloat {
   from { translate: 0 -3px; }
   to { translate: 0 5px; }
+}
+
+@keyframes masteryPulse {
+  from { transform: scaleX(0.88); }
+  to { transform: scaleX(1); }
 }
 
 @keyframes wave {

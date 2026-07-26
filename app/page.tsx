@@ -21,6 +21,20 @@ import {
 const projects = [
   {
     index: "01",
+    title: "LONJAK",
+    subtitle: "Adaptive Mathematics, built for Malaysian learners.",
+    description:
+      "An Android-first learning companion that turns the complete Form 1–5 KSSM Mathematics curriculum into short adaptive missions, multilingual practice, and contextual AI guidance.",
+    stack: "Expo 57 · React Native · TypeScript · Supabase · Groq",
+    note: "The learning loop combines 53 chapters and 305 curriculum-aligned questions with mastery analytics, offline-first progress, deterministic cloud sync, and privacy protected by Row Level Security.",
+    year: "2026",
+    discipline: "ADAPTIVE EDTECH",
+    visual: "lonjak",
+    repoUrl: null,
+    isPrivate: true,
+  },
+  {
+    index: "02",
     title: "Financial Advisory",
     subtitle: "Company finance, from transaction to advice.",
     description:
@@ -31,9 +45,10 @@ const projects = [
     discipline: "FULL-STACK FINTECH",
     visual: "financial",
     repoUrl: "https://github.com/syafiadil1/financialadvisory",
+    isPrivate: false,
   },
   {
-    index: "02",
+    index: "03",
     title: "Aurum Jets",
     subtitle: "Private aviation, rendered in motion.",
     description:
@@ -44,9 +59,10 @@ const projects = [
     discipline: "CREATIVE DEVELOPMENT",
     visual: "aurum",
     repoUrl: "https://github.com/syafiadil1/aurum-jets",
+    isPrivate: false,
   },
   {
-    index: "03",
+    index: "04",
     title: "StudentCore",
     subtitle: "One command center for university life.",
     description:
@@ -57,9 +73,10 @@ const projects = [
     discipline: "PRODUCT ENGINEERING",
     visual: "student",
     repoUrl: "https://github.com/syafiadil1/studentcoresystem",
+    isPrivate: false,
   },
   {
-    index: "04",
+    index: "05",
     title: "Commitment",
     subtitle: "Bills remembered, stress reduced.",
     description:
@@ -70,6 +87,7 @@ const projects = [
     discipline: "MOBILE FINANCE",
     visual: "commitment",
     repoUrl: "https://github.com/syafiadil1/commitmentapp",
+    isPrivate: false,
   },
 ] as const;
 
@@ -84,6 +102,13 @@ const skills = [
 ] as const;
 
 const experience = [
+  {
+    years: "2026—NOW",
+    role: "Adaptive Learning Product",
+    company: "LONJAK",
+    detail:
+      "Building an Android-first KSSM Mathematics companion with adaptive daily missions, multilingual learning, offline-first progress, and contextual AI tutoring.",
+  },
   {
     years: "JUL 2026",
     role: "Full-stack Financial Systems",
@@ -143,6 +168,37 @@ function SectionLabel({ index, children }: { index: string; children: ReactNode 
 }
 
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
+  if (visual === "lonjak") {
+    return (
+      <div className="project-art art-lonjak" aria-label={`${title} interface preview`} role="img">
+        <div className="visual-topline lonjak-topline">
+          <span>LONJAK / ADAPTIVE MATH</span>
+          <span className="lonjak-live">ANDROID FIRST</span>
+        </div>
+        <div className="lonjak-mastery">
+          <span>CURRENT MASTERY</span>
+          <strong>82%</strong>
+          <small>FORM 5 / MATHEMATICS</small>
+        </div>
+        <div className="lonjak-languages">
+          <span>BM</span><span>EN</span><span>中文</span><span>தமிழ்</span>
+        </div>
+        <div className="lonjak-phone">
+          <div className="lonjak-phone-bar"><span>LONJAK</span><span>LV.12</span></div>
+          <div className="lonjak-mission">
+            <small>DAILY MISSION / 03</small>
+            <strong>Algebra</strong>
+            <span>7 / 10 MASTERED</span>
+          </div>
+          <div className="lonjak-progress"><i /></div>
+          <div className="lonjak-answer"><span>x = 12</span><strong>CORRECT ✓</strong></div>
+          <div className="lonjak-tutor"><span>AI TUTOR</span><p>What should we solve first?</p></div>
+        </div>
+        <div className="lonjak-meta"><span>53 CHAPTERS</span><span>305 QUESTIONS</span><span>OFFLINE-FIRST</span></div>
+      </div>
+    );
+  }
+
   if (visual === "financial") {
     return (
       <div className="project-art art-financial" aria-label={`${title} interface preview`} role="img">
@@ -248,7 +304,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   const springX = useSpring(rotateX, { stiffness: 180, damping: 22, mass: 0.55 });
   const springY = useSpring(rotateY, { stiffness: 180, damping: 22, mass: 0.55 });
 
-  const handleMove = (event: ReactPointerEvent<HTMLAnchorElement>) => {
+  const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
     if (reduceMotion || event.pointerType === "touch") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
@@ -261,6 +317,23 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
     rotateX.set(0);
     rotateY.set(0);
   };
+
+  const preview = (
+    <motion.div
+      className="project-tilt"
+      style={{
+        rotateX: springX,
+        rotateY: springY,
+        transformPerspective: 1100,
+      }}
+    >
+      <ProjectVisual visual={project.visual} title={project.title} />
+      <div className="project-reveal" aria-hidden="true">
+        <span>{project.isPrivate ? "READ PRIVATE BUILD NOTE" : "OPEN GITHUB REPOSITORY"}</span>
+        <span>↗</span>
+      </div>
+    </motion.div>
+  );
 
   return (
     <motion.article
@@ -280,31 +353,34 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
       </div>
 
       <div className="project-body">
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="project-stage"
-          onPointerMove={handleMove}
-          onPointerLeave={resetTilt}
-          aria-label={`Open ${project.title} repository on GitHub`}
-          data-cursor="view"
-        >
-          <motion.div
-            className="project-tilt"
-            style={{
-              rotateX: springX,
-              rotateY: springY,
-              transformPerspective: 1100,
-            }}
+        {project.repoUrl ? (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="project-stage"
+            onPointerMove={handleMove}
+            onPointerLeave={resetTilt}
+            aria-label={`Open ${project.title} repository on GitHub`}
+            data-cursor="view"
           >
-            <ProjectVisual visual={project.visual} title={project.title} />
-            <div className="project-reveal" aria-hidden="true">
-              <span>OPEN GITHUB REPOSITORY</span>
-              <span>↗</span>
-            </div>
-          </motion.div>
-        </a>
+            {preview}
+          </a>
+        ) : (
+          <button
+            type="button"
+            className="project-stage"
+            onPointerMove={handleMove}
+            onPointerLeave={resetTilt}
+            onClick={() => setExpanded((current) => !current)}
+            aria-expanded={expanded}
+            aria-controls={`case-note-${project.visual}`}
+            aria-label={`${expanded ? "Close" : "Open"} ${project.title} private build note`}
+            data-cursor="view"
+          >
+            {preview}
+          </button>
+        )}
 
         <div className="project-notes">
           <span className="eyebrow">{project.discipline}</span>
@@ -326,9 +402,15 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
             )}
           </AnimatePresence>
           <div className="project-actions">
-            <a className="repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
-              <span>VIEW SOURCE ON GITHUB</span><span aria-hidden="true">↗</span>
-            </a>
+            {project.repoUrl ? (
+              <a className="repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
+                <span>VIEW SOURCE ON GITHUB</span><span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <div className="private-source" aria-label="Private proprietary repository">
+                <span>PRIVATE REPOSITORY</span><span>PROPRIETARY SOURCE</span>
+              </div>
+            )}
             <button
               className="text-link"
               type="button"
@@ -575,7 +657,7 @@ export default function Home() {
         </div>
         <div className="stats-row">
           {[
-            ["04", "FEATURED REPOSITORIES"],
+            ["05", "FEATURED PROJECTS"],
             ["03", "WEB / MOBILE / 3D"],
             ["2026", "CURRENT BUILD LOG"],
           ].map(([value, label], index) => (
@@ -588,10 +670,10 @@ export default function Home() {
 
       <section id="work" className="work-section page-gutter">
         <Reveal>
-          <SectionLabel index="02">SELECTED WORK / GITHUB 2026</SectionLabel>
+          <SectionLabel index="02">SELECTED WORK / 2026</SectionLabel>
           <div className="section-intro">
             <h2>Selected<br /><span>case studies.</span></h2>
-            <p>Four public repositories spanning enterprise finance, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
+            <p>Five builds spanning adaptive education, enterprise finance, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
           </div>
         </Reveal>
         <div className="project-list">
@@ -617,7 +699,7 @@ export default function Home() {
         <Reveal><SectionLabel index="04">EXPERIENCE / BUILD LOG</SectionLabel></Reveal>
         <div className="experience-title">
           <Reveal><h2>What I’ve<br />been <em>building.</em></h2></Reveal>
-          <Reveal delay={0.08}><p>A public development trail across financial systems, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
+          <Reveal delay={0.08}><p>A development trail across adaptive learning, financial systems, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
         </div>
         <div className="timeline">
           <div className="timeline-rail"><motion.i style={{ scaleY: reduceMotion ? 1 : experienceProgress }} /></div>

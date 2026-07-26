@@ -27,6 +27,8 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /DIGITAL/);
   assert.match(html, /PRODUCTS/);
   assert.match(html, /Selected work/i);
+  assert.match(html, /LONJAK/);
+  assert.match(html, /PRIVATE REPOSITORY/);
   assert.match(html, /Financial Advisory/);
   assert.match(html, /Aurum Jets/);
   assert.match(html, /StudentCore/);
@@ -35,6 +37,7 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
   assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
   assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
+  assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/lonjak"/);
   assert.match(html, /HAVE A HARD/);
   assert.doesNotMatch(html, /Relay|Northstar|Forma|Quiet Hours/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
