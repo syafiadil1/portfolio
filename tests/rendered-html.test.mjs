@@ -38,6 +38,7 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /mailto:syafiadil@gmail\.com/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/lonjak"/);
   assert.doesNotMatch(html, /Financial Advisory|financialadvisory|linkedin\.com|read\.cv/i);
+  assert.doesNotMatch(html, /BACK TO TOP|© 2026 SYAFI ADIL/);
   assert.match(html, /HAVE A HARD/);
   assert.doesNotMatch(html, /Relay|Northstar|Forma|Quiet Hours/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);

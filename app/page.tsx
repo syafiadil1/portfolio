@@ -682,11 +682,7 @@ export default function Home() {
             </Reveal>
           </div>
           <footer>
-            <span>© 2026 SYAFI ADIL</span>
-            <div>
-              <a href="https://github.com/syafiadil1" target="_blank" rel="noreferrer">GITHUB ↗</a>
-            </div>
-            <a href="#top">BACK TO TOP ↑</a>
+            <a href="https://github.com/syafiadil1" target="_blank" rel="noreferrer">GITHUB ↗</a>
           </footer>
         </div>
       </section>
