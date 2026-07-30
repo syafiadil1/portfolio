@@ -14,6 +14,10 @@
   --lonjak-lime: oklch(92% 0.23 123);
   --lonjak-violet: oklch(67% 0.19 296);
   --lonjak-paper: oklch(97% 0.01 270);
+  --cafe-paper: oklch(93% 0.035 80);
+  --cafe-ink: oklch(22% 0.035 48);
+  --cafe-rust: oklch(49% 0.135 42);
+  --cafe-soft: oklch(84% 0.045 69);
 }
 
 * {
@@ -1432,118 +1436,93 @@ button {
   gap: clamp(0.7rem, 1.5vw, 1.4rem);
 }
 
-/* Project 05 — Cafe Ordering System */
+/* Project 02 — Cafe Ordering System */
 .art-cafe {
-  color: #2c180e;
-  background-color: #ead8bd;
+  margin: 0;
+  color: var(--cafe-ink);
+  background-color: var(--cafe-paper);
   background-image:
-    linear-gradient(to right, rgba(44, 24, 14, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(44, 24, 14, 0.1) 1px, transparent 1px);
-  background-size: 10% 20%;
+    linear-gradient(to right, color-mix(in oklch, var(--cafe-ink) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--cafe-ink) 8%, transparent) 1px, transparent 1px);
+  background-size: 8% 16%;
+  isolation: isolate;
 }
 
 .cafe-topline {
-  border-color: rgba(44, 24, 14, 0.3);
+  border-color: color-mix(in oklch, var(--cafe-ink) 24%, transparent);
+  background: color-mix(in oklch, var(--cafe-paper) 86%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.cafe-title {
+.cafe-count {
+  color: var(--cafe-rust);
+}
+
+.cafe-screen {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklch, var(--cafe-ink) 28%, transparent);
+  background: var(--cafe-soft);
+  box-shadow: 0 18px 36px color-mix(in oklch, var(--cafe-ink) 18%, transparent);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cafe-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cafe-screen--hero {
+  z-index: 4;
+  top: 12%;
+  bottom: 5%;
+  left: 2%;
+  width: 27%;
+}
+
+.cafe-contact-sheet {
   position: absolute;
   z-index: 3;
-  top: 24%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
+  inset: 12% 1.5% 5% 30%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(2px, 0.45vw, 7px);
 }
 
-.cafe-title span,
-.cafe-meta,
-.cafe-ticket-head {
+.cafe-contact-sheet .cafe-screen {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.cafe-caption {
+  position: absolute;
+  z-index: 7;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  min-height: 18%;
+  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
+  margin: 0;
+  color: var(--cafe-paper);
+  background: linear-gradient(to top, var(--cafe-ink) 8%, transparent);
   font-size: clamp(0.36rem, 0.66vw, 0.62rem);
   font-weight: 850;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
+  pointer-events: none;
 }
 
-.cafe-title strong {
-  margin-top: clamp(0.45rem, 1vw, 0.9rem);
-  color: #7d2c18;
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 4.8vw, 5rem);
-  font-weight: 720;
-  letter-spacing: -0.085em;
-  line-height: 0.84;
-}
-
-.cafe-ticket {
-  position: absolute;
-  z-index: 4;
-  top: 17%;
-  right: 7%;
-  bottom: 9%;
-  width: 43%;
-  overflow: hidden;
-  border: 1px solid #2c180e;
-  background: #f8eedf;
-  box-shadow: 8px 8px 0 #7d2c18;
-}
-
-.cafe-ticket-head {
-  display: flex;
-  justify-content: space-between;
-  padding: clamp(0.55rem, 1.15vw, 1rem);
-  color: #f8eedf;
-  background: #2c180e;
-}
-
-.cafe-stage {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(0.45rem, 1vw, 0.9rem);
-  align-items: center;
-  padding: clamp(0.42rem, 0.9vw, 0.8rem) clamp(0.55rem, 1.15vw, 1rem);
-  border-bottom: 1px solid rgba(44, 24, 14, 0.2);
-  font-size: clamp(0.38rem, 0.73vw, 0.7rem);
-  font-weight: 740;
-}
-
-.cafe-stage > i {
-  display: grid;
-  place-items: center;
-  width: clamp(20px, 2.5vw, 34px);
-  aspect-ratio: 1;
-  border: 1px solid #2c180e;
-  font-size: 0.72em;
-  font-style: normal;
-  font-weight: 850;
-}
-
-.cafe-stage > span {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cafe-stage small {
-  color: #8a7567;
-  font-size: 0.72em;
-  letter-spacing: 0.08em;
-}
-
-.cafe-stage.is-ready > i {
-  color: #f8eedf;
-  background: #7d2c18;
-}
-
-.cafe-stage.is-ready small {
-  color: #7d2c18;
-}
-
-.cafe-meta {
-  position: absolute;
-  z-index: 3;
-  left: 5%;
-  bottom: 9%;
-  display: flex;
-  gap: clamp(0.65rem, 1.5vw, 1.5rem);
+@media (hover: hover) and (pointer: fine) {
+  .project-stage:hover .cafe-screen--hero { transform: translateY(-1.5%); }
+  .project-stage:hover .cafe-contact-sheet { transform: translateX(0.5%); }
 }
 
 .skills-section {

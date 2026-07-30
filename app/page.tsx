@@ -50,6 +50,20 @@ const projects: readonly Project[] = [
   },
   {
     index: "02",
+    title: "Cafe Ordering System",
+    subtitle: "Order ahead, from menu to pickup.",
+    description:
+      "A mobile-first ordering experience for Ruang Coffee Room, covering menu discovery, drink customisation, basket review, pickup scheduling, payment selection, order tracking, history, and rewards.",
+    stack: "HTML · CSS · JavaScript · Node.js",
+    note: "The product flow carries a customer from signature drink discovery through modifiers, checkout, and collection status, with past-order reordering and a points-based rewards view.",
+    year: "2026",
+    discipline: "MOBILE COMMERCE",
+    visual: "cafe",
+    repoUrl: null,
+    isPrivate: true,
+  },
+  {
+    index: "03",
     title: "Aurum Jets",
     subtitle: "Private aviation, rendered in motion.",
     description:
@@ -63,7 +77,7 @@ const projects: readonly Project[] = [
     isPrivate: false,
   },
   {
-    index: "03",
+    index: "04",
     title: "StudentCore",
     subtitle: "One command center for university life.",
     description:
@@ -77,7 +91,7 @@ const projects: readonly Project[] = [
     isPrivate: false,
   },
   {
-    index: "04",
+    index: "05",
     title: "Commitment",
     subtitle: "Bills remembered, stress reduced.",
     description:
@@ -90,21 +104,21 @@ const projects: readonly Project[] = [
     repoUrl: "https://github.com/syafiadil1/commitmentapp",
     isPrivate: false,
   },
-  {
-    index: "05",
-    title: "Cafe Ordering System",
-    subtitle: "A focused ordering workflow, currently in build.",
-    description:
-      "A private cafe ordering project moving from delivery brief into frontend and backend implementation, with an accessible static client starter, repeatable build script, and smoke-test baseline.",
-    stack: "HTML · CSS · JavaScript · Node.js",
-    note: "The repository is deliberately at foundation stage: a client-specific workspace, zero-dependency static build, and automated smoke test are in place before ordering flows and backend integration begin.",
-    year: "2026",
-    discipline: "WORK IN PROGRESS",
-    visual: "cafe",
-    repoUrl: null,
-    isPrivate: true,
-  },
 ];
+
+const cafeScreens = [
+  { src: "/projects/cafe-home.webp", alt: "Ruang Coffee Room ordering home screen", width: 720, height: 1416 },
+  { src: "/projects/cafe-menu.webp", alt: "Ruang coffee and bakes menu", width: 720, height: 1326 },
+  { src: "/projects/cafe-customize.webp", alt: "Gula Melaka Oat Latte customisation screen", width: 720, height: 1463 },
+  { src: "/projects/cafe-cart.webp", alt: "Ruang order basket summary", width: 720, height: 1398 },
+  { src: "/projects/cafe-checkout.webp", alt: "Pickup time and payment selection", width: 720, height: 1410 },
+  { src: "/projects/cafe-review.webp", alt: "Ruang final order review", width: 720, height: 1459 },
+  { src: "/projects/cafe-confirmed.webp", alt: "Ruang order confirmation screen", width: 720, height: 1374 },
+  { src: "/projects/cafe-tracking.webp", alt: "Ruang live order status timeline", width: 720, height: 1413 },
+  { src: "/projects/cafe-location.webp", alt: "Ruang Coffee Room pickup location", width: 720, height: 1391 },
+  { src: "/projects/cafe-orders.webp", alt: "Ruang past order history", width: 720, height: 1401 },
+  { src: "/projects/cafe-rewards.webp", alt: "Ruang customer rewards balance", width: 720, height: 1375 },
+] as const;
 
 const skills = [
   { name: "React", x: "12%", y: "18%", note: "Product interfaces" },
@@ -263,24 +277,23 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
 
   if (visual === "cafe") {
     return (
-      <div className="project-art art-cafe" aria-label={`${title} project foundation preview`} role="img">
+      <figure className="project-art art-cafe" aria-label={`${title} product screens`}>
         <div className="visual-topline cafe-topline">
-          <span>CAFE / ORDERING SYSTEM</span>
-          <span>FOUNDATION 0.1</span>
+          <span>RUANG / ORDERING FLOW</span>
+          <span className="cafe-count">11 SCREENS</span>
         </div>
-        <div className="cafe-title">
-          <span>CLIENT DELIVERY</span>
-          <strong>ORDER<br />SYSTEM</strong>
+        <div className="cafe-screen cafe-screen--hero">
+          <Image {...cafeScreens[0]} sizes="(max-width: 767px) 28vw, 24vw" unoptimized />
         </div>
-        <div className="cafe-ticket">
-          <div className="cafe-ticket-head"><span>BUILD PLAN</span><span>01 / 04</span></div>
-          <div className="cafe-stage is-ready"><i>01</i><span>Workspace setup<small>READY</small></span></div>
-          <div className="cafe-stage"><i>02</i><span>Frontend flow<small>NEXT</small></span></div>
-          <div className="cafe-stage"><i>03</i><span>Backend service<small>QUEUED</small></span></div>
-          <div className="cafe-stage"><i>04</i><span>QA + handoff<small>QUEUED</small></span></div>
+        <div className="cafe-contact-sheet">
+          {cafeScreens.slice(1).map((screen) => (
+            <div className="cafe-screen" key={screen.src}>
+              <Image {...screen} sizes="(max-width: 767px) 14vw, 10vw" unoptimized />
+            </div>
+          ))}
         </div>
-        <div className="cafe-meta"><span>STATIC STARTER</span><span>BUILD + SMOKE TEST</span></div>
-      </div>
+        <figcaption className="cafe-caption"><span>MENU → PICKUP</span><span>MOBILE ORDERING</span></figcaption>
+      </figure>
     );
   }
 
