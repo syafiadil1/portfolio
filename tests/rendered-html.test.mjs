@@ -28,6 +28,11 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /PRODUCTS/);
   assert.match(html, /Selected work/i);
   assert.match(html, /LONJAK/);
+  assert.match(html, /\/projects\/lonjak-home\.webp/);
+  assert.match(html, /\/projects\/lonjak-snap\.webp/);
+  assert.match(html, /\/projects\/lonjak-notes\.webp/);
+  assert.match(html, /\/projects\/lonjak-path\.webp/);
+  assert.match(html, /\/projects\/lonjak-tutor\.webp/);
   assert.match(html, /PRIVATE REPOSITORY/);
   assert.match(html, /Aurum Jets/);
   assert.match(html, /StudentCore/);
@@ -65,5 +70,10 @@ test("keeps the implementation self-contained and production-ready", async () =>
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../public/projects/lonjak-home.webp", import.meta.url));
+  await access(new URL("../public/projects/lonjak-snap.webp", import.meta.url));
+  await access(new URL("../public/projects/lonjak-notes.webp", import.meta.url));
+  await access(new URL("../public/projects/lonjak-path.webp", import.meta.url));
+  await access(new URL("../public/projects/lonjak-tutor.webp", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
 });

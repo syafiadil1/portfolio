@@ -1,3 +1,6 @@
+/* Hallmark · component: project-image-gallery · genre: editorial · theme: inherited
+ * pre-emit critique: P5 H5 E5 S5 R5 V4 · contrast: pass · chrome: pass · tokens: pass · responsive: pass
+ */
 @import "tailwindcss";
 
 :root {
@@ -6,6 +9,11 @@
   --signal: #ff3d00;
   --font-display: "Unbounded Variable", "Arial Black", sans-serif;
   --font-body: "Manrope Variable", Arial, sans-serif;
+  --lonjak-ink: oklch(16% 0.035 267);
+  --lonjak-deep: oklch(10% 0.025 267);
+  --lonjak-lime: oklch(92% 0.23 123);
+  --lonjak-violet: oklch(67% 0.19 296);
+  --lonjak-paper: oklch(97% 0.01 270);
 }
 
 * {
@@ -14,12 +22,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
   background: var(--ink);
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
@@ -888,183 +898,139 @@ button {
 
 /* Project 01 — LONJAK */
 .art-lonjak {
-  color: #f4f7ed;
-  background-color: #0b1020;
+  margin: 0;
+  color: var(--lonjak-paper);
+  background-color: var(--lonjak-deep);
   background-image:
-    linear-gradient(to right, rgba(201, 255, 61, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(201, 255, 61, 0.1) 1px, transparent 1px);
-  background-size: 10% 20%;
+    linear-gradient(to right, color-mix(in oklch, var(--lonjak-lime) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--lonjak-lime) 8%, transparent) 1px, transparent 1px);
+  background-size: 8% 16%;
+  isolation: isolate;
+}
+
+.art-lonjak::before,
+.art-lonjak::after {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  content: "";
+  filter: blur(1px);
+}
+
+.art-lonjak::before {
+  top: -34%;
+  right: -8%;
+  width: 48%;
+  aspect-ratio: 1;
+  background: color-mix(in oklch, var(--lonjak-lime) 14%, transparent);
+}
+
+.art-lonjak::after {
+  bottom: -68%;
+  left: 4%;
+  width: 58%;
+  aspect-ratio: 1;
+  background: color-mix(in oklch, var(--lonjak-violet) 14%, transparent);
 }
 
 .lonjak-topline {
-  border-color: rgba(201, 255, 61, 0.3);
+  border-color: color-mix(in oklch, var(--lonjak-lime) 32%, transparent);
+  background: color-mix(in oklch, var(--lonjak-deep) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .lonjak-live {
-  color: #c9ff3d;
+  color: var(--lonjak-lime);
 }
 
-.lonjak-live::before {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 0.4rem;
-  border-radius: 50%;
-  content: "";
-  background: #c9ff3d;
-  animation: blink 1.5s ease infinite;
-}
-
-.lonjak-mastery {
+.lonjak-gallery {
   position: absolute;
-  z-index: 3;
-  top: 23%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
+  z-index: 2;
+  inset: 9% 0 0;
 }
 
-.lonjak-mastery span,
-.lonjak-mastery small,
-.lonjak-meta,
-.lonjak-languages,
-.lonjak-phone-bar,
-.lonjak-mission small,
-.lonjak-mission > span,
-.lonjak-tutor > span {
-  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-}
-
-.lonjak-mastery strong {
-  margin-block: clamp(0.25rem, 0.7vw, 0.65rem);
-  color: #c9ff3d;
-  font-family: var(--font-display);
-  font-size: clamp(2.7rem, 7.6vw, 8rem);
-  font-weight: 720;
-  letter-spacing: -0.1em;
-  line-height: 0.82;
-}
-
-.lonjak-languages {
+.lonjak-screen {
   position: absolute;
-  z-index: 4;
-  left: 5%;
-  bottom: 22%;
-  display: flex;
-  gap: 1px;
-}
-
-.lonjak-languages span {
-  display: grid;
-  place-items: center;
-  min-width: clamp(28px, 3.7vw, 48px);
-  min-height: clamp(24px, 3vw, 40px);
-  padding-inline: 0.35rem;
-  color: #0b1020;
-  background: #c9ff3d;
-}
-
-.lonjak-phone {
-  position: absolute;
-  z-index: 4;
-  top: 16%;
-  right: 7%;
-  bottom: 9%;
-  width: 39%;
+  width: 22%;
+  aspect-ratio: 1290 / 2796;
   overflow: hidden;
-  color: #0b1020;
-  border: 1px solid #c9ff3d;
-  border-radius: clamp(10px, 1.8vw, 24px);
-  background: #f4f7ed;
-  box-shadow: 8px 8px 0 #c9ff3d;
+  border: 1px solid color-mix(in oklch, var(--lonjak-paper) 28%, transparent);
+  background: var(--lonjak-ink);
+  box-shadow: 0 20px 44px color-mix(in oklch, var(--lonjak-deep) 74%, transparent);
+  transform-origin: center bottom;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.lonjak-phone-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: clamp(0.45rem, 0.9vw, 0.8rem);
-  color: #c9ff3d;
-  background: #0b1020;
-}
-
-.lonjak-mission {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(0.55rem, 1.25vw, 1.05rem);
-}
-
-.lonjak-mission small {
-  color: #526024;
-}
-
-.lonjak-mission strong {
-  margin-block: clamp(0.25rem, 0.65vw, 0.6rem);
-  font-family: var(--font-display);
-  font-size: clamp(0.82rem, 2vw, 2rem);
-  letter-spacing: -0.055em;
-}
-
-.lonjak-progress {
-  height: clamp(5px, 0.7vw, 9px);
-  margin: 0 clamp(0.55rem, 1.25vw, 1.05rem);
-  overflow: hidden;
-  background: rgba(11, 16, 32, 0.14);
-}
-
-.lonjak-progress i {
+.lonjak-screen img {
   display: block;
-  width: 70%;
+  width: 100%;
   height: 100%;
-  background: #c9ff3d;
-  animation: masteryPulse 2.6s ease-in-out infinite alternate;
+  object-fit: cover;
+  object-position: top;
 }
 
-.lonjak-answer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: clamp(0.5rem, 1vw, 0.9rem) clamp(0.55rem, 1.25vw, 1.05rem) 0;
-  padding: clamp(0.42rem, 0.85vw, 0.75rem);
-  border: 1px solid #0b1020;
-  font-size: clamp(0.4rem, 0.78vw, 0.72rem);
-  font-weight: 800;
+.lonjak-screen--snap {
+  z-index: 1;
+  top: 18%;
+  left: -1.5%;
+  transform: rotate(-5deg);
 }
 
-.lonjak-answer strong {
-  color: #405300;
-  font-size: 0.78em;
-  letter-spacing: 0.08em;
+.lonjak-screen--notes {
+  z-index: 2;
+  top: 10%;
+  left: 18.5%;
+  transform: rotate(-2.5deg);
 }
 
-.lonjak-tutor {
+.lonjak-screen--home {
+  z-index: 5;
+  top: 3%;
+  left: 39%;
+  width: 23%;
+}
+
+.lonjak-screen--path {
+  z-index: 2;
+  top: 10%;
+  left: 60.5%;
+  transform: rotate(2.5deg);
+}
+
+.lonjak-screen--tutor {
+  z-index: 1;
+  top: 18%;
+  left: 80%;
+  transform: rotate(5deg);
+}
+
+.lonjak-caption {
   position: absolute;
+  z-index: 7;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: clamp(0.42rem, 0.85vw, 0.75rem) clamp(0.55rem, 1.25vw, 1.05rem);
-  color: #f4f7ed;
-  background: #0b1020;
-}
-
-.lonjak-tutor > span {
-  color: #c9ff3d;
-}
-
-.lonjak-tutor p {
-  margin: 0.25rem 0 0;
-  font-size: clamp(0.36rem, 0.72vw, 0.68rem);
-}
-
-.lonjak-meta {
-  position: absolute;
-  z-index: 3;
-  left: 5%;
-  bottom: 8%;
   display: flex;
-  gap: clamp(0.6rem, 1.4vw, 1.35rem);
-  color: #c9ff3d;
+  justify-content: space-between;
+  align-items: end;
+  min-height: 24%;
+  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
+  margin: 0;
+  color: var(--lonjak-lime);
+  background: linear-gradient(to top, var(--lonjak-deep) 10%, transparent);
+  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-stage:hover .lonjak-screen--snap { transform: translate(-5%, -2%) rotate(-5deg); }
+  .project-stage:hover .lonjak-screen--notes { transform: translate(-3%, -2%) rotate(-2.5deg); }
+  .project-stage:hover .lonjak-screen--home { transform: translateY(-2%); }
+  .project-stage:hover .lonjak-screen--path { transform: translate(3%, -2%) rotate(2.5deg); }
+  .project-stage:hover .lonjak-screen--tutor { transform: translate(5%, -2%) rotate(5deg); }
 }
 
 /* Project 02 — Aurum Jets */
@@ -2083,11 +2049,6 @@ footer a:focus-visible::after {
 @keyframes aircraftFloat {
   from { translate: 0 -3px; }
   to { translate: 0 5px; }
-}
-
-@keyframes masteryPulse {
-  from { transform: scaleX(0.88); }
-  to { transform: scaleX(1); }
 }
 
 @keyframes wave {

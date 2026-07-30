@@ -9,6 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
@@ -184,32 +185,30 @@ function SectionLabel({ index, children }: { index: string; children: ReactNode 
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "lonjak") {
     return (
-      <div className="project-art art-lonjak" aria-label={`${title} interface preview`} role="img">
+      <figure className="project-art art-lonjak" aria-label={`${title} product screens`}>
         <div className="visual-topline lonjak-topline">
-          <span>LONJAK / ADAPTIVE MATH</span>
-          <span className="lonjak-live">ANDROID FIRST</span>
+          <span>LONJAK / REAL PRODUCT SCREENS</span>
+          <span className="lonjak-live">05 VIEWS</span>
         </div>
-        <div className="lonjak-mastery">
-          <span>CURRENT MASTERY</span>
-          <strong>82%</strong>
-          <small>FORM 5 / MATHEMATICS</small>
-        </div>
-        <div className="lonjak-languages">
-          <span>BM</span><span>EN</span><span>中文</span><span>தமிழ்</span>
-        </div>
-        <div className="lonjak-phone">
-          <div className="lonjak-phone-bar"><span>LONJAK</span><span>LV.12</span></div>
-          <div className="lonjak-mission">
-            <small>DAILY MISSION / 03</small>
-            <strong>Algebra</strong>
-            <span>7 / 10 MASTERED</span>
+        <div className="lonjak-gallery">
+          <div className="lonjak-screen lonjak-screen--snap">
+            <Image src="/projects/lonjak-snap.webp" alt="LONJAK Snap and Practice screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
           </div>
-          <div className="lonjak-progress"><i /></div>
-          <div className="lonjak-answer"><span>x = 12</span><strong>CORRECT ✓</strong></div>
-          <div className="lonjak-tutor"><span>AI TUTOR</span><p>What should we solve first?</p></div>
+          <div className="lonjak-screen lonjak-screen--notes">
+            <Image src="/projects/lonjak-notes.webp" alt="LONJAK AI Class Notes recording screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
+          </div>
+          <div className="lonjak-screen lonjak-screen--home">
+            <Image src="/projects/lonjak-home.webp" alt="LONJAK adaptive learning home screen" width={720} height={1561} sizes="(max-width: 767px) 25vw, 19vw" unoptimized />
+          </div>
+          <div className="lonjak-screen lonjak-screen--path">
+            <Image src="/projects/lonjak-path.webp" alt="LONJAK KSSM Mathematics learning path" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
+          </div>
+          <div className="lonjak-screen lonjak-screen--tutor">
+            <Image src="/projects/lonjak-tutor.webp" alt="LONJAK AI mathematics tutor screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
+          </div>
         </div>
-        <div className="lonjak-meta"><span>53 CHAPTERS</span><span>305 QUESTIONS</span><span>OFFLINE-FIRST</span></div>
-      </div>
+        <figcaption className="lonjak-caption"><span>ADAPTIVE LEARNING</span><span>ANDROID FIRST</span></figcaption>
+      </figure>
     );
   }
 

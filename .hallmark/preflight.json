@@ -1,0 +1,9 @@
+{
+  "date": "2026-07-30",
+  "framework": "Next.js 16 app router",
+  "fonts": ["Unbounded Variable", "Manrope Variable"],
+  "palette": "Existing editorial paper, ink, and signal-red custom properties",
+  "motion": "Framer Motion",
+  "spacing": "Existing fluid clamp-based scale",
+  "preserve": ["font pairing", "palette", "project-card structure", "tilt interaction"]
+}
