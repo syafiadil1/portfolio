@@ -1466,6 +1466,120 @@ button {
   gap: clamp(0.7rem, 1.5vw, 1.4rem);
 }
 
+/* Project 05 — Cafe Ordering System */
+.art-cafe {
+  color: #2c180e;
+  background-color: #ead8bd;
+  background-image:
+    linear-gradient(to right, rgba(44, 24, 14, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(44, 24, 14, 0.1) 1px, transparent 1px);
+  background-size: 10% 20%;
+}
+
+.cafe-topline {
+  border-color: rgba(44, 24, 14, 0.3);
+}
+
+.cafe-title {
+  position: absolute;
+  z-index: 3;
+  top: 24%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cafe-title span,
+.cafe-meta,
+.cafe-ticket-head {
+  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
+  font-weight: 850;
+  letter-spacing: 0.11em;
+}
+
+.cafe-title strong {
+  margin-top: clamp(0.45rem, 1vw, 0.9rem);
+  color: #7d2c18;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4.8vw, 5rem);
+  font-weight: 720;
+  letter-spacing: -0.085em;
+  line-height: 0.84;
+}
+
+.cafe-ticket {
+  position: absolute;
+  z-index: 4;
+  top: 17%;
+  right: 7%;
+  bottom: 9%;
+  width: 43%;
+  overflow: hidden;
+  border: 1px solid #2c180e;
+  background: #f8eedf;
+  box-shadow: 8px 8px 0 #7d2c18;
+}
+
+.cafe-ticket-head {
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(0.55rem, 1.15vw, 1rem);
+  color: #f8eedf;
+  background: #2c180e;
+}
+
+.cafe-stage {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(0.45rem, 1vw, 0.9rem);
+  align-items: center;
+  padding: clamp(0.42rem, 0.9vw, 0.8rem) clamp(0.55rem, 1.15vw, 1rem);
+  border-bottom: 1px solid rgba(44, 24, 14, 0.2);
+  font-size: clamp(0.38rem, 0.73vw, 0.7rem);
+  font-weight: 740;
+}
+
+.cafe-stage > i {
+  display: grid;
+  place-items: center;
+  width: clamp(20px, 2.5vw, 34px);
+  aspect-ratio: 1;
+  border: 1px solid #2c180e;
+  font-size: 0.72em;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.cafe-stage > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cafe-stage small {
+  color: #8a7567;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+}
+
+.cafe-stage.is-ready > i {
+  color: #f8eedf;
+  background: #7d2c18;
+}
+
+.cafe-stage.is-ready small {
+  color: #7d2c18;
+}
+
+.cafe-meta {
+  position: absolute;
+  z-index: 3;
+  left: 5%;
+  bottom: 9%;
+  display: flex;
+  gap: clamp(0.65rem, 1.5vw, 1.5rem);
+}
+
 .skills-section {
   color: #080808;
   background: var(--signal);

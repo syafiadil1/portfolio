@@ -18,7 +18,21 @@ import {
   useState,
 } from "react";
 
-const projects = [
+type Project = {
+  index: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  stack: string;
+  note: string;
+  year: string;
+  discipline: string;
+  visual: string;
+  repoUrl: string | null;
+  isPrivate: boolean;
+};
+
+const projects: readonly Project[] = [
   {
     index: "01",
     title: "LONJAK",
@@ -75,7 +89,21 @@ const projects = [
     repoUrl: "https://github.com/syafiadil1/commitmentapp",
     isPrivate: false,
   },
-] as const;
+  {
+    index: "05",
+    title: "Cafe Ordering System",
+    subtitle: "A focused ordering workflow, currently in build.",
+    description:
+      "A private cafe ordering project moving from delivery brief into frontend and backend implementation, with an accessible static client starter, repeatable build script, and smoke-test baseline.",
+    stack: "HTML · CSS · JavaScript · Node.js",
+    note: "The repository is deliberately at foundation stage: a client-specific workspace, zero-dependency static build, and automated smoke test are in place before ordering flows and backend integration begin.",
+    year: "2026",
+    discipline: "WORK IN PROGRESS",
+    visual: "cafe",
+    repoUrl: null,
+    isPrivate: true,
+  },
+];
 
 const skills = [
   { name: "React", x: "12%", y: "18%", note: "Product interfaces" },
@@ -101,6 +129,13 @@ const experience = [
     company: "Aurum Jets",
     detail:
       "Built a zero-build luxury aviation experience with a textured 3D aircraft, cinematic scroll choreography, smooth navigation, and a resilient visual fallback.",
+  },
+  {
+    years: "JUL 2026",
+    role: "Product Foundation",
+    company: "Cafe Ordering System",
+    detail:
+      "Set up a private client delivery workspace with an accessible static starter, repeatable build output, and automated smoke-test baseline before full ordering implementation.",
   },
   {
     years: "FEB—MAR 2026",
@@ -227,6 +262,29 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
     );
   }
 
+  if (visual === "cafe") {
+    return (
+      <div className="project-art art-cafe" aria-label={`${title} project foundation preview`} role="img">
+        <div className="visual-topline cafe-topline">
+          <span>CAFE / ORDERING SYSTEM</span>
+          <span>FOUNDATION 0.1</span>
+        </div>
+        <div className="cafe-title">
+          <span>CLIENT DELIVERY</span>
+          <strong>ORDER<br />SYSTEM</strong>
+        </div>
+        <div className="cafe-ticket">
+          <div className="cafe-ticket-head"><span>BUILD PLAN</span><span>01 / 04</span></div>
+          <div className="cafe-stage is-ready"><i>01</i><span>Workspace setup<small>READY</small></span></div>
+          <div className="cafe-stage"><i>02</i><span>Frontend flow<small>NEXT</small></span></div>
+          <div className="cafe-stage"><i>03</i><span>Backend service<small>QUEUED</small></span></div>
+          <div className="cafe-stage"><i>04</i><span>QA + handoff<small>QUEUED</small></span></div>
+        </div>
+        <div className="cafe-meta"><span>STATIC STARTER</span><span>BUILD + SMOKE TEST</span></div>
+      </div>
+    );
+  }
+
   return (
     <div className="project-art art-commitment" aria-label={`${title} interface preview`} role="img">
       <div className="visual-topline commitment-topline">
@@ -246,7 +304,7 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   );
 }
 
-function ProjectCard({ project }: { project: (typeof projects)[number] }) {
+function ProjectCard({ project }: { project: Project }) {
   const reduceMotion = useReducedMotion();
   const [expanded, setExpanded] = useState(false);
   const rotateX = useMotionValue(0);
@@ -607,7 +665,7 @@ export default function Home() {
         </div>
         <div className="stats-row">
           {[
-            ["04", "FEATURED PROJECTS"],
+            ["05", "FEATURED PROJECTS"],
             ["03", "WEB / MOBILE / 3D"],
             ["2026", "CURRENT BUILD LOG"],
           ].map(([value, label], index) => (
@@ -623,7 +681,7 @@ export default function Home() {
           <SectionLabel index="02">SELECTED WORK / 2026</SectionLabel>
           <div className="section-intro">
             <h2>Selected<br /><span>case studies.</span></h2>
-            <p>Four builds spanning adaptive education, real-time 3D, academic tooling, and cross-platform mobile product work.</p>
+            <p>Five builds spanning adaptive education, real-time 3D, academic tooling, mobile product work, and a new client ordering system in progress.</p>
           </div>
         </Reveal>
         <div className="project-list">
@@ -649,7 +707,7 @@ export default function Home() {
         <Reveal><SectionLabel index="04">EXPERIENCE / BUILD LOG</SectionLabel></Reveal>
         <div className="experience-title">
           <Reveal><h2>What I’ve<br />been <em>building.</em></h2></Reveal>
-          <Reveal delay={0.08}><p>A development trail across adaptive learning, interactive 3D, academic tooling, and cross-platform mobile work.</p></Reveal>
+          <Reveal delay={0.08}><p>A development trail across adaptive learning, interactive 3D, academic tooling, mobile work, and client product foundations.</p></Reveal>
         </div>
         <div className="timeline">
           <div className="timeline-rail"><motion.i style={{ scaleY: reduceMotion ? 1 : experienceProgress }} /></div>

@@ -32,11 +32,14 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /Aurum Jets/);
   assert.match(html, /StudentCore/);
   assert.match(html, /Commitment/);
+  assert.match(html, /Cafe Ordering System/);
+  assert.match(html, /WORK IN PROGRESS/);
   assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
   assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
   assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
   assert.match(html, /mailto:syafiadil@gmail\.com/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/lonjak"/);
+  assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/cafe-ordering-system"/);
   assert.doesNotMatch(html, /Financial Advisory|financialadvisory|linkedin\.com|read\.cv/i);
   assert.doesNotMatch(html, /BACK TO TOP|© 2026 SYAFI ADIL/);
   assert.match(html, /HAVE A HARD/);
