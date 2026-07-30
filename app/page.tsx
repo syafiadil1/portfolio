@@ -205,123 +205,148 @@ function SectionLabel({ index, children }: { index: string; children: ReactNode 
   );
 }
 
+const lonjakScreenDefs = [
+  { src: "/projects/lonjak-snap.webp", alt: "LONJAK Snap and Practice screen", width: 720, height: 1561 },
+  { src: "/projects/lonjak-notes.webp", alt: "LONJAK AI Class Notes recording screen", width: 720, height: 1561 },
+  { src: "/projects/lonjak-home.webp", alt: "LONJAK adaptive learning home screen", width: 720, height: 1561 },
+  { src: "/projects/lonjak-path.webp", alt: "LONJAK KSSM Mathematics learning path", width: 720, height: 1561 },
+  { src: "/projects/lonjak-tutor.webp", alt: "LONJAK AI mathematics tutor screen", width: 720, height: 1561 },
+];
+
+function GalleryFigure({ artClass, toplineClass, topline, countLabel, countClass, screens, captionLeft, captionRight, title }: {
+  artClass: string;
+  toplineClass: string;
+  topline: string;
+  countLabel: string;
+  countClass: string;
+  screens: { src: string; alt: string; width: number; height: number }[];
+  captionLeft: string;
+  captionRight: string;
+  title: string;
+}) {
+  return (
+    <figure className={`project-art ${artClass}`} aria-label={`${title} product screens`}>
+      <div className={`visual-topline ${toplineClass}`}>
+        <span>{topline}</span>
+        <span className={countClass}>{countLabel}</span>
+      </div>
+      <div className="gallery-fan">
+        {screens.map((s, i) => (
+          <div className={`gallery-screen gallery-screen--${i}`} key={s.src}>
+            <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
+          </div>
+        ))}
+      </div>
+      <figcaption className="gallery-caption"><span>{captionLeft}</span><span>{captionRight}</span></figcaption>
+    </figure>
+  );
+}
+
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "lonjak") {
     return (
-      <figure className="project-art art-lonjak" aria-label={`${title} product screens`}>
-        <div className="visual-topline lonjak-topline">
-          <span>LONJAK / REAL PRODUCT SCREENS</span>
-          <span className="lonjak-live">05 VIEWS</span>
-        </div>
-        <div className="lonjak-gallery">
-          <div className="lonjak-screen lonjak-screen--snap">
-            <Image src="/projects/lonjak-snap.webp" alt="LONJAK Snap and Practice screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
-          </div>
-          <div className="lonjak-screen lonjak-screen--notes">
-            <Image src="/projects/lonjak-notes.webp" alt="LONJAK AI Class Notes recording screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
-          </div>
-          <div className="lonjak-screen lonjak-screen--home">
-            <Image src="/projects/lonjak-home.webp" alt="LONJAK adaptive learning home screen" width={720} height={1561} sizes="(max-width: 767px) 25vw, 19vw" unoptimized />
-          </div>
-          <div className="lonjak-screen lonjak-screen--path">
-            <Image src="/projects/lonjak-path.webp" alt="LONJAK KSSM Mathematics learning path" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
-          </div>
-          <div className="lonjak-screen lonjak-screen--tutor">
-            <Image src="/projects/lonjak-tutor.webp" alt="LONJAK AI mathematics tutor screen" width={720} height={1561} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
-          </div>
-        </div>
-        <figcaption className="lonjak-caption"><span>ADAPTIVE LEARNING</span><span>ANDROID FIRST</span></figcaption>
-      </figure>
+      <GalleryFigure
+        artClass="art-lonjak"
+        toplineClass="lonjak-topline"
+        topline="LONJAK / REAL PRODUCT SCREENS"
+        countLabel="05 VIEWS"
+        countClass="lonjak-live"
+        screens={lonjakScreenDefs}
+        captionLeft="ADAPTIVE LEARNING"
+        captionRight="ANDROID FIRST"
+        title={title}
+      />
     );
   }
 
   if (visual === "aurum") {
+    const picks = [aurumScreens[0], aurumScreens[5], aurumScreens[1], aurumScreens[2], aurumScreens[4]];
     return (
-      <figure className="project-art art-aurum" aria-label={`${title} product screens`}>
-        <div className="visual-topline aurum-topline">
-          <span>AURUM JETS / CINEMATIC WEBGL</span>
-          <span className="aurum-count">06 VIEWS</span>
-        </div>
-        <div className="aurum-screen aurum-screen--hero">
-          <Image src={aurumScreens[0].src} alt={aurumScreens[0].alt} width={aurumScreens[0].width} height={aurumScreens[0].height} sizes="(max-width: 767px) 76vw, 58vw" unoptimized />
-        </div>
-        <div className="aurum-contact-sheet">
-          {aurumScreens.slice(1).map((screen, index) => (
-            <div className="aurum-screen" key={screen.src} style={{ "--aurum-index": index } as CSSProperties}>
-              <Image src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} sizes="(max-width: 767px) 13vw, 10vw" unoptimized />
-            </div>
-          ))}
-        </div>
-        <figcaption className="aurum-caption"><span>FLEET → CONSULTATION</span><span>REAL-TIME 3D</span></figcaption>
-      </figure>
+      <GalleryFigure
+        artClass="art-aurum"
+        toplineClass="aurum-topline"
+        topline="AURUM JETS / CINEMATIC WEBGL"
+        countLabel="05 VIEWS"
+        countClass="aurum-count"
+        screens={picks}
+        captionLeft="FLEET → CONSULTATION"
+        captionRight="REAL-TIME 3D"
+        title={title}
+      />
     );
   }
 
   if (visual === "student") {
     return (
-      <div className="project-art art-student" aria-label={`${title} interface preview`} role="img">
+      <figure className="project-art art-student" aria-label={`${title} interface preview`}>
         <div className="visual-topline student-topline">
           <span>STUDENTCORE / WORKSPACE</span>
-          <span>SEMESTER 02</span>
+          <span>05 PANELS</span>
         </div>
-        <div className="student-terminal">
-          <div className="terminal-bar"><span>CORE://DASHBOARD</span><span>● ● ●</span></div>
-          <div className="terminal-prompt"><span>$</span> focus --today</div>
-          <div className="student-grid">
-            <div className="student-date"><span>MON / 23</span><strong>09:30</strong><small>3 CLASSES TODAY</small></div>
-            <div className="student-tasks">
-              <span>UP NEXT</span>
-              <p><i /> Data Structures <small>10:00</small></p>
-              <p><i /> Calculus II <small>13:30</small></p>
-              <p><i /> Submit assessment <small>18:00</small></p>
-            </div>
+        <div className="gallery-fan">
+          <div className="gallery-screen gallery-screen--0 student-screen">
+            <div className="student-card"><span className="student-card-label">CORE://DASHBOARD</span><strong>09:30</strong><small>3 CLASSES TODAY</small></div>
+          </div>
+          <div className="gallery-screen gallery-screen--1 student-screen">
+            <div className="student-card"><span className="student-card-label">UP NEXT</span><p className="student-card-row"><i />Data Structures<small>10:00</small></p></div>
+          </div>
+          <div className="gallery-screen gallery-screen--2 student-screen">
+            <div className="student-card"><span className="student-card-label">TODAY</span><p className="student-card-row"><i />Calculus II<small>13:30</small></p><p className="student-card-row"><i />Submit assessment<small>18:00</small></p></div>
+          </div>
+          <div className="gallery-screen gallery-screen--3 student-screen">
+            <div className="student-card"><span className="student-card-label">COURSES</span><strong>06</strong><small>ENROLLED</small></div>
+          </div>
+          <div className="gallery-screen gallery-screen--4 student-screen">
+            <div className="student-card"><span className="student-card-label">FILES</span><strong>34</strong><small>SYNCED</small></div>
           </div>
         </div>
-        <div className="student-command">
-          <span>COURSES 06</span><span>TASKS 12</span><span>FILES 34</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (visual === "cafe") {
-    return (
-      <figure className="project-art art-cafe" aria-label={`${title} product screens`}>
-        <div className="visual-topline cafe-topline">
-          <span>RUANG / ORDERING FLOW</span>
-          <span className="cafe-count">11 SCREENS</span>
-        </div>
-        <div className="cafe-screen cafe-screen--hero">
-          <Image src={cafeScreens[0].src} alt={cafeScreens[0].alt} width={cafeScreens[0].width} height={cafeScreens[0].height} sizes="(max-width: 767px) 28vw, 24vw" unoptimized />
-        </div>
-        <div className="cafe-contact-sheet">
-          {cafeScreens.slice(1).map((screen) => (
-            <div className="cafe-screen" key={screen.src}>
-              <Image src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} sizes="(max-width: 767px) 14vw, 10vw" unoptimized />
-            </div>
-          ))}
-        </div>
-        <figcaption className="cafe-caption"><span>MENU → PICKUP</span><span>MOBILE ORDERING</span></figcaption>
+        <figcaption className="gallery-caption"><span>TERMINAL WORKSPACE</span><span>LOCAL FIRST</span></figcaption>
       </figure>
     );
   }
 
+  if (visual === "cafe") {
+    const picks = [cafeScreens[1], cafeScreens[3], cafeScreens[2], cafeScreens[5], cafeScreens[10]];
+    return (
+      <GalleryFigure
+        artClass="art-cafe"
+        toplineClass="cafe-topline"
+        topline="RUANG / ORDERING FLOW"
+        countLabel="05 VIEWS"
+        countClass="cafe-count"
+        screens={picks}
+        captionLeft="MENU → PICKUP"
+        captionRight="MOBILE ORDERING"
+        title={title}
+      />
+    );
+  }
+
   return (
-    <div className="project-art art-commitment" aria-label={`${title} interface preview`} role="img">
+    <figure className="project-art art-commitment" aria-label={`${title} interface preview`}>
       <div className="visual-topline commitment-topline">
         <span>COMMITMENT / DASHBOARD</span>
-        <span>JUL 2026</span>
+        <span>05 PANELS</span>
       </div>
-      <div className="commitment-count"><strong>04</strong><span>DUE SOON</span></div>
-      <div className="commitment-phone">
-        <div className="phone-bar"><span>UPCOMING</span><span>RM 428</span></div>
-        <div className="bill-row"><i>01</i><span>Cloud storage<small>MONTHLY</small></span><strong>RM 42</strong></div>
-        <div className="bill-row"><i>02</i><span>Mobile plan<small>MONTHLY</small></span><strong>RM 98</strong></div>
-        <div className="bill-row"><i>03</i><span>Insurance<small>ANNUAL</small></span><strong>RM 288</strong></div>
+      <div className="gallery-fan">
+        <div className="gallery-screen gallery-screen--0 commitment-screen">
+          <div className="commitment-card"><span className="commitment-card-label">DUE SOON</span><strong>04</strong><small>BILLS</small></div>
+        </div>
+        <div className="gallery-screen gallery-screen--1 commitment-screen">
+          <div className="commitment-card"><span className="commitment-card-label">UPCOMING</span><strong>RM 428</strong><small>TOTAL</small></div>
+        </div>
+        <div className="gallery-screen gallery-screen--2 commitment-screen">
+          <div className="commitment-card"><span className="commitment-card-label">CLOUD STORAGE</span><strong>RM 42</strong><small>MONTHLY</small></div>
+        </div>
+        <div className="gallery-screen gallery-screen--3 commitment-screen">
+          <div className="commitment-card"><span className="commitment-card-label">MOBILE PLAN</span><strong>RM 98</strong><small>MONTHLY</small></div>
+        </div>
+        <div className="gallery-screen gallery-screen--4 commitment-screen">
+          <div className="commitment-card"><span className="commitment-card-label">INSURANCE</span><strong>RM 288</strong><small>ANNUAL</small></div>
+        </div>
       </div>
-      <div className="commitment-cycle" aria-hidden="true"><span>76%</span></div>
-      <div className="commitment-foot"><span>PAID 08</span><span>HISTORY ↗</span></div>
-    </div>
+      <figcaption className="gallery-caption"><span>CYCLE 76%</span><span>PAID 08</span></figcaption>
+    </figure>
   );
 }
 

@@ -747,9 +747,6 @@ button {
   align-items: end;
 }
 
-.project-row:nth-child(even) .project-stage { order: 2; }
-.project-row:nth-child(even) .project-notes { order: 1; }
-
 .project-stage {
   display: block;
   width: 100%;
@@ -912,6 +909,64 @@ button {
   letter-spacing: 0.12em;
 }
 
+/* Shared fanned gallery */
+.gallery-fan {
+  position: absolute;
+  z-index: 2;
+  inset: 9% 0 0;
+}
+
+.gallery-screen {
+  position: absolute;
+  width: 22%;
+  overflow: hidden;
+  border: 1px solid rgba(239, 238, 230, 0.28);
+  background: #0f0f0f;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+  transform-origin: center bottom;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.gallery-screen--0 { z-index: 1; top: 18%; left: -1.5%; transform: rotate(-5deg); }
+.gallery-screen--1 { z-index: 2; top: 10%; left: 18.5%; transform: rotate(-2.5deg); }
+.gallery-screen--2 { z-index: 5; top: 3%; left: 39%; width: 23%; }
+.gallery-screen--3 { z-index: 2; top: 10%; left: 60.5%; transform: rotate(2.5deg); }
+.gallery-screen--4 { z-index: 1; top: 18%; left: 80%; transform: rotate(5deg); }
+
+.gallery-caption {
+  position: absolute;
+  z-index: 7;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  min-height: 24%;
+  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
+  margin: 0;
+  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-stage:hover .gallery-screen--0 { transform: translate(-5%, -2%) rotate(-5deg); }
+  .project-stage:hover .gallery-screen--1 { transform: translate(-3%, -2%) rotate(-2.5deg); }
+  .project-stage:hover .gallery-screen--2 { transform: translateY(-2%); }
+  .project-stage:hover .gallery-screen--3 { transform: translate(3%, -2%) rotate(2.5deg); }
+  .project-stage:hover .gallery-screen--4 { transform: translate(5%, -2%) rotate(5deg); }
+}
+
 /* Project 01 — LONJAK */
 .art-lonjak {
   margin: 0;
@@ -960,93 +1015,16 @@ button {
   color: var(--lonjak-lime);
 }
 
-.lonjak-gallery {
-  position: absolute;
-  z-index: 2;
-  inset: 9% 0 0;
-}
-
-.lonjak-screen {
-  position: absolute;
-  width: 22%;
+.art-lonjak .gallery-screen {
   aspect-ratio: 1290 / 2796;
-  overflow: hidden;
-  border: 1px solid color-mix(in oklch, var(--lonjak-paper) 28%, transparent);
+  border-color: color-mix(in oklch, var(--lonjak-paper) 28%, transparent);
   background: var(--lonjak-ink);
   box-shadow: 0 20px 44px color-mix(in oklch, var(--lonjak-deep) 74%, transparent);
-  transform-origin: center bottom;
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.lonjak-screen img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.lonjak-screen--snap {
-  z-index: 1;
-  top: 18%;
-  left: -1.5%;
-  transform: rotate(-5deg);
-}
-
-.lonjak-screen--notes {
-  z-index: 2;
-  top: 10%;
-  left: 18.5%;
-  transform: rotate(-2.5deg);
-}
-
-.lonjak-screen--home {
-  z-index: 5;
-  top: 3%;
-  left: 39%;
-  width: 23%;
-}
-
-.lonjak-screen--path {
-  z-index: 2;
-  top: 10%;
-  left: 60.5%;
-  transform: rotate(2.5deg);
-}
-
-.lonjak-screen--tutor {
-  z-index: 1;
-  top: 18%;
-  left: 80%;
-  transform: rotate(5deg);
-}
-
-.lonjak-caption {
-  position: absolute;
-  z-index: 7;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  min-height: 24%;
-  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
-  margin: 0;
+.art-lonjak .gallery-caption {
   color: var(--lonjak-lime);
   background: linear-gradient(to top, var(--lonjak-deep) 10%, transparent);
-  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .project-stage:hover .lonjak-screen--snap { transform: translate(-5%, -2%) rotate(-5deg); }
-  .project-stage:hover .lonjak-screen--notes { transform: translate(-3%, -2%) rotate(-2.5deg); }
-  .project-stage:hover .lonjak-screen--home { transform: translateY(-2%); }
-  .project-stage:hover .lonjak-screen--path { transform: translate(3%, -2%) rotate(2.5deg); }
-  .project-stage:hover .lonjak-screen--tutor { transform: translate(5%, -2%) rotate(5deg); }
 }
 
 /* Project 02 — Aurum Jets */
@@ -1067,70 +1045,15 @@ button {
   color: var(--aurum-gold);
 }
 
-.aurum-screen {
-  position: absolute;
-  overflow: hidden;
-  border: 1px solid var(--aurum-rule);
+.art-aurum .gallery-screen {
+  aspect-ratio: 16 / 9;
+  border-color: var(--aurum-rule);
   background: var(--aurum-panel);
   box-shadow: 0 18px 40px color-mix(in oklch, var(--aurum-ink) 72%, transparent);
-  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.aurum-screen img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.aurum-screen--hero {
-  z-index: 1;
-  inset: 11% 18% 9% 2.5%;
-}
-
-.aurum-contact-sheet {
-  position: absolute;
-  z-index: 4;
-  right: 2.5%;
-  bottom: 8.5%;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(0.18rem, 0.45vw, 0.45rem);
-  width: 68%;
-  padding: clamp(0.22rem, 0.55vw, 0.55rem);
-  border: 1px solid var(--aurum-rule);
-  background: color-mix(in oklch, var(--aurum-ink) 86%, transparent);
-  box-shadow: 0 16px 42px color-mix(in oklch, var(--aurum-ink) 76%, transparent);
-  backdrop-filter: blur(12px);
-}
-
-.aurum-contact-sheet .aurum-screen {
-  position: relative;
-  aspect-ratio: 1.88;
-}
-
-.aurum-caption {
-  position: absolute;
-  z-index: 5;
-  right: 2.8%;
-  bottom: 2.2%;
-  left: 2.8%;
-  display: flex;
-  justify-content: space-between;
+.art-aurum .gallery-caption {
   color: var(--aurum-gold);
-  font-size: clamp(0.34rem, 0.58vw, 0.55rem);
-  font-weight: 820;
-  letter-spacing: 0.12em;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .project-stage:hover .aurum-screen--hero {
-    transform: scale(1.012);
-  }
-
-  .project-stage:hover .aurum-contact-sheet .aurum-screen {
-    transform: translateY(calc((var(--aurum-index) + 1) * -1.25%));
-  }
 }
 
 /* Project 03 — StudentCore */
@@ -1147,114 +1070,68 @@ button {
   border-color: rgba(10, 10, 10, 0.28);
 }
 
-.student-terminal {
-  position: absolute;
-  top: 18%;
-  right: 5%;
-  bottom: 10%;
-  left: 5%;
-  overflow: hidden;
-  color: #efeee6;
+.art-student .gallery-screen {
+  border-color: rgba(10, 10, 10, 0.25);
   background: #101010;
-  box-shadow: 8px 8px 0 var(--signal);
+  color: #efeee6;
+  box-shadow: 4px 4px 0 var(--signal);
 }
 
-.terminal-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: clamp(0.5rem, 1vw, 0.9rem);
-  border-bottom: 1px solid rgba(239, 238, 230, 0.22);
-  font-size: clamp(0.36rem, 0.62vw, 0.59rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
-}
-
-.terminal-prompt {
-  padding: clamp(0.45rem, 0.9vw, 0.8rem) clamp(0.6rem, 1.2vw, 1rem);
-  color: #aaa89f;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: clamp(0.38rem, 0.7vw, 0.67rem);
-}
-
-.terminal-prompt span {
-  color: var(--signal);
-}
-
-.student-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.6fr;
-  height: calc(100% - clamp(48px, 7vw, 82px));
-  border-top: 1px solid rgba(239, 238, 230, 0.12);
-}
-
-.student-date,
-.student-tasks {
-  padding: clamp(0.65rem, 1.5vw, 1.35rem);
-}
-
-.student-date {
+.student-card {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(239, 238, 230, 0.16);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.2rem, 0.4vw, 0.4rem);
+  height: 100%;
+  padding: clamp(0.4rem, 0.8vw, 0.7rem);
+  text-align: center;
 }
 
-.student-date span,
-.student-date small,
-.student-tasks > span,
-.student-command {
-  font-size: clamp(0.34rem, 0.62vw, 0.58rem);
+.student-card-label {
+  font-size: clamp(0.3rem, 0.52vw, 0.5rem);
   font-weight: 820;
   letter-spacing: 0.1em;
+  opacity: 0.6;
 }
 
-.student-date strong {
-  margin-block: auto;
-  color: var(--signal);
+.student-card strong {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3.5vw, 3.9rem);
-  letter-spacing: -0.08em;
+  font-size: clamp(0.9rem, 2vw, 2.2rem);
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
-.student-tasks > span {
-  display: block;
-  margin-bottom: clamp(0.35rem, 0.8vw, 0.75rem);
-  color: var(--signal);
+.student-card small {
+  font-size: clamp(0.28rem, 0.44vw, 0.4rem);
+  opacity: 0.5;
+  letter-spacing: 0.06em;
 }
 
-.student-tasks p {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: clamp(0.35rem, 0.75vw, 0.7rem);
-  align-items: center;
-  margin: 0;
-  padding: clamp(0.32rem, 0.7vw, 0.62rem) 0;
-  border-top: 1px solid rgba(239, 238, 230, 0.16);
-  font-size: clamp(0.36rem, 0.7vw, 0.66rem);
-}
-
-.student-tasks p > i {
-  width: 6px;
-  height: 6px;
-  background: var(--signal);
-}
-
-.student-tasks p small {
-  color: #aaa89f;
-  font-size: 0.88em;
-}
-
-.student-command {
-  position: absolute;
-  z-index: 5;
-  right: 6.5%;
-  bottom: 5.5%;
+.student-card-row {
   display: flex;
-  gap: clamp(0.6rem, 1.5vw, 1.5rem);
-  padding: clamp(0.45rem, 0.85vw, 0.75rem);
-  color: #080808;
+  align-items: center;
+  gap: clamp(0.25rem, 0.5vw, 0.5rem);
+  margin: 0.15rem 0;
+  font-size: clamp(0.3rem, 0.52vw, 0.5rem);
+}
+
+.student-card-row i {
+  width: 4px;
+  height: 4px;
   background: var(--signal);
 }
 
+.student-card-row small {
+  margin-left: auto;
+}
+
+.art-student .gallery-caption {
+  color: #0a0a0a;
+}
+
+/* Project 04 — Commitment */
 /* Project 04 — Commitment */
 .art-commitment {
   color: #080808;
@@ -1269,117 +1146,50 @@ button {
   border-color: rgba(8, 8, 8, 0.36);
 }
 
-.commitment-count {
-  position: absolute;
-  top: 22%;
-  left: 5%;
+.art-commitment .gallery-screen {
+  border-color: rgba(8, 8, 8, 0.35);
+  background: #0f0f0f;
+  color: #efeee6;
+  box-shadow: 4px 4px 0 rgba(8, 8, 8, 0.95);
+}
+
+.commitment-card {
   display: flex;
   flex-direction: column;
-}
-
-.commitment-count strong {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 9vw, 9rem);
-  font-weight: 760;
-  letter-spacing: -0.1em;
-  line-height: 0.8;
-}
-
-.commitment-count span,
-.commitment-foot,
-.phone-bar {
-  font-size: clamp(0.37rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-}
-
-.commitment-phone {
-  position: absolute;
-  top: 18%;
-  right: 7%;
-  bottom: 9%;
-  width: 48%;
-  overflow: hidden;
-  color: #efeee6;
-  border: 1px solid #080808;
-  background: #0f0f0f;
-  box-shadow: 8px 8px 0 rgba(8, 8, 8, 0.95);
-}
-
-.phone-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: clamp(0.45rem, 1vw, 0.85rem);
-  color: var(--signal);
-  border-bottom: 1px solid rgba(239, 238, 230, 0.22);
-}
-
-.bill-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: clamp(0.4rem, 1vw, 0.9rem);
   align-items: center;
-  padding: clamp(0.38rem, 0.95vw, 0.82rem);
-  border-bottom: 1px solid rgba(239, 238, 230, 0.16);
-  font-size: clamp(0.36rem, 0.72vw, 0.68rem);
+  justify-content: center;
+  gap: clamp(0.2rem, 0.4vw, 0.4rem);
+  height: 100%;
+  padding: clamp(0.4rem, 0.8vw, 0.7rem);
+  text-align: center;
 }
 
-.bill-row > i {
-  display: grid;
-  place-items: center;
-  width: clamp(18px, 2.3vw, 32px);
-  aspect-ratio: 1;
+.commitment-card-label {
+  font-size: clamp(0.3rem, 0.52vw, 0.5rem);
+  font-weight: 820;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.commitment-card strong {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 2.2rem);
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  line-height: 1;
   color: #080808;
   background: var(--signal);
-  font-size: 0.78em;
-  font-style: normal;
-  font-weight: 850;
+  padding: 0.15em 0.4em;
 }
 
-.bill-row > span {
-  display: flex;
-  flex-direction: column;
-  font-weight: 730;
+.commitment-card small {
+  font-size: clamp(0.28rem, 0.44vw, 0.4rem);
+  opacity: 0.5;
+  letter-spacing: 0.06em;
 }
 
-.bill-row small {
-  margin-top: 0.15rem;
-  color: #9c9b94;
-  font-size: 0.7em;
-  letter-spacing: 0.08em;
-}
-
-.bill-row > strong {
-  font-size: 0.9em;
-}
-
-.commitment-cycle {
-  position: absolute;
-  left: 7%;
-  bottom: 10%;
-  display: grid;
-  place-items: center;
-  width: clamp(42px, 6vw, 82px);
-  aspect-ratio: 1;
-  border: clamp(4px, 0.5vw, 7px) solid rgba(8, 8, 8, 0.18);
-  border-top-color: #080808;
-  border-right-color: #080808;
-  border-radius: 50%;
-  transform: rotate(35deg);
-}
-
-.commitment-cycle span {
-  font-size: clamp(0.38rem, 0.65vw, 0.62rem);
-  font-weight: 850;
-  transform: rotate(-35deg);
-}
-
-.commitment-foot {
-  position: absolute;
-  left: 18%;
-  bottom: 7%;
-  display: flex;
-  gap: clamp(0.7rem, 1.5vw, 1.4rem);
+.art-commitment .gallery-caption {
+  color: #080808;
 }
 
 /* Project 02 — Cafe Ordering System */
@@ -1405,71 +1215,16 @@ button {
   color: var(--cafe-rust);
 }
 
-.cafe-screen {
-  position: absolute;
-  overflow: hidden;
-  border: 1px solid color-mix(in oklch, var(--cafe-ink) 28%, transparent);
+.art-cafe .gallery-screen {
+  aspect-ratio: 1290 / 2796;
+  border-color: color-mix(in oklch, var(--cafe-ink) 24%, transparent);
   background: var(--cafe-soft);
   box-shadow: 0 18px 36px color-mix(in oklch, var(--cafe-ink) 18%, transparent);
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.cafe-screen img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.cafe-screen--hero {
-  z-index: 4;
-  top: 12%;
-  bottom: 5%;
-  left: 2%;
-  width: 27%;
-}
-
-.cafe-contact-sheet {
-  position: absolute;
-  z-index: 3;
-  inset: 12% 1.5% 5% 30%;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: clamp(2px, 0.45vw, 7px);
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cafe-contact-sheet .cafe-screen {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-}
-
-.cafe-caption {
-  position: absolute;
-  z-index: 7;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  min-height: 18%;
-  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
-  margin: 0;
+.art-cafe .gallery-caption {
   color: var(--cafe-paper);
   background: linear-gradient(to top, var(--cafe-ink) 8%, transparent);
-  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .project-stage:hover .cafe-screen--hero { transform: translateY(-1.5%); }
-  .project-stage:hover .cafe-contact-sheet { transform: translateX(0.5%); }
 }
 
 .skills-section {
