@@ -82,7 +82,7 @@ const projects: readonly Project[] = [
     subtitle: "One command center for university life.",
     description:
       "A local-first academic organizer for courses, weekly timetables, tasks, assessments, deadlines, and course files in one terminal-inspired web app.",
-    stack: "Next.js · TypeScript · Tailwind CSS · LocalStorage",
+    stack: "Next.js · TypeScript · Tailwind CSS",
     note: "Each browser starts with a clean workspace and stores academic data on-device, bringing time, tasks, and study files into one focused daily dashboard.",
     year: "2026",
     discipline: "PRODUCT ENGINEERING",
@@ -118,6 +118,15 @@ const cafeScreens = [
   { src: "/projects/cafe-location.webp", alt: "Ruang Coffee Room pickup location", width: 720, height: 1391 },
   { src: "/projects/cafe-orders.webp", alt: "Ruang past order history", width: 720, height: 1401 },
   { src: "/projects/cafe-rewards.webp", alt: "Ruang customer rewards balance", width: 720, height: 1375 },
+] as const;
+
+const aurumScreens = [
+  { src: "/projects/aurum-home.webp", alt: "Aurum Jets cinematic landing page", width: 1800, height: 965 },
+  { src: "/projects/aurum-fleet.webp", alt: "Aurum Jets interactive fleet selection", width: 1800, height: 956 },
+  { src: "/projects/aurum-craft.webp", alt: "Aurum Jets aircraft craft and cabin experience", width: 1800, height: 959 },
+  { src: "/projects/aurum-reach.webp", alt: "Aurum Jets global reach experience", width: 1800, height: 965 },
+  { src: "/projects/aurum-process.webp", alt: "Aurum Jets private acquisition process", width: 1800, height: 959 },
+  { src: "/projects/aurum-contact.webp", alt: "Aurum Jets private consultation form", width: 1800, height: 974 },
 ] as const;
 
 const skills = [
@@ -228,23 +237,23 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
 
   if (visual === "aurum") {
     return (
-      <div className="project-art art-aurum" aria-label={`${title} interface preview`} role="img">
+      <figure className="project-art art-aurum" aria-label={`${title} product screens`}>
         <div className="visual-topline aurum-topline">
-          <span>AURUM JETS / BBJ 737</span>
-          <span>PRIVATE AVIATION</span>
+          <span>AURUM JETS / CINEMATIC WEBGL</span>
+          <span className="aurum-count">06 VIEWS</span>
         </div>
-        <div className="aurum-orbit" aria-hidden="true" />
-        <div className="aurum-runway" aria-hidden="true"><i /><i /><i /></div>
-        <div className="aurum-aircraft" aria-hidden="true"><i /><span /></div>
-        <div className="aurum-copy">
-          <span>THE WORLD, ON YOUR TERMS</span>
-          <strong>AURUM<br />JETS</strong>
+        <div className="aurum-screen aurum-screen--hero">
+          <Image src={aurumScreens[0].src} alt={aurumScreens[0].alt} width={aurumScreens[0].width} height={aurumScreens[0].height} sizes="(max-width: 767px) 76vw, 58vw" unoptimized />
         </div>
-        <div className="aurum-spec">
-          <span>01 / AIRCRAFT</span>
-          <strong>BOEING BUSINESS JET</strong>
+        <div className="aurum-contact-sheet">
+          {aurumScreens.slice(1).map((screen, index) => (
+            <div className="aurum-screen" key={screen.src} style={{ "--aurum-index": index } as CSSProperties}>
+              <Image src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} sizes="(max-width: 767px) 13vw, 10vw" unoptimized />
+            </div>
+          ))}
         </div>
-      </div>
+        <figcaption className="aurum-caption"><span>FLEET → CONSULTATION</span><span>REAL-TIME 3D</span></figcaption>
+      </figure>
     );
   }
 

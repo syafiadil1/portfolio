@@ -18,6 +18,11 @@
   --cafe-ink: oklch(22% 0.035 48);
   --cafe-rust: oklch(49% 0.135 42);
   --cafe-soft: oklch(84% 0.045 69);
+  --aurum-ink: oklch(9% 0.01 78);
+  --aurum-panel: oklch(14% 0.012 78);
+  --aurum-gold: oklch(72% 0.095 78);
+  --aurum-paper: oklch(94% 0.018 82);
+  --aurum-rule: oklch(72% 0.095 78 / 36%);
 }
 
 * {
@@ -1039,152 +1044,86 @@ button {
 
 /* Project 02 — Aurum Jets */
 .art-aurum {
-  color: #f0e7d7;
-  background:
-    radial-gradient(circle at 69% 42%, rgba(202, 147, 74, 0.24), transparent 31%),
-    #15120f;
+  margin: 0;
+  color: var(--aurum-paper);
+  background: var(--aurum-ink);
+  isolation: isolate;
 }
 
 .aurum-topline {
-  border-color: rgba(240, 231, 215, 0.22);
+  border-color: var(--aurum-rule);
+  background: color-mix(in oklch, var(--aurum-ink) 88%, transparent);
+  backdrop-filter: blur(10px);
 }
 
-.aurum-orbit {
+.aurum-count {
+  color: var(--aurum-gold);
+}
+
+.aurum-screen {
   position: absolute;
-  top: -34%;
-  left: 30%;
-  width: 61%;
-  aspect-ratio: 1;
-  border: 1px solid rgba(240, 231, 215, 0.22);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 clamp(18px, 3vw, 46px) rgba(240, 231, 215, 0.035),
-    0 0 0 clamp(40px, 7vw, 94px) rgba(240, 231, 215, 0.025);
+  overflow: hidden;
+  border: 1px solid var(--aurum-rule);
+  background: var(--aurum-panel);
+  box-shadow: 0 18px 40px color-mix(in oklch, var(--aurum-ink) 72%, transparent);
+  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.aurum-runway {
-  position: absolute;
-  right: 3%;
-  bottom: -7%;
-  width: 55%;
-  height: 42%;
-  border-top: 1px solid rgba(240, 231, 215, 0.34);
-  transform: skewX(-24deg);
+.aurum-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.aurum-runway::before,
-.aurum-runway::after,
-.aurum-runway i {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  content: "";
-  background: rgba(240, 231, 215, 0.22);
+.aurum-screen--hero {
+  z-index: 1;
+  inset: 11% 18% 9% 2.5%;
 }
 
-.aurum-runway::before { left: 18%; }
-.aurum-runway::after { right: 18%; }
-.aurum-runway i:nth-child(1) { left: 38%; }
-.aurum-runway i:nth-child(2) { left: 58%; }
-.aurum-runway i:nth-child(3) { left: 78%; }
-
-.aurum-aircraft {
+.aurum-contact-sheet {
   position: absolute;
   z-index: 4;
-  top: 43%;
-  left: 33%;
-  width: 48%;
-  height: 7%;
-  border-radius: 70% 17% 24% 68%;
-  background: linear-gradient(180deg, #f7f1e6 0 47%, #ae8d62 48% 67%, #34302c 68%);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
-  transform: rotate(-9deg);
-  animation: aircraftFloat 3.8s ease-in-out infinite alternate;
+  right: 2.5%;
+  bottom: 8.5%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.18rem, 0.45vw, 0.45rem);
+  width: 68%;
+  padding: clamp(0.22rem, 0.55vw, 0.55rem);
+  border: 1px solid var(--aurum-rule);
+  background: color-mix(in oklch, var(--aurum-ink) 86%, transparent);
+  box-shadow: 0 16px 42px color-mix(in oklch, var(--aurum-ink) 76%, transparent);
+  backdrop-filter: blur(12px);
 }
 
-.aurum-aircraft::before {
-  position: absolute;
-  top: -330%;
-  left: 43%;
-  width: 28%;
-  height: 720%;
-  border-radius: 54% 12% 12% 54%;
-  content: "";
-  background: linear-gradient(90deg, #d7cfc1, #f7f1e6 52%, #8b775f);
-  clip-path: polygon(43% 0, 63% 0, 100% 100%, 0 100%);
-  transform: rotate(72deg);
+.aurum-contact-sheet .aurum-screen {
+  position: relative;
+  aspect-ratio: 1.88;
 }
 
-.aurum-aircraft::after {
-  position: absolute;
-  right: 2%;
-  top: -160%;
-  width: 13%;
-  height: 230%;
-  content: "";
-  background: #c49a61;
-  clip-path: polygon(70% 0, 100% 0, 80% 100%, 0 100%);
-}
-
-.aurum-aircraft i {
-  position: absolute;
-  z-index: 2;
-  top: 21%;
-  left: 13%;
-  width: 62%;
-  height: 17%;
-  background: repeating-linear-gradient(90deg, #15120f 0 3px, transparent 3px 10px);
-}
-
-.aurum-aircraft span {
-  position: absolute;
-  z-index: 3;
-  right: 20%;
-  bottom: -105%;
-  width: 15%;
-  height: 98%;
-  border: 2px solid #8b775f;
-  border-radius: 50%;
-  background: #25211d;
-}
-
-.aurum-copy {
+.aurum-caption {
   position: absolute;
   z-index: 5;
-  left: 5%;
-  bottom: 8%;
+  right: 2.8%;
+  bottom: 2.2%;
+  left: 2.8%;
   display: flex;
-  flex-direction: column;
-}
-
-.aurum-copy span,
-.aurum-spec span,
-.aurum-spec strong {
-  font-size: clamp(0.38rem, 0.68vw, 0.64rem);
+  justify-content: space-between;
+  color: var(--aurum-gold);
+  font-size: clamp(0.34rem, 0.58vw, 0.55rem);
   font-weight: 820;
   letter-spacing: 0.12em;
 }
 
-.aurum-copy strong {
-  margin-top: 0.5rem;
-  color: #c9a36b;
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 3.8vw, 4.2rem);
-  font-weight: 650;
-  letter-spacing: -0.075em;
-  line-height: 0.82;
-}
+@media (hover: hover) and (pointer: fine) {
+  .project-stage:hover .aurum-screen--hero {
+    transform: scale(1.012);
+  }
 
-.aurum-spec {
-  position: absolute;
-  z-index: 5;
-  right: 5%;
-  bottom: 8%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  text-align: right;
+  .project-stage:hover .aurum-contact-sheet .aurum-screen {
+    transform: translateY(calc((var(--aurum-index) + 1) * -1.25%));
+  }
 }
 
 /* Project 03 — StudentCore */
