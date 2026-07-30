@@ -129,6 +129,16 @@ const aurumScreens = [
   { src: "/projects/aurum-contact.webp", alt: "Aurum Jets private consultation form", width: 1800, height: 974 },
 ] as const;
 
+const studentScreenDefs = [
+  { src: "/projects/student-01.jpg", alt: "StudentCore System dashboard overview", width: 1280, height: 654 },
+  { src: "/projects/student-02.jpg", alt: "StudentCore courses and schedule view", width: 1280, height: 654 },
+  { src: "/projects/student-03.jpg", alt: "StudentCore task and assessment tracker", width: 1280, height: 656 },
+  { src: "/projects/student-04.jpg", alt: "StudentCore file management workspace", width: 1280, height: 658 },
+  { src: "/projects/student-05.jpg", alt: "StudentCore terminal command interface", width: 1280, height: 655 },
+  { src: "/projects/student-06.jpg", alt: "StudentCore data table and records", width: 1280, height: 656 },
+  { src: "/projects/student-07.jpg", alt: "StudentCore settings and configuration", width: 1280, height: 658 },
+];
+
 const skills = [
   { name: "React", x: "12%", y: "18%", note: "Product interfaces" },
   { name: "TypeScript", x: "69%", y: "13%", note: "Confident contracts" },
@@ -278,27 +288,17 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
 
   if (visual === "student") {
     return (
-      <figure className="project-art art-student" aria-label={`${title} interface preview`}>
+      <figure className="project-art art-student" aria-label={`${title} product screens`}>
         <div className="visual-topline student-topline">
           <span>STUDENTCORE / WORKSPACE</span>
-          <span>05 PANELS</span>
+          <span>07 PANELS</span>
         </div>
-        <div className="gallery-fan">
-          <div className="gallery-screen gallery-screen--0 student-screen">
-            <div className="student-card"><span className="student-card-label">CORE://DASHBOARD</span><strong>09:30</strong><small>3 CLASSES TODAY</small></div>
-          </div>
-          <div className="gallery-screen gallery-screen--1 student-screen">
-            <div className="student-card"><span className="student-card-label">UP NEXT</span><p className="student-card-row"><i />Data Structures<small>10:00</small></p></div>
-          </div>
-          <div className="gallery-screen gallery-screen--2 student-screen">
-            <div className="student-card"><span className="student-card-label">TODAY</span><p className="student-card-row"><i />Calculus II<small>13:30</small></p><p className="student-card-row"><i />Submit assessment<small>18:00</small></p></div>
-          </div>
-          <div className="gallery-screen gallery-screen--3 student-screen">
-            <div className="student-card"><span className="student-card-label">COURSES</span><strong>06</strong><small>ENROLLED</small></div>
-          </div>
-          <div className="gallery-screen gallery-screen--4 student-screen">
-            <div className="student-card"><span className="student-card-label">FILES</span><strong>34</strong><small>SYNCED</small></div>
-          </div>
+        <div className="gallery-cascade">
+          {studentScreenDefs.map((s, i) => (
+            <div className={`gallery-cascade-item cascade-item--${i}`} key={s.src}>
+              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 48vw, 28vw" unoptimized />
+            </div>
+          ))}
         </div>
         <figcaption className="gallery-caption"><span>TERMINAL WORKSPACE</span><span>LOCAL FIRST</span></figcaption>
       </figure>
