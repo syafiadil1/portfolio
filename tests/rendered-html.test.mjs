@@ -3,6 +3,19 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
+const cafeAssets = [
+  "cafe-home.webp",
+  "cafe-menu.webp",
+  "cafe-customize.webp",
+  "cafe-cart.webp",
+  "cafe-checkout.webp",
+  "cafe-review.webp",
+  "cafe-confirmed.webp",
+  "cafe-tracking.webp",
+  "cafe-location.webp",
+  "cafe-orders.webp",
+  "cafe-rewards.webp",
+];
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -38,7 +51,8 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /StudentCore/);
   assert.match(html, /Commitment/);
   assert.match(html, /Cafe Ordering System/);
-  assert.match(html, /WORK IN PROGRESS/);
+  assert.match(html, /MOBILE COMMERCE/);
+  for (const asset of cafeAssets) assert.match(html, new RegExp(`/projects/${asset.replace(".", "\\.")}`));
   assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
   assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
   assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
@@ -46,6 +60,7 @@ test("server-renders the finished portfolio shell", async () => {
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/lonjak"/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/syafiadil1\/cafe-ordering-system"/);
   assert.doesNotMatch(html, /Financial Advisory|financialadvisory|linkedin\.com|read\.cv/i);
+  assert.doesNotMatch(html, /foundation stage|WORK IN PROGRESS/i);
   assert.doesNotMatch(html, /BACK TO TOP|© 2026 SYAFI ADIL/);
   assert.match(html, /HAVE A HARD/);
   assert.doesNotMatch(html, /Relay|Northstar|Forma|Quiet Hours/);
@@ -64,6 +79,8 @@ test("keeps the implementation self-contained and production-ready", async () =>
   assert.match(page, /useReducedMotion/);
   assert.match(page, /data-theme=\{theme\}/);
   assert.match(page, /navigator\.clipboard/);
+  assert.ok(page.indexOf('title: "LONJAK"') < page.indexOf('title: "Cafe Ordering System"'));
+  assert.ok(page.indexOf('title: "Cafe Ordering System"') < page.indexOf('title: "Aurum Jets"'));
   assert.match(layout, /openGraph:/);
   assert.match(layout, /\/og\.png/);
   assert.match(packageJson, /"framer-motion"/);
@@ -75,5 +92,6 @@ test("keeps the implementation self-contained and production-ready", async () =>
   await access(new URL("../public/projects/lonjak-notes.webp", import.meta.url));
   await access(new URL("../public/projects/lonjak-path.webp", import.meta.url));
   await access(new URL("../public/projects/lonjak-tutor.webp", import.meta.url));
+  await Promise.all(cafeAssets.map((asset) => access(new URL(`../public/projects/${asset}`, import.meta.url))));
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
 });

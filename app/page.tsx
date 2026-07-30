@@ -147,10 +147,10 @@ const experience = [
   },
   {
     years: "JUL 2026",
-    role: "Product Foundation",
+    role: "Mobile Ordering Product",
     company: "Cafe Ordering System",
     detail:
-      "Set up a private client delivery workspace with an accessible static starter, repeatable build output, and automated smoke-test baseline before full ordering implementation.",
+      "Designed a mobile-first cafe journey spanning menu discovery, drink customisation, pickup checkout, live order tracking, history, and customer rewards.",
   },
   {
     years: "FEB—MAR 2026",
@@ -283,12 +283,12 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
           <span className="cafe-count">11 SCREENS</span>
         </div>
         <div className="cafe-screen cafe-screen--hero">
-          <Image {...cafeScreens[0]} sizes="(max-width: 767px) 28vw, 24vw" unoptimized />
+          <Image src={cafeScreens[0].src} alt={cafeScreens[0].alt} width={cafeScreens[0].width} height={cafeScreens[0].height} sizes="(max-width: 767px) 28vw, 24vw" unoptimized />
         </div>
         <div className="cafe-contact-sheet">
           {cafeScreens.slice(1).map((screen) => (
             <div className="cafe-screen" key={screen.src}>
-              <Image {...screen} sizes="(max-width: 767px) 14vw, 10vw" unoptimized />
+              <Image src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} sizes="(max-width: 767px) 14vw, 10vw" unoptimized />
             </div>
           ))}
         </div>
