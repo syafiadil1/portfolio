@@ -272,31 +272,35 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "aurum") {
     const picks = [aurumScreens[0], aurumScreens[5], aurumScreens[1], aurumScreens[2], aurumScreens[4]];
     return (
-      <GalleryFigure
-        artClass="art-aurum"
-        toplineClass="aurum-topline"
-        topline="AURUM JETS / CINEMATIC WEBGL"
-        countLabel="05 VIEWS"
-        countClass="aurum-count"
-        screens={picks}
-        captionLeft="FLEET → CONSULTATION"
-        captionRight="REAL-TIME 3D"
-        title={title}
-      />
+      <figure className="project-art art-aurum" aria-label={`${title} product screens`}>
+        <div className="visual-topline aurum-topline">
+          <span>AURUM JETS / CINEMATIC WEBGL</span>
+          <span className="aurum-count">05 VIEWS</span>
+        </div>
+        <div className="gallery-stack">
+          {picks.map((s, i) => (
+            <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
+              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 72vw, 52vw" unoptimized />
+            </div>
+          ))}
+        </div>
+        <figcaption className="gallery-caption"><span>FLEET → CONSULTATION</span><span>REAL-TIME 3D</span></figcaption>
+      </figure>
     );
   }
 
   if (visual === "student") {
+    const picks = [studentScreenDefs[0], studentScreenDefs[1], studentScreenDefs[2], studentScreenDefs[3], studentScreenDefs[5]];
     return (
       <figure className="project-art art-student" aria-label={`${title} product screens`}>
         <div className="visual-topline student-topline">
           <span>STUDENTCORE / WORKSPACE</span>
-          <span>07 PANELS</span>
+          <span>05 PANELS</span>
         </div>
-        <div className="gallery-cascade">
-          {studentScreenDefs.map((s, i) => (
-            <div className={`gallery-cascade-item cascade-item--${i}`} key={s.src}>
-              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 48vw, 28vw" unoptimized />
+        <div className="gallery-stack">
+          {picks.map((s, i) => (
+            <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
+              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 72vw, 52vw" unoptimized />
             </div>
           ))}
         </div>

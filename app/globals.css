@@ -1047,8 +1047,7 @@ button {
   color: var(--aurum-gold);
 }
 
-.art-aurum .gallery-screen {
-  aspect-ratio: 16 / 9;
+.art-aurum .gallery-stack-item {
   border-color: var(--aurum-rule);
   background: var(--aurum-panel);
   box-shadow: 0 18px 40px color-mix(in oklch, var(--aurum-ink) 72%, transparent);
@@ -1072,88 +1071,39 @@ button {
   border-color: rgba(10, 10, 10, 0.28);
 }
 
-.art-student .gallery-screen {
+.art-student .gallery-stack-item {
   border-color: rgba(10, 10, 10, 0.25);
   background: #101010;
   color: #efeee6;
   box-shadow: 4px 4px 0 var(--signal);
 }
 
-.student-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(0.2rem, 0.4vw, 0.4rem);
-  height: 100%;
-  padding: clamp(0.4rem, 0.8vw, 0.7rem);
-  text-align: center;
-}
-
-.student-card-label {
-  font-size: clamp(0.3rem, 0.52vw, 0.5rem);
-  font-weight: 820;
-  letter-spacing: 0.1em;
-  opacity: 0.6;
-}
-
-.student-card strong {
-  font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2vw, 2.2rem);
-  font-weight: 760;
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.student-card small {
-  font-size: clamp(0.28rem, 0.44vw, 0.4rem);
-  opacity: 0.5;
-  letter-spacing: 0.06em;
-}
-
-.student-card-row {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.25rem, 0.5vw, 0.5rem);
-  margin: 0.15rem 0;
-  font-size: clamp(0.3rem, 0.52vw, 0.5rem);
-}
-
-.student-card-row i {
-  width: 4px;
-  height: 4px;
-  background: var(--signal);
-}
-
-.student-card-row small {
-  margin-left: auto;
-}
-
 .art-student .gallery-caption {
   color: #0a0a0a;
 }
 
-/* StudentCore — cascade gallery */
-.gallery-cascade {
+/* Stack-card gallery — for landscape screenshots */
+.gallery-stack {
   position: absolute;
   z-index: 2;
-  inset: 9% 0 0;
+  inset: 5% 0 5%;
 }
 
-.gallery-cascade-item {
+.gallery-stack-item {
   position: absolute;
-  width: 24%;
+  left: 50%;
+  width: 72%;
+  height: 36%;
   overflow: hidden;
-  border: 1px solid rgba(10, 10, 10, 0.35);
-  background: #101010;
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(239, 238, 230, 0.08);
-  transform-origin: center center;
-  transition: transform 580ms cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid rgba(239, 238, 230, 0.32);
+  background: #0f0f0f;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.58);
+  transform: translateX(-50%);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: auto;
 }
 
-.gallery-cascade-item img {
+.gallery-stack-item img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1161,22 +1111,18 @@ button {
   object-position: top;
 }
 
-.cascade-item--0 { z-index: 1; top: 0%;   left: -2%;  transform: rotate(-8deg); }
-.cascade-item--1 { z-index: 2; top: 4%;   left: 9%;   transform: rotate(-5.5deg); }
-.cascade-item--2 { z-index: 3; top: 9%;   left: 20%;  transform: rotate(-2.8deg); }
-.cascade-item--3 { z-index: 7; top: 5%;   left: 31%;  width: 27%; transform: rotate(0.5deg); }
-.cascade-item--4 { z-index: 3; top: 11%;  left: 46%;  transform: rotate(3deg); }
-.cascade-item--5 { z-index: 2; top: 15%;  left: 59%;  transform: rotate(5.5deg); }
-.cascade-item--6 { z-index: 1; top: 18%;  left: 73%;  transform: rotate(8deg); }
+.stack-item--0 { z-index: 5; top: 0%; }
+.stack-item--1 { z-index: 4; top: 16%; }
+.stack-item--2 { z-index: 3; top: 32%; }
+.stack-item--3 { z-index: 2; top: 48%; }
+.stack-item--4 { z-index: 1; top: 64%; }
 
 @media (hover: hover) and (pointer: fine) {
-  .project-stage:hover .cascade-item--0 { transform: translate(-4%, -5%) rotate(-8deg); }
-  .project-stage:hover .cascade-item--1 { transform: translate(-3%, -4%) rotate(-5.5deg); }
-  .project-stage:hover .cascade-item--2 { transform: translate(-1.5%, -2%) rotate(-2.8deg); }
-  .project-stage:hover .cascade-item--3 { transform: translateY(-6%) rotate(0.5deg); }
-  .project-stage:hover .cascade-item--4 { transform: translate(1.5%, -2%) rotate(3deg); }
-  .project-stage:hover .cascade-item--5 { transform: translate(3%, -4%) rotate(5.5deg); }
-  .project-stage:hover .cascade-item--6 { transform: translate(4%, -5%) rotate(8deg); }
+  .gallery-stack-item:hover {
+    transform: translateX(-50%) translateY(-14%);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.65);
+    z-index: 99;
+  }
 }
 
 /* Project 04 — Commitment */
