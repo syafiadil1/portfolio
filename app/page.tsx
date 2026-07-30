@@ -78,7 +78,7 @@ const projects: readonly Project[] = [
   },
   {
     index: "04",
-    title: "StudentCore",
+    title: "StudentCore System",
     subtitle: "One command center for university life.",
     description:
       "A local-first academic organizer for courses, weekly timetables, tasks, assessments, deadlines, and course files in one terminal-inspired web app.",
@@ -92,7 +92,7 @@ const projects: readonly Project[] = [
   },
   {
     index: "05",
-    title: "Commitment",
+    title: "Commitment Manager System",
     subtitle: "Bills remembered, stress reduced.",
     description:
       "A cross-platform bills and commitments tracker for recurring and one-off payments, with due-date cycles, payment history, local persistence, and reminder-driven momentum.",

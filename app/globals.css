@@ -731,7 +731,9 @@ button {
   font-size: clamp(2.5rem, 5.4vw, 6rem);
   font-weight: 780;
   letter-spacing: -0.075em;
-  line-height: 0.86;
+  line-height: 0.92;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .project-heading p {
@@ -1909,7 +1911,8 @@ footer a:focus-visible::after {
   }
 
   .project-heading h3 {
-    font-size: clamp(2.3rem, 12vw, 4.7rem);
+    font-size: clamp(2rem, 10vw, 3.8rem);
+    line-height: 0.95;
   }
 
   .project-body {
