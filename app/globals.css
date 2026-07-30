@@ -177,6 +177,13 @@ button {
   display: block;
 }
 
+.intro-name-sub {
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  margin-top: -0.08em;
+}
+
 .intro-meter {
   display: grid;
   grid-template-columns: 1fr auto;

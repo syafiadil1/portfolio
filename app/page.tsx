@@ -616,7 +616,15 @@ export default function Home() {
                 animate={reduceMotion ? undefined : { y: 0 }}
                 transition={{ duration: 0.64, ease }}
               >
-                SYAFI ADIL
+                SYAFI
+              </motion.span>
+              <motion.span
+                className="intro-name-sub"
+                initial={reduceMotion ? false : { y: "110%" }}
+                animate={reduceMotion ? undefined : { y: 0 }}
+                transition={{ duration: 0.64, ease, delay: 0.08 }}
+              >
+                PORTFOLIO
               </motion.span>
             </div>
             <div className="intro-meter">
