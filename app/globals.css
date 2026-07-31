@@ -1086,22 +1086,21 @@ button {
 .gallery-stack {
   position: absolute;
   z-index: 2;
-  inset: 5% 0 5%;
+  inset: 3% 0 3%;
 }
 
 .gallery-stack-item {
   position: absolute;
-  left: 50%;
-  width: 48%;
+  width: 52%;
   height: auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid rgba(239, 238, 230, 0.32);
   background: #0f0f0f;
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.58);
-  transform: translateX(-50%);
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
     width 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    left 520ms cubic-bezier(0.22, 1, 0.36, 1),
     top 520ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: auto;
@@ -1115,11 +1114,12 @@ button {
   object-position: top;
 }
 
-.stack-item--0 { z-index: 5; top: 0%; }
-.stack-item--1 { z-index: 4; top: 13%; }
-.stack-item--2 { z-index: 3; top: 26%; }
-.stack-item--3 { z-index: 2; top: 39%; }
-.stack-item--4 { z-index: 1; top: 52%; }
+/* scattered organic pile — no two cards share the same spot */
+.stack-item--0 { z-index: 5; top: 2%;   left: 1%;  transform: rotate(-3deg); }
+.stack-item--1 { z-index: 4; top: 12%;  left: 38%; transform: rotate(1.8deg); }
+.stack-item--2 { z-index: 3; top: 24%;  left: 3%;  transform: rotate(-1.2deg); }
+.stack-item--3 { z-index: 2; top: 36%;  left: 36%; transform: rotate(2.5deg); }
+.stack-item--4 { z-index: 1; top: 48%;  left: 6%;  transform: rotate(-2deg); }
 
 @media (hover: hover) and (pointer: fine) {
   .gallery-stack-item:hover {
@@ -1127,8 +1127,8 @@ button {
     height: auto;
     aspect-ratio: 16 / 9;
     top: 50% !important;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(0deg) !important;
     box-shadow: 0 28px 56px rgba(0, 0, 0, 0.72);
     z-index: 99;
   }
