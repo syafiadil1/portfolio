@@ -3,6 +3,12 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
+const lonjakCampaignAssets = [
+  "lonjak-campaign-home.webp",
+  "lonjak-campaign-path.webp",
+  "lonjak-campaign-profile.webp",
+  "lonjak-campaign-notes.webp",
+];
 const cafeAssets = [
   "cafe-home.webp",
   "cafe-menu.webp",
@@ -15,6 +21,23 @@ const cafeAssets = [
   "cafe-location.webp",
   "cafe-orders.webp",
   "cafe-rewards.webp",
+];
+const cafeFeaturedAssets = [
+  "cafe-menu.webp",
+  "cafe-customize.webp",
+  "cafe-cart.webp",
+  "cafe-review.webp",
+  "cafe-rewards.webp",
+];
+const commitmentAssets = [
+  "commitment-dashboard.webp",
+  "commitment-bills.webp",
+  "commitment-create.webp",
+  "commitment-planner.webp",
+  "commitment-insights.webp",
+  "commitment-categories.webp",
+  "commitment-history.webp",
+  "commitment-schedule.webp",
 ];
 
 async function render() {
@@ -41,18 +64,14 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /PRODUCTS/);
   assert.match(html, /Selected work/i);
   assert.match(html, /LONJAK/);
-  assert.match(html, /\/projects\/lonjak-home\.webp/);
-  assert.match(html, /\/projects\/lonjak-snap\.webp/);
-  assert.match(html, /\/projects\/lonjak-notes\.webp/);
-  assert.match(html, /\/projects\/lonjak-path\.webp/);
-  assert.match(html, /\/projects\/lonjak-tutor\.webp/);
+  for (const asset of lonjakCampaignAssets) assert.match(html, new RegExp(`/projects/${asset.replace(".", "\\.")}`));
   assert.match(html, /PRIVATE REPOSITORY/);
   assert.match(html, /Aurum Jets/);
   assert.match(html, /StudentCore/);
   assert.match(html, /Commitment/);
   assert.match(html, /Cafe Ordering System/);
   assert.match(html, /MOBILE COMMERCE/);
-  for (const asset of cafeAssets) assert.match(html, new RegExp(`/projects/${asset.replace(".", "\\.")}`));
+  for (const asset of cafeFeaturedAssets) assert.match(html, new RegExp(`/projects/${asset.replace(".", "\\.")}`));
   assert.match(html, /github\.com\/syafiadil1\/aurum-jets/);
   assert.match(html, /github\.com\/syafiadil1\/studentcoresystem/);
   assert.match(html, /github\.com\/syafiadil1\/commitmentapp/);
@@ -87,11 +106,8 @@ test("keeps the implementation self-contained and production-ready", async () =>
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await access(new URL("../public/og.png", import.meta.url));
-  await access(new URL("../public/projects/lonjak-home.webp", import.meta.url));
-  await access(new URL("../public/projects/lonjak-snap.webp", import.meta.url));
-  await access(new URL("../public/projects/lonjak-notes.webp", import.meta.url));
-  await access(new URL("../public/projects/lonjak-path.webp", import.meta.url));
-  await access(new URL("../public/projects/lonjak-tutor.webp", import.meta.url));
+  await Promise.all(lonjakCampaignAssets.map((asset) => access(new URL(`../public/projects/${asset}`, import.meta.url))));
   await Promise.all(cafeAssets.map((asset) => access(new URL(`../public/projects/${asset}`, import.meta.url))));
+  await Promise.all(commitmentAssets.map((asset) => access(new URL(`../public/projects/${asset}`, import.meta.url))));
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
 });

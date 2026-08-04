@@ -129,6 +129,17 @@ const aurumScreens = [
   { src: "/projects/aurum-contact.webp", alt: "Aurum Jets private consultation form", width: 1800, height: 974 },
 ] as const;
 
+const commitmentScreens = [
+  { src: "/projects/commitment-dashboard.webp", alt: "Commitment Manager monthly bills dashboard", width: 720, height: 1561 },
+  { src: "/projects/commitment-bills.webp", alt: "Commitment Manager bills and payment status list", width: 720, height: 1561 },
+  { src: "/projects/commitment-create.webp", alt: "Commitment Manager create bill form", width: 720, height: 1561 },
+  { src: "/projects/commitment-planner.webp", alt: "Commitment Manager upcoming payment planner", width: 720, height: 1561 },
+  { src: "/projects/commitment-insights.webp", alt: "Commitment Manager commitment value insights", width: 720, height: 1561 },
+  { src: "/projects/commitment-categories.webp", alt: "Commitment Manager spending category insights", width: 720, height: 1561 },
+  { src: "/projects/commitment-history.webp", alt: "Commitment Manager completed payment history", width: 720, height: 1561 },
+  { src: "/projects/commitment-schedule.webp", alt: "Commitment Manager detailed bill schedule", width: 720, height: 1561 },
+] as const;
+
 const studentScreenDefs = [
   { src: "/projects/student-01.jpg", alt: "StudentCore System dashboard overview", width: 1280, height: 654 },
   { src: "/projects/student-02.jpg", alt: "StudentCore courses and schedule view", width: 1280, height: 654 },
@@ -215,13 +226,12 @@ function SectionLabel({ index, children }: { index: string; children: ReactNode 
   );
 }
 
-const lonjakScreenDefs = [
-  { src: "/projects/lonjak-snap.webp", alt: "LONJAK Snap and Practice screen", width: 720, height: 1561 },
-  { src: "/projects/lonjak-notes.webp", alt: "LONJAK AI Class Notes recording screen", width: 720, height: 1561 },
-  { src: "/projects/lonjak-home.webp", alt: "LONJAK adaptive learning home screen", width: 720, height: 1561 },
-  { src: "/projects/lonjak-path.webp", alt: "LONJAK KSSM Mathematics learning path", width: 720, height: 1561 },
-  { src: "/projects/lonjak-tutor.webp", alt: "LONJAK AI mathematics tutor screen", width: 720, height: 1561 },
-];
+const lonjakCampaignScreens = [
+  { src: "/projects/lonjak-campaign-home.webp", alt: "Cinematic LONJAK home screen product campaign", width: 720, height: 1074 },
+  { src: "/projects/lonjak-campaign-path.webp", alt: "Cinematic LONJAK learning path and AI tutor campaign", width: 720, height: 1074 },
+  { src: "/projects/lonjak-campaign-profile.webp", alt: "Cinematic LONJAK profile, league, and learning plan campaign", width: 720, height: 1074 },
+  { src: "/projects/lonjak-campaign-notes.webp", alt: "Cinematic LONJAK class notes and Snap and Practice campaign", width: 720, height: 1074 },
+] as const;
 
 function GalleryFigure({ artClass, toplineClass, topline, countLabel, countClass, screens, captionLeft, captionRight, title }: {
   artClass: string;
@@ -255,17 +265,27 @@ function GalleryFigure({ artClass, toplineClass, topline, countLabel, countClass
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "lonjak") {
     return (
-      <GalleryFigure
-        artClass="art-lonjak"
-        toplineClass="lonjak-topline"
-        topline="LONJAK / REAL PRODUCT SCREENS"
-        countLabel="05 VIEWS"
-        countClass="lonjak-live"
-        screens={lonjakScreenDefs}
-        captionLeft="ADAPTIVE LEARNING"
-        captionRight="ANDROID FIRST"
-        title={title}
-      />
+      <figure className="project-art art-lonjak" aria-label={`${title} cinematic product campaign`}>
+        <div className="visual-topline lonjak-topline">
+          <span>LONJAK / CINEMATIC PRODUCT CAMPAIGN</span>
+          <span className="lonjak-live">04 EDITIONS</span>
+        </div>
+        <div className="lonjak-campaign-gallery">
+          {lonjakCampaignScreens.map((screen, index) => (
+            <div className={`lonjak-campaign-poster lonjak-campaign-poster--${index}`} key={screen.src}>
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                width={screen.width}
+                height={screen.height}
+                sizes="(max-width: 767px) 30vw, 22vw"
+                unoptimized
+              />
+            </div>
+          ))}
+        </div>
+        <figcaption className="gallery-caption"><span>CAMPAIGN VISUALS</span><span>MOBILE LEARNING</span></figcaption>
+      </figure>
     );
   }
 
@@ -327,29 +347,38 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   }
 
   return (
-    <figure className="project-art art-commitment" aria-label={`${title} interface preview`}>
+    <figure className="project-art art-commitment" aria-label={`${title} product screens`}>
       <div className="visual-topline commitment-topline">
-        <span>COMMITMENT / DASHBOARD</span>
-        <span>05 PANELS</span>
+        <span>COMMITMENT / REAL PRODUCT SCREENS</span>
+        <span className="commitment-count">08 VIEWS</span>
       </div>
-      <div className="gallery-fan">
-        <div className="gallery-screen gallery-screen--0 commitment-screen">
-          <div className="commitment-card"><span className="commitment-card-label">DUE SOON</span><strong>04</strong><small>BILLS</small></div>
+      <div className="commitment-gallery">
+        <div className="commitment-hero-screen">
+          <Image
+            src={commitmentScreens[0].src}
+            alt={commitmentScreens[0].alt}
+            width={commitmentScreens[0].width}
+            height={commitmentScreens[0].height}
+            sizes="(max-width: 767px) 36vw, 22vw"
+            unoptimized
+          />
         </div>
-        <div className="gallery-screen gallery-screen--1 commitment-screen">
-          <div className="commitment-card"><span className="commitment-card-label">UPCOMING</span><strong>RM 428</strong><small>TOTAL</small></div>
-        </div>
-        <div className="gallery-screen gallery-screen--2 commitment-screen">
-          <div className="commitment-card"><span className="commitment-card-label">CLOUD STORAGE</span><strong>RM 42</strong><small>MONTHLY</small></div>
-        </div>
-        <div className="gallery-screen gallery-screen--3 commitment-screen">
-          <div className="commitment-card"><span className="commitment-card-label">MOBILE PLAN</span><strong>RM 98</strong><small>MONTHLY</small></div>
-        </div>
-        <div className="gallery-screen gallery-screen--4 commitment-screen">
-          <div className="commitment-card"><span className="commitment-card-label">INSURANCE</span><strong>RM 288</strong><small>ANNUAL</small></div>
+        <div className="commitment-screen-strip" aria-label="Additional Commitment Manager screens">
+          {commitmentScreens.slice(1).map((screen, index) => (
+            <div className={`commitment-strip-screen commitment-strip-screen--${index + 1}`} key={screen.src}>
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                width={screen.width}
+                height={screen.height}
+                sizes="(max-width: 767px) 12vw, 8vw"
+                unoptimized
+              />
+            </div>
+          ))}
         </div>
       </div>
-      <figcaption className="gallery-caption"><span>CYCLE 76%</span><span>PAID 08</span></figcaption>
+      <figcaption className="gallery-caption"><span>BILLS → INSIGHTS</span><span>MOBILE FIRST</span></figcaption>
     </figure>
   );
 }
@@ -670,7 +699,7 @@ export default function Home() {
 
       <header className="site-header">
         <a href="#top" className="wordmark" aria-label="Syafi Adil, back to top">
-          <span>SA</span><i />
+          <span>Syafi Adil</span><i />
         </a>
         <nav aria-label="Primary navigation">
           <a href="#about"><small>01</small> About</a>
