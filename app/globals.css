@@ -1,5 +1,5 @@
 /* Hallmark · component: project-image-galleries · genre: editorial · tone: evidence-led
- * palette anchors: lonjak-lime + commitment-blue · fingerprint: cinematic campaign wall + ledger strip
+ * palette anchors: lonjak-lime + cafe-rust + commitment-blue · fingerprint: cinematic campaign walls + ledger strip
  * pre-emit critique: P5 H5 E5 S5 R5 V5 · contrast: pass · chrome: pass · tokens: pass · responsive: pass
  */
 @import "tailwindcss";
@@ -1355,11 +1355,69 @@ button {
   color: var(--cafe-rust);
 }
 
-.art-cafe .gallery-screen {
-  aspect-ratio: 1290 / 2796;
-  border-color: color-mix(in oklch, var(--cafe-ink) 24%, transparent);
+.cafe-campaign-gallery {
+  position: absolute;
+  z-index: 2;
+  inset: 9% 1.5% 7%;
+}
+
+.cafe-campaign-poster {
+  position: absolute;
+  overflow: hidden;
+  aspect-ratio: 720 / 1074;
+  border: 1px solid color-mix(in oklch, var(--cafe-ink) 24%, transparent);
   background: var(--cafe-soft);
-  box-shadow: 0 18px 36px color-mix(in oklch, var(--cafe-ink) 18%, transparent);
+  box-shadow: 0 20px 44px color-mix(in oklch, var(--cafe-ink) 30%, transparent);
+  transform-origin: center bottom;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cafe-campaign-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cafe-campaign-poster--0 {
+  z-index: 3;
+  top: 10%;
+  bottom: 3%;
+  left: 2%;
+  width: 29%;
+  transform: rotate(-1.8deg);
+}
+
+.cafe-campaign-poster--1 {
+  z-index: 5;
+  top: 0;
+  bottom: 10%;
+  left: 35.5%;
+  width: 29%;
+  transform: rotate(0.8deg);
+}
+
+.cafe-campaign-poster--2 {
+  z-index: 2;
+  top: 12%;
+  right: 2.5%;
+  bottom: 2%;
+  width: 29%;
+  transform: rotate(1.7deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-stage:hover .cafe-campaign-poster--0 {
+    transform: translate(-2%, 2%) rotate(-2.4deg);
+  }
+
+  .project-stage:hover .cafe-campaign-poster--1 {
+    transform: translateY(-3%) rotate(0.2deg);
+  }
+
+  .project-stage:hover .cafe-campaign-poster--2 {
+    transform: translate(2%, 2%) rotate(2.3deg);
+  }
 }
 
 .art-cafe .gallery-caption {

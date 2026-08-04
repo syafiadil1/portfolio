@@ -120,6 +120,12 @@ const cafeScreens = [
   { src: "/projects/cafe-rewards.webp", alt: "Ruang customer rewards balance", width: 720, height: 1375 },
 ] as const;
 
+const cafeCampaignScreens = [
+  { src: "/projects/cafe-campaign-home.webp", alt: "Cinematic Ruang order-ahead home campaign", width: 720, height: 1074 },
+  { src: "/projects/cafe-campaign-menu.webp", alt: "Cinematic Ruang menu and drink customisation campaign", width: 720, height: 1074 },
+  { src: "/projects/cafe-campaign-history.webp", alt: "Cinematic Ruang order tracking, history, and rewards campaign", width: 720, height: 1074 },
+] as const;
+
 const aurumScreens = [
   { src: "/projects/aurum-home.webp", alt: "Aurum Jets cinematic landing page", width: 1800, height: 965 },
   { src: "/projects/aurum-fleet.webp", alt: "Aurum Jets interactive fleet selection", width: 1800, height: 956 },
@@ -330,19 +336,28 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   }
 
   if (visual === "cafe") {
-    const picks = [cafeScreens[1], cafeScreens[3], cafeScreens[2], cafeScreens[5], cafeScreens[10]];
     return (
-      <GalleryFigure
-        artClass="art-cafe"
-        toplineClass="cafe-topline"
-        topline="RUANG / ORDERING FLOW"
-        countLabel="05 VIEWS"
-        countClass="cafe-count"
-        screens={picks}
-        captionLeft="MENU → PICKUP"
-        captionRight="MOBILE ORDERING"
-        title={title}
-      />
+      <figure className="project-art art-cafe" aria-label={`${title} cinematic product campaign`}>
+        <div className="visual-topline cafe-topline">
+          <span>RUANG / CINEMATIC PRODUCT CAMPAIGN</span>
+          <span className="cafe-count">03 EDITIONS</span>
+        </div>
+        <div className="cafe-campaign-gallery">
+          {cafeCampaignScreens.map((screen, index) => (
+            <div className={`cafe-campaign-poster cafe-campaign-poster--${index}`} key={screen.src}>
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                width={screen.width}
+                height={screen.height}
+                sizes="(max-width: 767px) 30vw, 22vw"
+                unoptimized
+              />
+            </div>
+          ))}
+        </div>
+        <figcaption className="gallery-caption"><span>ORDER AHEAD → REPEAT</span><span>MOBILE COMMERCE</span></figcaption>
+      </figure>
     );
   }
 
