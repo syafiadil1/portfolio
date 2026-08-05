@@ -780,28 +780,6 @@ button {
   font-family: var(--font-body);
 }
 
-.project-reveal {
-  position: absolute;
-  inset: auto 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 58px;
-  padding: 0 1.25rem;
-  color: #080808;
-  background: var(--signal);
-  font-size: 0.65rem;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  transform: translateY(101%);
-  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.project-stage:hover .project-reveal,
-.project-stage:focus-within .project-reveal {
-  transform: translateY(0);
-}
-
 .project-notes {
   padding-bottom: 0.15rem;
 }
@@ -2082,8 +2060,6 @@ footer a:focus-visible::after {
   .project-notes {
     padding-top: 0.5rem;
   }
-
-  .project-reveal { display: none; }
 
   .skills-copy h2 {
     font-size: clamp(2.35rem, 10vw, 4.5rem);

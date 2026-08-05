@@ -430,10 +430,6 @@ function ProjectCard({ project }: { project: Project }) {
       }}
     >
       <ProjectVisual visual={project.visual} title={project.title} />
-      <div className="project-reveal" aria-hidden="true">
-        <span>{project.isPrivate ? "READ PRIVATE BUILD NOTE" : "OPEN GITHUB REPOSITORY"}</span>
-        <span>↗</span>
-      </div>
     </motion.div>
   );
 
