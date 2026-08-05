@@ -504,15 +504,6 @@ function ProjectCard({ project }: { project: Project }) {
             )}
           </AnimatePresence>
           <div className="project-actions">
-            {project.repoUrl ? (
-              <a className="repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
-                <span>VIEW SOURCE ON GITHUB</span><span aria-hidden="true">↗</span>
-              </a>
-            ) : (
-              <div className="private-source" aria-label="Private proprietary repository">
-                <span>PRIVATE REPOSITORY</span><span>PROPRIETARY SOURCE</span>
-              </div>
-            )}
             <button
               className="text-link"
               type="button"
