@@ -36,7 +36,7 @@ type Project = {
 
 const projects: readonly Project[] = [
   {
-    status: "in-progress",
+    status: "completed",
     index: "01",
     title: "LONJAK",
     subtitle: "Adaptive Mathematics, built for Malaysian learners.",
@@ -51,7 +51,7 @@ const projects: readonly Project[] = [
     isPrivate: true,
   },
   {
-    status: "in-progress",
+    status: "completed",
     index: "02",
     title: "Cafe Ordering System",
     subtitle: "Order ahead, from menu to pickup.",
@@ -111,6 +111,9 @@ const projects: readonly Project[] = [
     isPrivate: false,
   },
 ];
+
+const inProgressProjects = projects.filter((project) => project.status === "in-progress");
+const completedProjects = projects.filter((project) => project.status === "completed");
 
 const cafeScreens = [
   { src: "/projects/cafe-home.webp", alt: "Ruang Coffee Room ordering home screen", width: 720, height: 1416 },
@@ -734,33 +737,31 @@ export default function Home() {
           </div>
         </Reveal>
         <div className="project-groups">
-          <section className="project-group" aria-labelledby="in-progress-heading">
-            <div className="project-group-heading">
-              <div>
-                <span className="project-group-kicker">01 / CURRENTLY BUILDING</span>
-                <h3 id="in-progress-heading">In progress</h3>
+          {inProgressProjects.length > 0 && (
+            <section className="project-group" aria-labelledby="in-progress-heading">
+              <div className="project-group-heading">
+                <div>
+                  <span className="project-group-kicker">01 / CURRENTLY BUILDING</span>
+                  <h3 id="in-progress-heading">In progress</h3>
+                </div>
+                <span className="project-group-count">{String(inProgressProjects.length).padStart(2, "0")} PROJECTS</span>
               </div>
-              <span className="project-group-count">02 PROJECTS</span>
-            </div>
-            <div className="project-list">
-              {projects.filter((project) => project.status === "in-progress").map((project) => (
-                <ProjectCard project={project} key={project.title} />
-              ))}
-            </div>
-          </section>
+              <div className="project-list">
+                {inProgressProjects.map((project) => <ProjectCard project={project} key={project.title} />)}
+              </div>
+            </section>
+          )}
 
           <section className="project-group" aria-labelledby="completed-heading">
             <div className="project-group-heading">
               <div>
-                <span className="project-group-kicker">02 / SHIPPED BUILDS</span>
+                <span className="project-group-kicker">{inProgressProjects.length > 0 ? "02" : "01"} / SHIPPED BUILDS</span>
                 <h3 id="completed-heading">Completed</h3>
               </div>
-              <span className="project-group-count">03 PROJECTS</span>
+              <span className="project-group-count">{String(completedProjects.length).padStart(2, "0")} PROJECTS</span>
             </div>
             <div className="project-list">
-              {projects.filter((project) => project.status === "completed").map((project) => (
-                <ProjectCard project={project} key={project.title} />
-              ))}
+              {completedProjects.map((project) => <ProjectCard project={project} key={project.title} />)}
             </div>
           </section>
         </div>

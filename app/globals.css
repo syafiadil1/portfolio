@@ -856,7 +856,7 @@ button {
 }
 
 .project-status--completed {
-  color: var(--fg);
+  color: #34a853;
 }
 
 .project-status--completed .project-status-dot {
