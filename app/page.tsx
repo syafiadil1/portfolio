@@ -162,7 +162,6 @@ const studentScreenDefs = [
   { src: "/projects/student-04.jpg", alt: "StudentCore file management workspace", width: 1280, height: 658 },
   { src: "/projects/student-05.jpg", alt: "StudentCore terminal command interface", width: 1280, height: 655 },
   { src: "/projects/student-06.jpg", alt: "StudentCore data table and records", width: 1280, height: 656 },
-  { src: "/projects/student-07.jpg", alt: "StudentCore settings and configuration", width: 1280, height: 658 },
 ];
 
 const skills = [
