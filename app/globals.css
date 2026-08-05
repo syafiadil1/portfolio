@@ -837,22 +837,6 @@ button {
   margin-top: 0.65rem;
 }
 
-.visual-topline {
-  position: absolute;
-  z-index: 8;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
-  border-bottom: 1px solid rgba(239, 238, 230, 0.24);
-  font-size: clamp(0.4rem, 0.72vw, 0.68rem);
-  font-weight: 820;
-  letter-spacing: 0.12em;
-}
-
 /* Shared fanned gallery */
 .gallery-fan {
   position: absolute;
@@ -884,24 +868,6 @@ button {
 .gallery-screen--2 { z-index: 5; top: 3%; left: 39%; width: 23%; }
 .gallery-screen--3 { z-index: 2; top: 10%; left: 60.5%; transform: rotate(2.5deg); }
 .gallery-screen--4 { z-index: 1; top: 18%; left: 80%; transform: rotate(5deg); }
-
-.gallery-caption {
-  position: absolute;
-  z-index: 7;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  min-height: 24%;
-  padding: clamp(0.65rem, 1.35vw, 1.2rem) clamp(0.75rem, 1.5vw, 1.35rem);
-  margin: 0;
-  font-size: clamp(0.36rem, 0.66vw, 0.62rem);
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  pointer-events: none;
-}
 
 @media (hover: hover) and (pointer: fine) {
   .project-stage:hover .gallery-screen--0 { transform: translate(-5%, -2%) rotate(-5deg); }
@@ -946,17 +912,6 @@ button {
   width: 58%;
   aspect-ratio: 1;
   background: color-mix(in oklch, var(--lonjak-violet) 14%, transparent);
-}
-
-.lonjak-topline {
-  border-color: color-mix(in oklch, var(--lonjak-lime) 32%, transparent);
-  background: color-mix(in oklch, var(--lonjak-deep) 82%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.lonjak-live {
-  color: var(--lonjak-lime);
 }
 
 .lonjak-campaign-gallery {
@@ -1037,11 +992,6 @@ button {
   }
 }
 
-.art-lonjak .gallery-caption {
-  color: var(--lonjak-lime);
-  background: linear-gradient(to top, var(--lonjak-deep) 10%, transparent);
-}
-
 /* Project 02 — Aurum Jets */
 .art-aurum {
   margin: 0;
@@ -1050,24 +1000,10 @@ button {
   isolation: isolate;
 }
 
-.aurum-topline {
-  border-color: var(--aurum-rule);
-  background: color-mix(in oklch, var(--aurum-ink) 88%, transparent);
-  backdrop-filter: blur(10px);
-}
-
-.aurum-count {
-  color: var(--aurum-gold);
-}
-
 .art-aurum .gallery-stack-item {
   border-color: var(--aurum-rule);
   background: var(--aurum-panel);
   box-shadow: 0 18px 40px color-mix(in oklch, var(--aurum-ink) 72%, transparent);
-}
-
-.art-aurum .gallery-caption {
-  color: var(--aurum-gold);
 }
 
 /* Project 03 — StudentCore */
@@ -1080,19 +1016,11 @@ button {
   background-size: 8% 16%;
 }
 
-.student-topline {
-  border-color: rgba(10, 10, 10, 0.28);
-}
-
 .art-student .gallery-stack-item {
   border-color: rgba(10, 10, 10, 0.25);
   background: #101010;
   color: #efeee6;
   box-shadow: 4px 4px 0 var(--signal);
-}
-
-.art-student .gallery-caption {
-  color: #0a0a0a;
 }
 
 /* Stack-card gallery — for landscape screenshots */
@@ -1176,17 +1104,6 @@ button {
   transform: translateY(-35%);
 }
 
-.commitment-topline {
-  border-color: color-mix(in oklch, var(--commitment-blue) 40%, transparent);
-  background: color-mix(in oklch, var(--commitment-ink) 86%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.commitment-count {
-  color: var(--commitment-blue);
-}
-
 .commitment-gallery {
   position: absolute;
   z-index: 2;
@@ -1247,10 +1164,6 @@ button {
   transform: translateY(-15%);
 }
 
-.art-commitment .gallery-caption {
-  color: var(--commitment-paper);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .project-stage:hover .commitment-hero-screen {
     transform: translate(-2%, -1.5%) rotate(-2.4deg);
@@ -1279,17 +1192,6 @@ button {
     linear-gradient(to bottom, color-mix(in oklch, var(--cafe-ink) 8%, transparent) 1px, transparent 1px);
   background-size: 8% 16%;
   isolation: isolate;
-}
-
-.cafe-topline {
-  border-color: color-mix(in oklch, var(--cafe-ink) 24%, transparent);
-  background: color-mix(in oklch, var(--cafe-paper) 86%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.cafe-count {
-  color: var(--cafe-rust);
 }
 
 .cafe-campaign-gallery {
@@ -1355,11 +1257,6 @@ button {
   .project-stage:hover .cafe-campaign-poster--2 {
     transform: translate(2%, 2%) rotate(2.3deg);
   }
-}
-
-.art-cafe .gallery-caption {
-  color: var(--cafe-paper);
-  background: linear-gradient(to top, var(--cafe-ink) 8%, transparent);
 }
 
 .skills-section {

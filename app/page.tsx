@@ -239,43 +239,10 @@ const lonjakCampaignScreens = [
   { src: "/projects/lonjak-campaign-notes.webp", alt: "Cinematic LONJAK class notes and Snap and Practice campaign", width: 720, height: 1074 },
 ] as const;
 
-function GalleryFigure({ artClass, toplineClass, topline, countLabel, countClass, screens, captionLeft, captionRight, title }: {
-  artClass: string;
-  toplineClass: string;
-  topline: string;
-  countLabel: string;
-  countClass: string;
-  screens: { src: string; alt: string; width: number; height: number }[];
-  captionLeft: string;
-  captionRight: string;
-  title: string;
-}) {
-  return (
-    <figure className={`project-art ${artClass}`} aria-label={`${title} product screens`}>
-      <div className={`visual-topline ${toplineClass}`}>
-        <span>{topline}</span>
-        <span className={countClass}>{countLabel}</span>
-      </div>
-      <div className="gallery-fan">
-        {screens.map((s, i) => (
-          <div className={`gallery-screen gallery-screen--${i}`} key={s.src}>
-            <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 24vw, 18vw" unoptimized />
-          </div>
-        ))}
-      </div>
-      <figcaption className="gallery-caption"><span>{captionLeft}</span><span>{captionRight}</span></figcaption>
-    </figure>
-  );
-}
-
 function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "lonjak") {
     return (
       <figure className="project-art art-lonjak" aria-label={`${title} cinematic product campaign`}>
-        <div className="visual-topline lonjak-topline">
-          <span>LONJAK / CINEMATIC PRODUCT CAMPAIGN</span>
-          <span className="lonjak-live">04 EDITIONS</span>
-        </div>
         <div className="lonjak-campaign-gallery">
           {lonjakCampaignScreens.map((screen, index) => (
             <div className={`lonjak-campaign-poster lonjak-campaign-poster--${index}`} key={screen.src}>
@@ -290,7 +257,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
             </div>
           ))}
         </div>
-        <figcaption className="gallery-caption"><span>CAMPAIGN VISUALS</span><span>MOBILE LEARNING</span></figcaption>
       </figure>
     );
   }
@@ -299,10 +265,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
     const picks = [aurumScreens[0], aurumScreens[5], aurumScreens[1], aurumScreens[2], aurumScreens[4]];
     return (
       <figure className="project-art art-aurum" aria-label={`${title} product screens`}>
-        <div className="visual-topline aurum-topline">
-          <span>AURUM JETS / CINEMATIC WEBGL</span>
-          <span className="aurum-count">05 VIEWS</span>
-        </div>
         <div className="gallery-stack">
           {picks.map((s, i) => (
             <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
@@ -310,7 +272,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
             </div>
           ))}
         </div>
-        <figcaption className="gallery-caption"><span>FLEET → CONSULTATION</span><span>REAL-TIME 3D</span></figcaption>
       </figure>
     );
   }
@@ -319,10 +280,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
     const picks = [studentScreenDefs[0], studentScreenDefs[1], studentScreenDefs[2], studentScreenDefs[3], studentScreenDefs[5]];
     return (
       <figure className="project-art art-student" aria-label={`${title} product screens`}>
-        <div className="visual-topline student-topline">
-          <span>STUDENTCORE / WORKSPACE</span>
-          <span>05 PANELS</span>
-        </div>
         <div className="gallery-stack">
           {picks.map((s, i) => (
             <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
@@ -330,7 +287,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
             </div>
           ))}
         </div>
-        <figcaption className="gallery-caption"><span>TERMINAL WORKSPACE</span><span>LOCAL FIRST</span></figcaption>
       </figure>
     );
   }
@@ -338,10 +294,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "cafe") {
     return (
       <figure className="project-art art-cafe" aria-label={`${title} cinematic product campaign`}>
-        <div className="visual-topline cafe-topline">
-          <span>RUANG / CINEMATIC PRODUCT CAMPAIGN</span>
-          <span className="cafe-count">03 EDITIONS</span>
-        </div>
         <div className="cafe-campaign-gallery">
           {cafeCampaignScreens.map((screen, index) => (
             <div className={`cafe-campaign-poster cafe-campaign-poster--${index}`} key={screen.src}>
@@ -356,17 +308,12 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
             </div>
           ))}
         </div>
-        <figcaption className="gallery-caption"><span>ORDER AHEAD → REPEAT</span><span>MOBILE COMMERCE</span></figcaption>
       </figure>
     );
   }
 
   return (
     <figure className="project-art art-commitment" aria-label={`${title} product screens`}>
-      <div className="visual-topline commitment-topline">
-        <span>COMMITMENT / REAL PRODUCT SCREENS</span>
-        <span className="commitment-count">08 VIEWS</span>
-      </div>
       <div className="commitment-gallery">
         <div className="commitment-hero-screen">
           <Image
@@ -393,7 +340,6 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
           ))}
         </div>
       </div>
-      <figcaption className="gallery-caption"><span>BILLS → INSIGHTS</span><span>MOBILE FIRST</span></figcaption>
     </figure>
   );
 }
