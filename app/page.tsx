@@ -271,16 +271,9 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   }
 
   if (visual === "aurum") {
-    const picks = [aurumScreens[0], aurumScreens[5], aurumScreens[1], aurumScreens[2], aurumScreens[4]];
     return (
       <figure className="project-art art-aurum" aria-label={`${title} product screens`}>
-        <div className="gallery-stack">
-          {picks.map((s, i) => (
-            <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
-              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 72vw, 52vw" unoptimized />
-            </div>
-          ))}
-        </div>
+        <LandscapeSwipeGallery screens={aurumScreens} label="Aurum Jets" theme="aurum" />
       </figure>
     );
   }
@@ -288,7 +281,7 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   if (visual === "student") {
     return (
       <figure className="project-art art-student" aria-label={`${title} product screens`}>
-        <LandscapeSwipeGallery screens={studentScreenDefs} />
+        <LandscapeSwipeGallery screens={studentScreenDefs} label="StudentCore System" theme="student" />
       </figure>
     );
   }
@@ -348,8 +341,12 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
 
 function LandscapeSwipeGallery({
   screens,
+  label,
+  theme,
 }: {
   screens: readonly { src: string; alt: string; width: number; height: number }[];
+  label: string;
+  theme: "student" | "aurum";
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const pointerStart = useRef<number | null>(null);
@@ -373,9 +370,9 @@ function LandscapeSwipeGallery({
 
   return (
     <div
-      className="landscape-gallery"
+      className={`landscape-gallery landscape-gallery--${theme}`}
       role="group"
-      aria-label="Swipe through StudentCore System screens"
+      aria-label={`Swipe through ${label} screens`}
       tabIndex={0}
       onKeyDown={(event) => {
         if (event.key === "ArrowRight") goTo(activeIndex + 1);
@@ -410,22 +407,25 @@ function LandscapeSwipeGallery({
         </motion.div>
       </AnimatePresence>
       <div className="landscape-gallery-footer">
-        <p>{activeScreen.alt.replace("StudentCore System ", "")}</p>
-        <div className="landscape-gallery-controls">
-          <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label="Previous StudentCore screen">←</button>
-          <div className="landscape-gallery-dots" aria-label="Choose a StudentCore screen">
+        <p>{activeScreen.alt.replace(`${label} `, "")}</p>
+        <div
+          className="landscape-gallery-controls"
+          onPointerDown={(event) => event.stopPropagation()}
+        >
+          <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label={`Previous ${label} screen`}>←</button>
+          <div className="landscape-gallery-dots" aria-label={`Choose a ${label} screen`}>
             {screens.map((screen, index) => (
               <button
                 type="button"
                 key={screen.src}
                 className={index === activeIndex ? "is-active" : ""}
                 onClick={() => goTo(index)}
-                aria-label={`Show screen ${index + 1}`}
+                aria-label={`Show ${label} screen ${index + 1}`}
                 aria-current={index === activeIndex ? "true" : undefined}
               />
             ))}
           </div>
-          <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label="Next StudentCore screen">→</button>
+          <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label={`Next ${label} screen`}>→</button>
         </div>
       </div>
     </div>
@@ -777,8 +777,6 @@ export default function Home() {
             <a className="hero-scroll" href="#work"><span>SCROLL TO WORK</span><i>↓</i></a>
           </div>
         </motion.div>
-        <div className="registration-mark mark-left" aria-hidden="true">+</div>
-        <div className="registration-mark mark-right" aria-hidden="true">+</div>
       </section>
 
       <section id="about" className="about-section page-gutter">

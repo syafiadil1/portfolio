@@ -501,23 +501,6 @@ button {
   letter-spacing: 0.08em;
 }
 
-.registration-mark {
-  position: absolute;
-  z-index: 4;
-  top: 50%;
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--rule);
-  border-radius: 50%;
-  color: var(--accent);
-  font-size: 1rem;
-}
-
-.mark-left { left: -15px; }
-.mark-right { right: -15px; }
-
 .section-label {
   display: grid;
   grid-template-columns: 4.5rem 1fr;
@@ -1169,6 +1152,44 @@ button {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.landscape-gallery--aurum {
+  color: var(--aurum-paper);
+}
+
+.landscape-gallery--aurum .landscape-gallery-topline {
+  border-color: var(--aurum-rule);
+  color: color-mix(in oklch, var(--aurum-paper) 68%, transparent);
+}
+
+.landscape-gallery--aurum .landscape-gallery-frame {
+  border-color: var(--aurum-rule);
+  background: var(--aurum-panel);
+  box-shadow: 0 14px 30px color-mix(in oklch, var(--aurum-ink) 72%, transparent);
+}
+
+.landscape-gallery--aurum .landscape-gallery-footer p {
+  color: color-mix(in oklch, var(--aurum-paper) 68%, transparent);
+}
+
+.landscape-gallery--aurum .landscape-gallery-controls > button {
+  border-color: var(--aurum-rule);
+  color: var(--aurum-paper);
+}
+
+.landscape-gallery--aurum .landscape-gallery-controls > button:hover,
+.landscape-gallery--aurum .landscape-gallery-controls > button:focus-visible {
+  color: var(--aurum-ink);
+  background: var(--aurum-paper);
+}
+
+.landscape-gallery--aurum .landscape-gallery-dots button {
+  background: color-mix(in oklch, var(--aurum-paper) 34%, transparent);
+}
+
+.landscape-gallery--aurum .landscape-gallery-dots button.is-active {
+  background: var(--aurum-gold);
 }
 
 .landscape-gallery-footer {
