@@ -20,6 +20,7 @@ import {
 } from "react";
 
 type Project = {
+  status: "in-progress" | "completed";
   index: string;
   title: string;
   subtitle: string;
@@ -35,6 +36,7 @@ type Project = {
 
 const projects: readonly Project[] = [
   {
+    status: "in-progress",
     index: "01",
     title: "LONJAK",
     subtitle: "Adaptive Mathematics, built for Malaysian learners.",
@@ -49,6 +51,7 @@ const projects: readonly Project[] = [
     isPrivate: true,
   },
   {
+    status: "in-progress",
     index: "02",
     title: "Cafe Ordering System",
     subtitle: "Order ahead, from menu to pickup.",
@@ -63,6 +66,7 @@ const projects: readonly Project[] = [
     isPrivate: true,
   },
   {
+    status: "completed",
     index: "03",
     title: "Aurum Jets",
     subtitle: "Private aviation, rendered in motion.",
@@ -77,6 +81,7 @@ const projects: readonly Project[] = [
     isPrivate: false,
   },
   {
+    status: "completed",
     index: "04",
     title: "StudentCore System",
     subtitle: "One command center for university life.",
@@ -91,6 +96,7 @@ const projects: readonly Project[] = [
     isPrivate: false,
   },
   {
+    status: "completed",
     index: "05",
     title: "Commitment Manager System",
     subtitle: "Bills remembered, stress reduced.",
@@ -716,11 +722,39 @@ export default function Home() {
           <SectionLabel index="02">SELECTED WORK / 2026</SectionLabel>
           <div className="section-intro">
             <h2>Selected<br /><span>case studies.</span></h2>
-            <p>Five builds spanning adaptive education, real-time 3D, academic tooling, mobile product work, and a new client ordering system in progress.</p>
+            <p>Five builds spanning adaptive education, real-time 3D, academic tooling, mobile product work, and client product foundations—clearly separated by what is shipping now and what is complete.</p>
           </div>
         </Reveal>
-        <div className="project-list">
-          {projects.map((project) => <ProjectCard project={project} key={project.title} />)}
+        <div className="project-groups">
+          <section className="project-group" aria-labelledby="in-progress-heading">
+            <div className="project-group-heading">
+              <div>
+                <span className="project-group-kicker">01 / CURRENTLY BUILDING</span>
+                <h3 id="in-progress-heading">In progress</h3>
+              </div>
+              <span className="project-group-count">02 PROJECTS</span>
+            </div>
+            <div className="project-list">
+              {projects.filter((project) => project.status === "in-progress").map((project) => (
+                <ProjectCard project={project} key={project.title} />
+              ))}
+            </div>
+          </section>
+
+          <section className="project-group" aria-labelledby="completed-heading">
+            <div className="project-group-heading">
+              <div>
+                <span className="project-group-kicker">02 / SHIPPED BUILDS</span>
+                <h3 id="completed-heading">Completed</h3>
+              </div>
+              <span className="project-group-count">03 PROJECTS</span>
+            </div>
+            <div className="project-list">
+              {projects.filter((project) => project.status === "completed").map((project) => (
+                <ProjectCard project={project} key={project.title} />
+              ))}
+            </div>
+          </section>
         </div>
       </section>
 

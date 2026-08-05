@@ -703,8 +703,45 @@ button {
   line-height: 1.55;
 }
 
+.project-groups {
+  display: grid;
+  gap: clamp(5rem, 10vw, 10rem);
+}
+
+.project-group-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--fg);
+}
+
+.project-group-kicker,
+.project-group-count {
+  color: var(--accent);
+  font-size: 0.61rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+}
+
+.project-group-heading h3 {
+  margin: 0.65rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4.6rem);
+  font-weight: 780;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.project-group-count {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 .project-list {
-  border-top: 1px solid var(--fg);
+  border-bottom: 1px solid var(--fg);
 }
 
 .project-row {
