@@ -752,14 +752,7 @@ export default function Home() {
             </section>
           )}
 
-          <section className="project-group" aria-labelledby="completed-heading">
-            <div className="project-group-heading">
-              <div>
-                <span className="project-group-kicker">{inProgressProjects.length > 0 ? "02" : "01"} / SHIPPED BUILDS</span>
-                <h3 id="completed-heading">Completed</h3>
-              </div>
-              <span className="project-group-count">{String(completedProjects.length).padStart(2, "0")} PROJECTS</span>
-            </div>
+          <section className="project-group">
             <div className="project-list">
               {completedProjects.map((project) => <ProjectCard project={project} key={project.title} />)}
             </div>
