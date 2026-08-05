@@ -286,16 +286,9 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
   }
 
   if (visual === "student") {
-    const picks = [studentScreenDefs[0], studentScreenDefs[1], studentScreenDefs[2], studentScreenDefs[3], studentScreenDefs[5]];
     return (
       <figure className="project-art art-student" aria-label={`${title} product screens`}>
-        <div className="gallery-stack">
-          {picks.map((s, i) => (
-            <div className={`gallery-stack-item stack-item--${i}`} key={s.src}>
-              <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 767px) 72vw, 52vw" unoptimized />
-            </div>
-          ))}
-        </div>
+        <LandscapeSwipeGallery screens={studentScreenDefs} />
       </figure>
     );
   }
@@ -350,6 +343,92 @@ function ProjectVisual({ visual, title }: { visual: string; title: string }) {
         </div>
       </div>
     </figure>
+  );
+}
+
+function LandscapeSwipeGallery({
+  screens,
+}: {
+  screens: readonly { src: string; alt: string; width: number; height: number }[];
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const pointerStart = useRef<number | null>(null);
+  const activeScreen = screens[activeIndex];
+
+  const goTo = (nextIndex: number) => {
+    setActiveIndex((nextIndex + screens.length) % screens.length);
+  };
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    pointerStart.current = event.clientX;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (pointerStart.current === null) return;
+    const distance = event.clientX - pointerStart.current;
+    pointerStart.current = null;
+    if (Math.abs(distance) > 42) goTo(activeIndex + (distance < 0 ? 1 : -1));
+  };
+
+  return (
+    <div
+      className="landscape-gallery"
+      role="group"
+      aria-label="Swipe through StudentCore System screens"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowRight") goTo(activeIndex + 1);
+        if (event.key === "ArrowLeft") goTo(activeIndex - 1);
+      }}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => { pointerStart.current = null; }}
+    >
+      <div className="landscape-gallery-topline">
+        <span>SCREEN / {String(activeIndex + 1).padStart(2, "0")}</span>
+        <span>SWIPE TO EXPLORE</span>
+      </div>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          className="landscape-gallery-frame"
+          key={activeScreen.src}
+          initial={{ opacity: 0, x: 18 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -18 }}
+          transition={{ duration: 0.28, ease }}
+        >
+          <Image
+            src={activeScreen.src}
+            alt={activeScreen.alt}
+            width={activeScreen.width}
+            height={activeScreen.height}
+            sizes="(max-width: 767px) 92vw, 74vw"
+            unoptimized
+            draggable={false}
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="landscape-gallery-footer">
+        <p>{activeScreen.alt.replace("StudentCore System ", "")}</p>
+        <div className="landscape-gallery-controls">
+          <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label="Previous StudentCore screen">←</button>
+          <div className="landscape-gallery-dots" aria-label="Choose a StudentCore screen">
+            {screens.map((screen, index) => (
+              <button
+                type="button"
+                key={screen.src}
+                className={index === activeIndex ? "is-active" : ""}
+                onClick={() => goTo(index)}
+                aria-label={`Show screen ${index + 1}`}
+                aria-current={index === activeIndex ? "true" : undefined}
+              />
+            ))}
+          </div>
+          <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label="Next StudentCore screen">→</button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -415,18 +494,14 @@ function ProjectCard({ project }: { project: Project }) {
 
       <div className="project-body">
         {project.repoUrl ? (
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noreferrer"
+          <div
             className="project-stage"
             onPointerMove={handleMove}
             onPointerLeave={resetTilt}
-            aria-label={`Open ${project.title} repository on GitHub`}
             data-cursor="view"
           >
             {preview}
-          </a>
+          </div>
         ) : (
           <button
             type="button"
@@ -463,6 +538,11 @@ function ProjectCard({ project }: { project: Project }) {
             )}
           </AnimatePresence>
           <div className="project-actions">
+            {project.repoUrl && (
+              <a className="text-link" href={project.repoUrl} target="_blank" rel="noreferrer">
+                <span>View repository</span><span aria-hidden="true">↗</span>
+              </a>
+            )}
             <button
               className="text-link"
               type="button"
@@ -673,7 +753,6 @@ export default function Home() {
           <a href="#contact"><small>04</small> Contact</a>
         </nav>
         <div className="header-actions">
-          <span className="availability"><i /> AVAILABLE Q4 ’26</span>
           <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "paper" ? "ink" : "paper"} mode`}>
             <span>{theme === "paper" ? "INK" : "PAPER"}</span><i />
           </button>
@@ -696,7 +775,6 @@ export default function Home() {
           <div className="hero-bottom">
             <p>Product-minded software developer turning complex systems into fast, humane experiences.</p>
             <a className="hero-scroll" href="#work"><span>SCROLL TO WORK</span><i>↓</i></a>
-            <div className="edition-mark"><span>REDLINE</span><small>ISSUE 01 / 2026</small></div>
           </div>
         </motion.div>
         <div className="registration-mark mark-left" aria-hidden="true">+</div>
@@ -805,7 +883,7 @@ export default function Home() {
               <p>Good. Those are the interesting ones.</p>
             </Reveal>
             <Reveal className="contact-action" delay={0.1}>
-              <p>I’m available for select product engineering and creative development projects from Q4 2026. Write to <a className="contact-email" href="mailto:syafiadil@gmail.com">syafiadil@gmail.com</a>.</p>
+              <p>For select product engineering and creative development projects, write to <a className="contact-email" href="mailto:syafiadil@gmail.com">syafiadil@gmail.com</a>.</p>
               <MagneticContact />
               <small>CLICK TO COPY THE ADDRESS</small>
             </Reveal>
