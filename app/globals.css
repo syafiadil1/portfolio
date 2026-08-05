@@ -805,6 +805,7 @@ button {
 .project-tilt {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -819,18 +820,17 @@ button {
 
 .project-status {
   position: absolute;
-  z-index: 10;
+  z-index: 1000;
   top: 1rem;
   right: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.65rem;
-  border: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+  border: 1px solid currentColor;
   color: inherit;
-  background: color-mix(in oklch, currentColor 10%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--bg);
+  box-shadow: 3px 3px 0 color-mix(in oklch, var(--fg) 22%, transparent);
   font-size: 0.56rem;
   font-weight: 850;
   letter-spacing: 0.1em;
