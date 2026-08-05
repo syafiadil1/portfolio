@@ -156,7 +156,6 @@ const commitmentScreens = [
 ] as const;
 
 const studentScreenDefs = [
-  { src: "/projects/student-01.jpg", alt: "StudentCore System dashboard overview", width: 1280, height: 586 },
   { src: "/projects/student-02.jpg", alt: "StudentCore courses and schedule view", width: 1280, height: 654 },
   { src: "/projects/student-03.jpg", alt: "StudentCore task and assessment tracker", width: 1280, height: 656 },
   { src: "/projects/student-04.jpg", alt: "StudentCore file management workspace", width: 1280, height: 658 },
