@@ -384,7 +384,6 @@ function LandscapeSwipeGallery({
     >
       <div className="landscape-gallery-topline">
         <span>SCREEN / {String(activeIndex + 1).padStart(2, "0")}</span>
-        <span>SWIPE TO EXPLORE</span>
       </div>
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -407,7 +406,6 @@ function LandscapeSwipeGallery({
         </motion.div>
       </AnimatePresence>
       <div className="landscape-gallery-footer">
-        <p>{activeScreen.alt.replace(`${label} `, "")}</p>
         <div
           className="landscape-gallery-controls"
           onPointerDown={(event) => event.stopPropagation()}
