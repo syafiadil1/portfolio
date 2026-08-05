@@ -63,6 +63,8 @@ test("server-renders the finished portfolio shell", async () => {
   assert.match(html, /Selected work/i);
   assert.match(html, /In progress/);
   assert.match(html, /Completed/);
+  assert.match(html, /project-status--in-progress/);
+  assert.match(html, /project-status--completed/);
   assert.match(html, /LONJAK/);
   for (const asset of lonjakCampaignAssets) assert.match(html, new RegExp(`/projects/${asset.replace(".", "\\.")}`));
   assert.doesNotMatch(html, /VIEW SOURCE ON GITHUB|PRIVATE REPOSITORY/);

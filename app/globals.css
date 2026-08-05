@@ -817,6 +817,64 @@ button {
   font-family: var(--font-body);
 }
 
+.project-status {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+  color: inherit;
+  background: color-mix(in oklch, currentColor 10%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.56rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.project-status-dot {
+  display: block;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.project-status--in-progress {
+  color: var(--signal);
+  animation: status-breathe 2.8s ease-in-out infinite;
+}
+
+.project-status--in-progress .project-status-dot {
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+.project-status--completed {
+  color: var(--fg);
+}
+
+.project-status--completed .project-status-dot {
+  box-shadow: 0 0 0 2px color-mix(in oklch, currentColor 18%, transparent);
+}
+
+@keyframes status-breathe {
+  0%,
+  100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% { box-shadow: 0 0 0 0 color-mix(in oklch, currentColor 0%, transparent); }
+  50% { box-shadow: 0 0 0 5px color-mix(in oklch, currentColor 22%, transparent); }
+}
+
 .project-notes {
   padding-bottom: 0.15rem;
 }

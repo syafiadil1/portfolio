@@ -382,6 +382,14 @@ function ProjectCard({ project }: { project: Project }) {
       }}
     >
       <ProjectVisual visual={project.visual} title={project.title} />
+      <div
+        className={`project-status project-status--${project.status}`}
+        role="status"
+        aria-label={`${project.title}: ${project.status === "in-progress" ? "In progress" : "Completed"}`}
+      >
+        <span className="project-status-dot" aria-hidden="true" />
+        <span>{project.status === "in-progress" ? "IN PROGRESS" : "COMPLETED"}</span>
+      </div>
     </motion.div>
   );
 
